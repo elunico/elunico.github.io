@@ -1,0 +1,17 @@
+.projectName {
+  color: white;
+  font-size: 2em;
+  font-family: var(--my-main-font), monospace;
+  text-align: justify;
+}
+
+.projectDescription {
+  color: white;
+  font-size: 1.2em;
+  font-family: var(--my-main-font), monospace;
+}
+
+.projectContainer {
+  transition: opacity var(--my-button-fade-time) linear;
+  opacity: 0;
+}

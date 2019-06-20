@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap');
+:root {
+  --my-green-color: #32CD32;
+  --my-main-font: "Source Code Pro";
+  --my-button-fade-time: 1.8s;
+}
+
+body.home {
+  background-color: black;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  margin-left: 1vw;
+  margin-right: 1vw;
+  line-height: 100%;
+  border-width: 5px;
+  border-color: var(--my-green-color);
+  border-style: solid;
+  font-size: 3vw;
+  height: 110px;
+  font-family: var(--my-main-font), monospace;
+  text-align: center;
+  background-color: black;
+  color: var(--my-green-color);
+  transition: opacity var(--my-button-fade-time) linear, transform 0.1s linear;
+  opacity: 0;
+  width: 22vw;
+  display: inline-table;
+}
+
+.button:hover {
+  transform: scale(0.95);
+  color: white;
+  background-color: var(--my-green-color);
+}
+
+#cursor {
+  transition: opacity 0.25s ease-in-out;
+  opacity: 1;
+}
+
+.mainHeader {
+  font-size: 2vw;
+  font-family: var(--my-main-font), monospace;
+  color: var(--my-green-color);
+}
+
+.projectPage {
+  margin-left: 18%;
+  margin-right: 18%;
+}
+
+.progPageDescription {
+  font-size: 1.2em;
+  color: white;
+  font-family: var(--my-main-font), monospace;
+  transition: opacity var(--my-button-fade-time) linear;
+  opacity: 0;
+}

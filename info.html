@@ -1,0 +1,78 @@
+<html>
+
+<head>
+  <title>Info &amp; Contact - Thomas Povinelli</title>
+  <link rel="stylesheet" type="text/css" href="/css/common.css">
+  <link rel="stylesheet" type="text/css" href="/css/info.css">
+</head>
+
+<body class="home">
+  <span class="buttons">
+    <a href="/">
+      <div class="button" id="home">Home</div>
+    </a>
+    <a href="progproj.html">
+      <div class="button" id="progproj">Programming</div>
+    </a>
+    <a href="langproj.html">
+      <div class="button" id="langproj">Linguistics</div>
+    </a>
+    <a href="info.html">
+      <div class="button" id="info">Info &amp; Contact</div>
+    </a>
+
+  </span>
+  <p>&nbsp;</p>
+
+  <div class="projectPage">
+    <h1 class="mainHeader" id="mainHeader">&nbsp;</h1>
+
+    <div id="content" class="progPageDescription">
+      <h3 class="contactList">
+        Places you can find and contact me:
+      </h3>
+      <table class="list">
+        <tr>
+          <td>Email:</td>
+          <td><a href="mailto:tpovinelli@me.com">tpovinelli@me.com</a></td>
+        </tr>
+        <tr>
+          <td>Cell Phone:</td>
+          <td>(347) 323-6136</td>
+        </tr>
+        <tr>
+          <td>LinkedIn:</td>
+          <td><a href="http://linkedin.com/fix-me-broken">Thomas Povinelli</a></td>
+        </tr>
+        <tr>
+          <td>GitHub:</td>
+          <td><a href="http://github.com/elunico">@elunico</a></td>
+        </tr>
+      </table>
+      <h3 class="contactList">
+        Other information about me:
+      </h3>
+      <table class="list">
+        <tr>
+          <td>My Résumé:</td>
+          <td>FIXME</td>
+        </tr>
+      </table>
+      </p>
+
+      <script src="/js/common.js"></script>
+      <script>
+
+        typeText('Information &amp; Contact', '#mainHeader', () => {
+          let content = document.querySelector('#content');
+          console.log(content);
+          content.style.opacity = 1;
+          buttonFade();
+        })
+
+    // TODO: why does this need timeout
+    // setTimeout(() => buttonFade(), 60);
+      </script>
+</body>
+
+</html>

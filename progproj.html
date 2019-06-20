@@ -2,7 +2,8 @@
 
 <head>
   <title>Programming Projects - Thomas Povinelli</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="/css/common.css">
+  <link rel="stylesheet" type="text/css" href="/css/progproj.css">
   <style>
     a {
       color: var(--my-green-color);
@@ -29,9 +30,9 @@
   </span>
   <p>&nbsp;</p>
 
-  <div class="progproj">
-    <h1 class="mainHeader">Programming Projects<span id="cursor">&#x258A;</span></h1>
-    <p class="progprojDescription">
+  <div class="projectPage">
+    <h1 id="mainHeader" class="mainHeader"><span id="cursor">&#x258A;</span></h1>
+    <p class="progPageDescription">
       Below is a list of some of the interesting programming projects
       that I have created. Some of these were done independently and some were done
       in groups and this is indicated in the description of the project. The projects
@@ -55,16 +56,10 @@
 
     </div>
   </div>
-  <script>
+  <script src="/js/common.js"></script>
+  <script src="/js/progproj.js">
 
-    let buttons = document.querySelectorAll('.button');
-    for (let button of buttons) {
-      button.style.opacity = 1;
-    }
-    setInterval(() => {
-      let cursor = document.querySelector('#cursor');
-      cursor.style.opacity = 1 - Number(cursor.style.opacity);
-    }, 750); </script>
+  </script>
 
 
 

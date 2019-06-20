@@ -1,0 +1,42 @@
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="/css/common.css">
+
+</head>
+
+<body class="home">
+
+  <!-- header -->
+  <span class="buttons">
+    <a href="/">
+      <div class="button" id="home">Home</div>
+    </a>
+    <a href="progproj.html">
+      <div class="button" id="progproj">Programming</div>
+    </a>
+    <a href="langproj.html">
+      <div class="button" id="langproj">Linguistics</div>
+    </a>
+    <a href="info.html">
+      <div class="button" id="info">Info &amp; Contact</div>
+    </a>
+
+  </span>
+  <p>&nbsp;</p>
+  <!-- End header -->
+  <div class="projectPage">
+    <h1 class="mainHeader" id="mainHeader"></h1>
+  </div>
+
+
+  <script src="/js/common.js"></script>
+  <script>
+    typeText('Language Projects', '#mainHeader', () => {
+      buttonFade();
+    })
+  </script>
+
+</body>
+
+</html>
