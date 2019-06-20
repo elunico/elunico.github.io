@@ -1,0 +1,69 @@
+<html lang="en">
+
+<head>
+  <title>Programming Projects - Thomas Povinelli</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <style>
+    a {
+      color: var(--my-green-color);
+    }
+  </style>
+
+</head>
+
+<body class="home">
+  <span class="buttons">
+    <a href="/">
+      <div class="button" id="home">Home</div>
+    </a>
+    <a href="progproj.html">
+      <div class="button" id="progproj">Programming</div>
+    </a>
+    <a href="langproj.html">
+      <div class="button" id="langproj">Linguistics</div>
+    </a>
+    <a href="info.html">
+      <div class="button" id="info">Info &amp; Contact</div>
+    </a>
+
+  </span>
+  <p>&nbsp;</p>
+
+  <div class="progproj">
+    <h1 class="mainHeader">Programming Projects<span id="cursor">&#x258A;</span></h1>
+    <p class="progprojDescription">
+      Below is a list of some of the interesting programming projects
+      that I have created. Some of these were done independently and some were done
+      in groups and this is indicated in the description of the project. The projects
+      include screenshots and (were possible) links to the source code.
+    </p>
+
+    <div class="projectContainer">
+
+      <h2 class="projectName"><a href="http://gitlab.com/tpovinelli/jpedit">JPEdit</a></h1>
+        <img width="100%" height="auto" src="projects/programming/jpedit_head.png"
+          alt="A screenshot an empty JPEdit Window with the file menu open." />
+        <p class="projectDescription">A recreation of notepad in Java using JavaFX. This was
+          an excercise in JavaFX and GUI design. It is a fairly simple text editor that
+          has autosave, recovery features, multiple windows, open/save/duplicate,
+          copy, cut, pase, find, replace, and insert time/date features.
+        </p>
+
+    </div>
+  </div>
+  <script>
+
+    let buttons = document.querySelectorAll('.button');
+    for (let button of buttons) {
+      button.style.opacity = 1;
+    }
+    setInterval(() => {
+      let cursor = document.querySelector('#cursor');
+      cursor.style.opacity = 1 - Number(cursor.style.opacity);
+    }, 750); </script>
+
+
+
+</body>
+
+</html>

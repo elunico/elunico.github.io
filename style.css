@@ -1,0 +1,108 @@
+:root {
+  --my-green-color: #32CD32;
+}
+
+body.home {
+  background-color: black;
+}
+
+#mainTitle {
+  color: white;
+  background-color: var(--my-green-color);
+  font-family: "OCR A", monospace;
+  font-size: 8vw;
+  text-align: center;
+}
+
+#welcome {
+  color: var(--my-green-color);
+  font-family: "OCR A", monospace;
+  font-size: 4vw;
+  transition: opacity 1.8s linear;
+  text-align: center;
+  opacity: 0;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  margin-left: 1vw;
+  margin-right: 1vw;
+  border-width: 5px;
+  border-color: var(--my-green-color);
+  border-style: solid;
+  font-size: 3vw;
+  height: 100px;
+  font-family: "OCR A", monospace;
+  text-align: center;
+  background-color: black;
+  color: var(--my-green-color);
+  transition: opacity 1.8s linear, transform 0.1s linear;
+  opacity: 0;
+  width: 22vw;
+  display: inline-table;
+}
+
+.button:hover {
+  transform: scale(0.95);
+  color: white;
+  background-color: var(--my-green-color);
+}
+
+.medialinks {
+  height: 10em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 1.8s linear;
+  opacity: 0;
+}
+
+.medialink {
+  transition: transform 0.1s linear;
+  margin: 25px;
+}
+
+.medialink:hover {
+  transform: scale(0.84);
+}
+
+.progproj {
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+.projectName {
+  color: white;
+  font-size: 2em;
+  font-family: "OCR A", monospace;
+  text-align: justify;
+}
+
+.projectDescription {
+  color: white;
+  font-size: 1.2em;
+  line-height: 125%;
+  font-family: "OCR A", monospace;
+}
+
+.mainHeader {
+  font-size: 2vw;
+  font-family: "OCR A", monospace;
+  color: var(--my-green-color);
+}
+
+.progprojDescription {
+  font-size: 1.2em;
+  color: white;
+  font-family: "OCR A", monospace;
+}
+
+#cursor {
+  transition: opacity 0.25s ease-in-out;
+  opacity: 1;
+}
