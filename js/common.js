@@ -45,28 +45,45 @@ function commandError(cmd, reason) {
   }, 2500);
 }
 
+function commandSucceed(msg) {
+  let p = document.querySelector('#vim');
+  p.textContent = `Success: ${msg}`;
+  setTimeout(() => {
+    if (!listening) {
+      p.textContent = '';
+    }
+  }, 1500);
+}
+
 function executeAction() {
   let p = document.querySelector('#vim');
   let char = p.textContent.substring(0, p.textContent.length - 1);
-  console.log(char);
   switch (char) {
+    case '!!':
+      commandError(char, 'Turning off fade not yet supported');
+      return false;
     case ']]':
       window.scrollBy(0, sectionSize);
+      commandSucceed('Next section');
       return true;
     case '[[':
       window.scrollBy(0, -sectionSize);
+      commandSucceed('Previous section');
       return true;
     case 'G':
       window.scrollBy(0, pageSize);
+      commandSucceed('go to end of file');
       return true;
     case 'gg':
       window.scrollBy(0, -pageSize);
+      commandSucceed('go to beginning of file');
       return true;
     case ':q':
       commandError(char, 'file not saved!');
       return false;
     case ':q!':
       window.location = 'http://google.com';
+      commandSucceed('exiting...');
       return true;
     default:
       commandError(char, 'UNKNOWN COMMAND!');
@@ -80,7 +97,6 @@ let bodies = document.getElementsByTagName('body');
 for (let body of bodies) {
   body.onkeydown = function (event) {
     // console.log(event);
-    console.log(listening);
     if (event.keyCode === 27) {
       listening = !listening;
       let p = document.querySelector('#vim');
@@ -92,10 +108,7 @@ for (let body of bodies) {
     } else if (listening) {
       if (event.keyCode === 13) {
         listening = false;
-        if (executeAction()) {
-          let p = document.querySelector('#vim');
-          p.textContent = '';
-        }
+        executeAction();
       } else if (event.keyCode == 8) {
         let p = document.querySelector('#vim');
         p.textContent = p.textContent.substring(0, p.textContent.length - 2);
@@ -105,7 +118,6 @@ for (let body of bodies) {
           return;
         }
         let p = document.querySelector('#vim');
-        console.log(p.textContent);
         p.textContent = p.textContent.substring(0, p.textContent.length - 1) + event.key;
         p.innerHTML = p.innerHTML + '<span class="cursor">&#x258A;</span>';
       }

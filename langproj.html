@@ -27,13 +27,21 @@
   <!-- End header -->
   <div class="projectPage">
     <h1 class="mainHeader" id="mainHeader"></h1>
+
+    <p class="progPageDescription">
+      Creating Conlangs (short for <i>constructed language</i>) has been a hobby of mine
+      for many years.
+    </p>
   </div>
+
   <p id="vim"> </p>
 
   <script src="/js/common.js"></script>
   <script>
     typeText('Language Projects', '#mainHeader', () => {
       buttonFade();
+      let d = document.querySelector('.progPageDescription');
+      d.style.opacity = 1;
     })
   </script>
 
