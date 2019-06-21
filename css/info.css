@@ -4,18 +4,6 @@
   font-family: var(--my-main-font), monospace;
 }
 
-a:link {
-  color: var(--my-green-color);
-}
-
-a:visited {
-  color: #2E8B57;
-}
-
-a:hover {
-  color: #00ff00;
-}
-
 .list {
   font-size: 1.1em;
   color: white;
@@ -28,7 +16,7 @@ a:hover {
 
 td, tr {
   border-style: solid;
-  border-color: darkgreen;
+  border-color: var(--my-dark-accent-color);
 }
 
 td {

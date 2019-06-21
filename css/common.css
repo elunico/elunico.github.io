@@ -3,9 +3,11 @@
 :root {
   /* green */
   --my-green-color: #32CD32;
+  --my-dark-accent-color: darkgreen;
   /* amber */
   /* --my-green-color: rgb(202, 148, 31); */
-  --my-main-font: "Anonymous Pro", "Oxygen Mono", "Source Code Pro";
+  /* --my-dark-accent-color: rgb(173, 122, 12); */
+  --my-main-font: "Source Code Pro", "Anonymous Pro", "Oxygen Mono";
   --my-button-fade-time: 1.8s;
 }
 
@@ -15,6 +17,24 @@ body {
 
 body.home {
   background-color: black;
+}
+
+a:link {
+  color: var(--my-green-color);
+}
+
+a:visited {
+  /* green */
+  color: #2E8B57;
+  /* amber */
+  /* color: rgb(167, 124, 8); */
+}
+
+a:hover {
+  /* green */
+  color: #00ff00;
+  /* amber */
+  /* color: #e0b218; */
 }
 
 .buttons {
@@ -70,7 +90,7 @@ body.home {
 }
 
 .progPageDescription {
-  font-size: 1.2em;
+  font-size: 1em;
   color: white;
   font-family: var(--my-main-font), monospace;
   transition: opacity var(--my-button-fade-time) linear;
