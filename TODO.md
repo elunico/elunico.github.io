@@ -13,6 +13,7 @@
 -  use localStorage to prevent reanimation unless explicit refresh is requested?
 
 ## Critical Bugs
+-  *NONE*
 
 ## Major Bugs
 -  Sometimes the pages fade out then in instead of just in on first load
@@ -24,4 +25,4 @@
 -  Add more photos of projects
   -  maybe a Gallery or a page that hosts simple photos (boring)
   -  probably would want template or some sort of plug n play thing for gallery work
-~~-  Add VIM style commands~~
+-  ~~Add VIM style commands~~
