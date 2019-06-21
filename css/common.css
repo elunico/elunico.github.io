@@ -2,7 +2,10 @@
 @import url('https://fonts.googleapis.com/css?family=Anonymous+Pro:400,700&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Oxygen+Mono:400,700&display=swap');
 :root {
+  /* green */
   --my-green-color: #32CD32;
+  /* amber */
+  /* --my-green-color: rgb(202, 148, 31); */
   --my-main-font: "Anonymous Pro", "Oxygen Mono", "Source Code Pro";
   --my-button-fade-time: 1.8s;
 }
@@ -40,6 +43,11 @@ body.home {
   display: inline-table;
 }
 
+.buttonActive {
+  background-color: var(--my-green-color) !important;
+  color: white;
+}
+
 .button:hover {
   transform: scale(0.95);
   color: white;
@@ -68,4 +76,14 @@ body.home {
   font-family: var(--my-main-font), monospace;
   transition: opacity var(--my-button-fade-time) linear;
   opacity: 0;
+}
+
+#vim {
+  font-family: var(--my-main-font), monospace;
+  font-size: 0.7em;
+  color: var(--my-green-color);
+  position: fixed;
+  left: 1px;
+  bottom: 1px;
+  top: auto;
 }

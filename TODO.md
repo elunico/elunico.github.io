@@ -1,7 +1,6 @@
 # Things to Do
 
 ## Missing Things
--  Still need to make the info page
 -  Still need to make the linguistics page
 
 ## Features
@@ -10,7 +9,7 @@
 -  Should I use a microservices archetecture?
 -  Should I add some API routes ???
 -  Have text in the buttons centered and in the middle
--  Buttons don't fade in the info &amp; contact page
+-  Should I switch to amber text from green? see common.css variables
 
 ## Fun Things
 -  use localStorage to prevent reanimation unless explicit refresh is requested?
