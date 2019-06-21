@@ -1,3 +1,5 @@
+const typeTextSpeed = 60;
+
 
 function typeText(text, selector, then, timeout) {
   let index = 0;
@@ -10,7 +12,15 @@ function typeText(text, selector, then, timeout) {
         then();
       }, 60);
     }
-  }, timeout || 60);
+  }, timeout || typeTextSpeed);
+}
+
+function buttonFade() {
+  let buttons = document.querySelectorAll('.button');
+  console.log(buttons);
+  for (let b of buttons) {
+    b.style.opacity = 1.0;
+  }
 }
 
 setInterval(() => {
@@ -20,13 +30,6 @@ setInterval(() => {
   }
 }, 750);
 
-function buttonFade() {
-  let buttons = document.querySelectorAll('.button');
-  console.log(buttons);
-  for (let b of buttons) {
-    b.style.opacity = 1.0;
-  }
-}
 
 // VIMPLEMENTATION
 

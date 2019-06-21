@@ -1,5 +1,4 @@
 .projectName {
-  color: white;
   font-size: 1.6em;
   font-family: var(--my-main-font), monospace;
   text-align: justify;
@@ -7,13 +6,20 @@
 }
 
 .projectDescription {
-  color: white;
   font-size: 1em;
   font-family: var(--my-main-font), monospace;
   text-align: justify;
 }
 
 .projectContainer {
+  color: white;
   transition: opacity var(--my-button-fade-time) linear;
   opacity: 0;
+}
+
+h5 {
+  font-family: var(--my-main-font), monospace;
+  font-weight: 700;
+  font-size: 1em;
+  font-style: italic;
 }
