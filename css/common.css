@@ -1,8 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Anonymous+Pro:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Oxygen+Mono:400,700&display=swap');
 :root {
   --my-green-color: #32CD32;
-  --my-main-font: "Source Code Pro";
+  --my-main-font: "Anonymous Pro", "Oxygen Mono", "Source Code Pro";
   --my-button-fade-time: 1.8s;
+}
+
+body {
+  font-variant-ligatures: none;
 }
 
 body.home {

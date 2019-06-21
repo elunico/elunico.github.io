@@ -10,5 +10,5 @@ function startFade() {
 
 typeText('Thomas Povinelli', '#mainTitle', () => {
   startFade();
-});
+}, 75);
 

@@ -10,7 +10,7 @@ function typeText(text, selector, then, timeout) {
         then();
       }, 60);
     }
-  }, timeout || 75);
+  }, timeout || 60);
 }
 
 setInterval(() => {
