@@ -1,4 +1,4 @@
-typeText('Language Projects', '#mainHeader', () => {
+typeText('VIM-like Commands', '#mainHeader', () => {
   buttonFade();
   let d = document.querySelectorAll('.progPageDescription');
   for (let prog of d) { prog.style.opacity = 1; }

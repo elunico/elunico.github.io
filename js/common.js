@@ -1,4 +1,4 @@
-const typeTextSpeed = 60;
+const typeTextSpeed = 50;
 
 
 function typeText(text, selector, then, timeout) {
@@ -17,7 +17,6 @@ function typeText(text, selector, then, timeout) {
 
 function buttonFade() {
   let buttons = document.querySelectorAll('.button');
-  console.log(buttons);
   for (let b of buttons) {
     b.style.opacity = 1.0;
   }
@@ -33,8 +32,8 @@ setInterval(() => {
 
 // VIMPLEMENTATION
 
-const sectionSize = 1000;
-const pageSize = 100000;
+const sectionSize = 700;
+const pageSize = 10000;
 
 function commandError(cmd, reason) {
   let p = document.querySelector('#vim');
@@ -62,6 +61,26 @@ function executeAction() {
   let p = document.querySelector('#vim');
   let char = p.textContent.substring(0, p.textContent.length - 1);
   switch (char) {
+    case '?':
+      commandSucceed('Going to help');
+      window.location = '/vimhelp.html';
+      return true;
+    case '->p':
+      commandSucceed('Going to programming!');
+      window.location = "/progproj.html";
+      return true;
+    case '->i':
+      commandSucceed('Going to info');
+      window.location = '/info.html';
+      return true;
+    case '->h':
+      commandSucceed('Going to home');
+      window.location = '/';
+      return true;
+    case '->l':
+      commandSucceed('Going to linguistics');
+      window.location = '/langproj.html';
+      return true;
     case '!!':
       commandError(char, 'Turning off fade not yet supported');
       return false;
@@ -89,7 +108,7 @@ function executeAction() {
       commandSucceed('exiting...');
       return true;
     default:
-      commandError(char, 'UNKNOWN COMMAND!');
+      commandError(char, 'UNKNOWN COMMAND! try using `?`');
       return false;
   }
 }
@@ -99,7 +118,6 @@ let listening = false;
 let bodies = document.getElementsByTagName('body');
 for (let body of bodies) {
   body.onkeydown = function (event) {
-    // console.log(event);
     if (event.keyCode === 27) {
       listening = !listening;
       let p = document.querySelector('#vim');

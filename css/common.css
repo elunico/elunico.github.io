@@ -1,14 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Anonymous+Pro:400,700&display=swap');
 :root {
+  --my-main-font: "Source Code Pro", "Anonymous Pro", "Oxygen Mono";
+  --my-button-fade-time: 1.2s;
   /* green */
   --my-green-color: #32CD32;
   --my-dark-accent-color: darkgreen;
+  --my-link-visited-color: #2E8B57;
+  --my-link-hover-color: #00ff00;
   /* amber */
   /* --my-green-color: rgb(202, 148, 31); */
   /* --my-dark-accent-color: rgb(173, 122, 12); */
-  --my-main-font: "Source Code Pro", "Anonymous Pro", "Oxygen Mono";
-  --my-button-fade-time: 1.8s;
+  /* --my-link-visited-color: rgb(167, 124, 8); */
+  /* --my-link-hover-color: #e0b218; */
 }
 
 body {
@@ -24,17 +28,11 @@ a:link {
 }
 
 a:visited {
-  /* green */
-  color: #2E8B57;
-  /* amber */
-  /* color: rgb(167, 124, 8); */
+  color: var(--my-link-visited-color);
 }
 
 a:hover {
-  /* green */
-  color: #00ff00;
-  /* amber */
-  /* color: #e0b218; */
+  color: var(--my-link-hover-color);
 }
 
 .buttons {
