@@ -4,6 +4,11 @@
 -  Still need resume
 -  Still need example for language projects
 -  Have text in the buttons centered and in the middle
+-  Add experience and skills?
+-  Fix linkedIn link
+-  Fix resume link
+-  Fix language sample area
+-  Fix green images on home page
 
 ## Considerations
 -  Should I use express and render templates?
@@ -11,6 +16,10 @@
 -  Should I use a microservices archetecture?
 -  Should I add some API routes ???
 -  use localStorage to prevent reanimation unless explicit refresh is requested?
+
+## Refactoring
+-  Fading elements should be tied to a "fade" css class so that I can use js to get all fade elements
+-  the classes in progproj should be renamed and moved to common.css
 
 ## Critical Bugs
 -  *NONE*
