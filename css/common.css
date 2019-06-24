@@ -2,17 +2,17 @@
 @import url('https://fonts.googleapis.com/css?family=Anonymous+Pro:400,700&display=swap');
 :root {
   --my-main-font: "Source Code Pro", "Anonymous Pro", "Oxygen Mono";
-  --my-button-fade-time: 1.2s;
+  --my-button-fade-time: 1s;
   /* green */
   --my-green-color: #32CD32;
   --my-dark-accent-color: darkgreen;
   --my-link-visited-color: #2E8B57;
   --my-link-hover-color: #00ff00;
   /* amber */
-  /* --my-green-color: rgb(202, 148, 31); */
-  /* --my-dark-accent-color: rgb(173, 122, 12); */
+  /* --my-green-color: #FFB000; */
+  /* --my-dark-accent-color: rgb(207, 143, 3); */
   /* --my-link-visited-color: rgb(167, 124, 8); */
-  /* --my-link-hover-color: #e0b218; */
+  /* --my-link-hover-color: #FFCC00; */
 }
 
 body {
@@ -20,7 +20,7 @@ body {
 }
 
 body.home {
-  background-color: black;
+  background-color: rgb(0, 0, 0);
 }
 
 a:link {
@@ -52,7 +52,7 @@ a:hover {
   height: 110px;
   font-family: var(--my-main-font), monospace;
   text-align: center;
-  background-color: black;
+  background-color: rgb(0, 0, 0);
   color: var(--my-green-color);
   transition: opacity var(--my-button-fade-time) linear, transform 0.1s linear;
   opacity: 0;
@@ -83,8 +83,8 @@ a:hover {
 }
 
 .projectPage {
-  margin-left: 20%;
-  margin-right: 20%;
+  margin-left: 18%;
+  margin-right: 18%;
 }
 
 .progPageDescription {

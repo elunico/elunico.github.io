@@ -25,7 +25,7 @@
 -  *NONE*
 
 ## Major Bugs
--  Sometimes the pages fade out then in instead of just in on first load
+-  ~~Sometimes the pages fade out then in instead of just in on first load~~
 
 ## Minor Bugs
 -  when going back the fade is broken
@@ -34,4 +34,5 @@
 -  Add more photos of projects
   -  maybe a Gallery or a page that hosts simple photos (boring)
   -  probably would want template or some sort of plug n play thing for gallery work
+-  Add state so scrolling actually scrolls to next div (use scrollIntoView())
 -  ~~Add VIM style commands~~

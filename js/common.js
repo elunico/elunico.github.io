@@ -22,17 +22,18 @@ function buttonFade() {
   }
 }
 
-setInterval(() => {
-  let cursors = document.querySelectorAll('.cursor');
-  for (let cursor of cursors) {
-    cursor.style.opacity = 1 - Number(cursor.style.opacity);
-  }
-}, 750);
-
+function cursorFade() {
+  setInterval(() => {
+    let cursors = document.querySelectorAll('.cursor');
+    for (let cursor of cursors) {
+      cursor.style.opacity = 1 - Number(cursor.style.opacity);
+    }
+  }, 750);
+}
 
 // VIMPLEMENTATION
 
-const sectionSize = 700;
+const sectionSize = 600;
 const pageSize = 10000;
 
 function commandError(cmd, reason) {
@@ -113,35 +114,43 @@ function executeAction() {
   }
 }
 
-let listening = false;
+function vimHandle() {
+  let listening = false;
 
-let bodies = document.getElementsByTagName('body');
-for (let body of bodies) {
-  body.onkeydown = function (event) {
-    if (event.keyCode === 27) {
-      listening = !listening;
-      let p = document.querySelector('#vim');
-      if (listening) {
-        p.innerHTML = '<span class="cursor">&#x258A;</span>';
-      } else {
-        p.innerHTML = '';
-      }
-    } else if (listening) {
-      if (event.keyCode === 13) {
-        listening = false;
-        executeAction();
-      } else if (event.keyCode == 8) {
+  let bodies = document.getElementsByTagName('body');
+  for (let body of bodies) {
+    body.onkeydown = function (event) {
+      if (event.keyCode === 27) {
+        listening = !listening;
         let p = document.querySelector('#vim');
-        p.textContent = p.textContent.substring(0, p.textContent.length - 2);
-        p.innerHTML += '<span class="cursor">&#x258A;</span>';
-      } else {
-        if (event.key.length != 1) {
-          return;
+        if (listening) {
+          p.innerHTML = '<span class="cursor">&#x258A;</span>';
+        } else {
+          p.innerHTML = '';
         }
-        let p = document.querySelector('#vim');
-        p.textContent = p.textContent.substring(0, p.textContent.length - 1) + event.key;
-        p.innerHTML = p.innerHTML + '<span class="cursor">&#x258A;</span>';
+      } else if (listening) {
+        if (event.keyCode === 13) {
+          listening = false;
+          executeAction();
+        } else if (event.keyCode == 8) {
+          let p = document.querySelector('#vim');
+          p.textContent = p.textContent.substring(0, p.textContent.length - 2);
+          p.innerHTML += '<span class="cursor">&#x258A;</span>';
+        } else {
+          if (event.key.length != 1) {
+            return;
+          }
+          let p = document.querySelector('#vim');
+          p.textContent = p.textContent.substring(0, p.textContent.length - 1) + event.key;
+          p.innerHTML = p.innerHTML + '<span class="cursor">&#x258A;</span>';
+        }
       }
     }
   }
+}
+
+
+function run_common() {
+  cursorFade();
+  vimHandle();
 }

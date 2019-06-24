@@ -8,7 +8,11 @@ function startFade() {
   links.style.opacity = 1.0;
 }
 
-typeText('Thomas Povinelli', '#mainTitle', () => {
-  startFade();
-}, 75);
+window.onload = () => {
+  run_common();
+
+  typeText('Thomas Povinelli', '#mainTitle', () => {
+    startFade();
+  }, 75);
+}
 
