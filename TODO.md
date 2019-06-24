@@ -25,7 +25,8 @@
 -  *NONE*
 
 ## Major Bugs
--  ~~Sometimes the pages fade out then in instead of just in on first load~~
+-  Sometimes the pages fade out then in instead of just in on first load
+  -  Only happens when not using cache (i.e. in Incognito or with Inspector open)
 
 ## Minor Bugs
 -  when going back the fade is broken

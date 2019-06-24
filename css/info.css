@@ -23,10 +23,13 @@ td {
   width: 50%;
 }
 
-#content {
-  transition: opacity var(--my-button-fade-time) linear;
-  opacity: 0;
-}
+/* #content { */
+
+/* transition: opacity var(--my-button-fade-time) linear; */
+
+/* opacity: 0; */
+
+/* } */
 
 .projectName {
   font-size: 1.6em;
@@ -43,6 +46,6 @@ td {
 
 .projectContainer {
   color: white;
-  transition: opacity var(--my-button-fade-time) linear;
-  opacity: 0;
+  /* transition: opacity var(--my-button-fade-time) linear; */
+  /* opacity: 0; */
 }

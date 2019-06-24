@@ -1,4 +1,4 @@
-const typeTextSpeed = 50;
+const typeTextSpeed = 45;
 
 
 function typeText(text, selector, then, timeout) {
@@ -15,10 +15,10 @@ function typeText(text, selector, then, timeout) {
   }, timeout || typeTextSpeed);
 }
 
-function buttonFade() {
-  let buttons = document.querySelectorAll('.button');
-  for (let b of buttons) {
-    b.style.opacity = 1.0;
+function fade() {
+  let elts = document.querySelectorAll('.fadesIn');
+  for (let elt of elts) {
+    elt.style.opacity = 1.0;
   }
 }
 

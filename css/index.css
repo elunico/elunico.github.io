@@ -10,9 +10,9 @@
   color: var(--my-green-color);
   font-family: var(--my-main-font), monospace;
   font-size: 4vw;
-  transition: opacity var(--my-button-fade-time) linear;
+  /* transition: opacity var(--my-button-fade-time) linear; */
   text-align: center;
-  opacity: 0;
+  /* opacity: 0; */
 }
 
 .medialinks {
@@ -20,13 +20,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: opacity var(--my-button-fade-time) linear;
-  opacity: 0;
 }
 
 .medialink {
-  transition: transform 0.1s linear;
+  /* transition: opacity var(--my-button-fade-time) linear, transform 0.1s linear; */
+  /* transition: transform 0.1s linear; */
   margin: 25px;
+  /* opacity: 0; */
 }
 
 .medialink:hover {
