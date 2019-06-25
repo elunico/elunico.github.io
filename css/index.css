@@ -23,12 +23,11 @@
 }
 
 .medialink {
-  /* transition: opacity var(--my-button-fade-time) linear, transform 0.1s linear; */
-  /* transition: transform 0.1s linear; */
+  transition: opacity var(--my-button-fade-time) linear, transform 50ms linear !important;
   margin: 25px;
   /* opacity: 0; */
 }
 
 .medialink:hover {
-  transform: scale(0.84);
+  transform: scale(0.88);
 }
