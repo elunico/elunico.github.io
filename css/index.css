@@ -23,7 +23,7 @@
 }
 
 .medialink {
-  transition: opacity var(--my-button-fade-time) linear, transform 50ms linear !important;
+  transition: opacity var(--my-button-fade-time) linear, transform 75ms linear !important;
   margin: 25px;
   /* opacity: 0; */
 }

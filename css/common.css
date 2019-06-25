@@ -69,13 +69,15 @@ a.buttonLink {
 }
 
 .buttonActive {
-  background-color: var(--my-green-color) !important;
+  /* background-color: var(--my-dark-accent-color); */
+  /* Dark active so hover is still green? */
+  background-color: var(--my-green-color);
   color: white;
 }
 
 .button:hover {
   /* transform: scale(0.95); */
-  transform: translate(0px, 7%);
+  transform: translate(0px, 8%);
   color: white;
   background-color: var(--my-green-color);
 }
@@ -92,12 +94,12 @@ a.buttonLink {
 }
 
 .projectPage {
-  margin-left: 18%;
-  margin-right: 18%;
+  margin-left: 17.5%;
+  margin-right: 17.5%;
 }
 
 .progPageDescription {
-  font-size: 1em;
+  font-size: 1.1em;
   color: white;
   font-family: var(--my-main-font), monospace;
   /* transition: opacity var(--my-button-fade-time) linear; */
