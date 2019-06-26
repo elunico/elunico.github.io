@@ -47,13 +47,20 @@
           JPEdit
         </a>
       </h2>
-      <img width="100%" height="auto" src="/assets/projects/programming/jpedit_head.png"
+      <img width="100%" height="auto" src="/assets/projects/programming/jpedit_head1.png"
+        alt="A screenshot an empty JPEdit Window with the file menu open." />
+      <p></p>
+      <img width="100%" height="auto" src="/assets/projects/programming/jpedit_head2.png"
         alt="A screenshot an empty JPEdit Window with the file menu open." />
       <p class="projectDescription">
-        A recreation of notepad in Java 10 using JavaFX. This was
+        A simple text editor written in Java 10 using JavaFX. This was
         an excercise in JavaFX and GUI design. It is a fairly simple text editor that
         has autosave, recovery features, multiple windows, open/save/duplicate,
-        copy, cut, pase, find, replace, and insert time/date features.
+        copy, cut, pase, find, replace, and insert time/date features. It was modeled after
+        notepad.exe on Windows 10. JPEdit also supports a very rudamentary plugin system.
+        A person can implement the JPEditPlugin interface on a class and by adding the class
+        to a jar, load functionality into JPEdit. This system is fairly simple, but does
+        enable some substantial functionality to be side-loaded.
       </p>
     </div>
     <div class="fadesIn projectContainer">
@@ -89,6 +96,30 @@
         ClipboardManager is a program written in Java to manage clipboard history. It allows the user
         to keep track of their clipboard history and recopy old entries. It supports rich data as well
         as conversion to plain text where possible. It allows the user to save clipboard history as well.
+      </p>
+    </div>
+    <div class="fadesIn projectContainer">
+      <h2 class="projectName">
+        <a href="http://gitlab.com/tpovinelli/DuplicateFileManager" target="_blank" ref="noreferrer noopener">
+          Duplicate File Manager
+        </a>
+      </h2>
+      <img width="100%" height="auto" src="/assets/projects/programming/DuplicateFileManager_head1.png"
+        alt="A screenshot of the duplicate file manager program." />
+      <p></p>
+      <img width="100%" height="auto" src="/assets/projects/programming/DuplicateFileManager_head2.png"
+        alt="Another screenshot of the duplicate file manager program." />
+      <p class="projectDescription">
+        DuplicateFileManager is a program written in Java and Kotlin that can recursively scan
+        any number of directories and detect duplicate files that exist between them as well
+        as within the directories themselves and subdirectories if done recursively. This
+        is accomplished by hashing the files. A number of hashing methods are
+        available to the user to select. Once hashed, the user can add more directories
+        to check for duplicates, remove ones that have been scanned along with their
+        duplicates from view, open files, show files on disk, delete files, delete all
+        duplicates of a file, and export the results to CSV. The results are presented
+        as a filename, path, and the hash of the file. This allows sorting by hash, thus placing
+        all duplicate files next to each other, or sorting files by name for convenient searching.
       </p>
     </div>
     <div class="fadesIn projectContainer">

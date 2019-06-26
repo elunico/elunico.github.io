@@ -23,14 +23,6 @@ td {
   width: 50%;
 }
 
-/* #content { */
-
-/* transition: opacity var(--my-button-fade-time) linear; */
-
-/* opacity: 0; */
-
-/* } */
-
 .projectName {
   font-size: 1.6em;
   font-family: var(--my-main-font), monospace;
@@ -48,4 +40,10 @@ td {
   color: white;
   /* transition: opacity var(--my-button-fade-time) linear; */
   /* opacity: 0; */
+}
+
+.experienceRole {
+  font-size: 1.1em;
+  font-weight: 700;
+  text-decoration: underline;
 }
