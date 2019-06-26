@@ -1,7 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Anonymous+Pro:400,700&display=swap');
+/* @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap'); */
+
+/* @import url('https://fonts.googleapis.com/css?family=Anonymous+Pro:400,700&display=swap'); */
+
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,400i,700,700i&display=swap');
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,400i,700,700i&display=swap');
 :root {
-  --my-main-font: "Source Code Pro", "Anonymous Pro", "Oxygen Mono";
+  --my-main-font: "Ubuntu Mono", "IBM Plex Mono", monospace;
   --my-button-fade-time: 1s;
   /* green */
   --my-green-color: #32CD32;
@@ -17,6 +21,7 @@
 
 body {
   font-variant-ligatures: none;
+  line-height: 135%;
 }
 
 body.home {
@@ -88,7 +93,7 @@ a.buttonLink {
 }
 
 .mainHeader {
-  font-size: 3.5vw;
+  font-size: 3.75vw;
   font-family: var(--my-main-font), monospace;
   color: var(--my-green-color);
 }
@@ -99,7 +104,7 @@ a.buttonLink {
 }
 
 .progPageDescription {
-  font-size: 1.1em;
+  font-size: 1.15em;
   color: white;
   font-family: var(--my-main-font), monospace;
   /* transition: opacity var(--my-button-fade-time) linear; */
@@ -109,7 +114,7 @@ a.buttonLink {
 
 #vim {
   font-family: var(--my-main-font), monospace;
-  font-size: 1.2vw;
+  font-size: 1.25vw;
   color: var(--my-green-color);
   position: fixed;
   left: 1px;

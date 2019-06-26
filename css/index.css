@@ -4,11 +4,13 @@
   font-family: var(--my-main-font), monospace;
   font-size: 8vw;
   text-align: center;
+  line-height: normal !important;
 }
 
 #welcome {
   color: var(--my-green-color);
   font-family: var(--my-main-font), monospace;
+  line-height: normal !important;
   font-size: 4vw;
   /* transition: opacity var(--my-button-fade-time) linear; */
   text-align: center;

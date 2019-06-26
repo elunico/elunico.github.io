@@ -10,7 +10,7 @@ window.onload = () => {
       if (this.style.width == '50%' || !this.style.width) {
         this.style.width = '100%';
       } else if (this.style.width == '100%') {
-        this.style.width = '150%';
+        this.style.width = '50%';
       }
     }
   }
