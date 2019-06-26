@@ -47,3 +47,8 @@ td {
   font-weight: 700;
   text-decoration: underline;
 }
+
+a.headerLink {
+  text-decoration: none;
+  color: var(--my-green-color);
+}
