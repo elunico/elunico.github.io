@@ -2,12 +2,12 @@
 
 ## Missing Things
 -  ~~Still need resume~~
--  Still need example for language projects
+-  ~~Still need example for language projects~~
 -  ~~Have text in the buttons centered and in the middle~~
 -  ~~Add experience and skills?~~
 -  ~~Fix linkedIn link~~
 -  ~~Fix resume link~~
--  Fix language sample area
+-  ~~Fix language sample area~~
 -  Fix green images on home page
 -  Should experience and skills be on website if its on resume?
 -  Move back to GitHub and fix links
