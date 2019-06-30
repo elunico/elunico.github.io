@@ -12,9 +12,7 @@
   font-family: var(--my-main-font), monospace;
   line-height: normal !important;
   font-size: 4vw;
-  /* transition: opacity var(--my-button-fade-time) linear; */
   text-align: center;
-  /* opacity: 0; */
 }
 
 .medialinks {
@@ -27,7 +25,7 @@
 .medialink {
   transition: opacity var(--my-button-fade-time) linear, transform 75ms linear !important;
   margin: 25px;
-  /* opacity: 0; */
+  opacity: 0;
 }
 
 .medialink:hover {
