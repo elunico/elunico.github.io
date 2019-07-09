@@ -1,8 +1,7 @@
 window.onload = () => {
-  run_common();
-
   typeText('Thomas Povinelli', '#mainTitle', () => {
     fade();
+    run_common();
   }, 55);
 }
 

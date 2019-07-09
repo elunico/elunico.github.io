@@ -2,17 +2,21 @@ const typeTextSpeed = 45;
 
 
 function typeText(text, selector, then, timeout) {
+  timeout = timeout || typeTextSpeed;
   let index = 0;
   let elt = document.querySelector(selector);
+  let completed = false;
   let interval = setInterval(() => {
     elt.innerHTML = text.substring(0, index++) + '<span class="cursor">&#x258A;</span>'
-    if (index > text.length) {
+    if (index > text.length && !completed) {
+      // surprise! but not really
+      completed = true;
       setTimeout(() => {
         clearInterval(interval);
         then();
-      }, 60);
+      }, Math.round(timeout * 0.6));
     }
-  }, timeout || typeTextSpeed);
+  }, timeout);
 }
 
 function fade() {
@@ -23,6 +27,7 @@ function fade() {
 }
 
 function cursorFade() {
+  console.trace('Calling cursor fade');
   setInterval(() => {
     let cursors = document.querySelectorAll('.cursor');
     for (let cursor of cursors) {
@@ -114,8 +119,8 @@ function executeAction() {
   }
 }
 
+let listening = false;
 function vimHandle() {
-  let listening = false;
 
   let bodies = document.getElementsByTagName('body');
   for (let body of bodies) {

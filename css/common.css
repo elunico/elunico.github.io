@@ -87,8 +87,8 @@ a.buttonLink {
   background-color: var(--my-green-color);
 }
 
-#cursor {
-  transition: opacity 0.25s ease-in-out;
+.cursor {
+  transition: opacity 0.35s ease-in-out;
   opacity: 1;
 }
 

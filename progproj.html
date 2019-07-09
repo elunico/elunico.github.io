@@ -36,8 +36,9 @@
     <p class="fadesIn progPageDescription">
       Below is a list of some of the interesting programming projects
       that I have created. Some of these were done independently and some were done
-      in groups and this is indicated in the description of the project. The projects
-      include screenshots and (were possible) links to the source code.
+      in groups and this is indicated in the description of the project. The project
+      names link to the source code where applicable. Screenshots are provided
+      for some projects as well.
     </p>
     <p style="font-style: italic" class="fadesIn progPageDescription">
       Click an image to enlarge; click again to shrink.
@@ -66,11 +67,46 @@
         enable some substantial functionality to be side-loaded.
       </p>
     </div>
+
     <div class="fadesIn projectContainer">
       <h2 class="projectName">
-        <a href="http://github.com/elunico/CSE308" target="_blank" ref="noreferrer noopener">
-          The Redistricter
+        <a href="http://github.com/elunico/SocDraw" target="_blank" ref="noreferrer noopener">
+          SocDraw
         </a>
+      </h2>
+      <img width="50%" height="auto" src="/assets/projects/programming/SocDraw_head1.png"
+        alt="A screenshot of the duplicate file manager program." />
+      <p></p>
+      <img width="50%" height="auto" src="/assets/projects/programming/SocDraw_head2.png"
+        alt="Another screenshot of the duplicate file manager program." />
+      <p class="projectDescription">
+
+        SocDraw is a collaborative drawing application for real-time shared canvas
+        drawing between multiple clients. The application is based on the idea of a
+        room. A room is simply a canvas, all associated drawing data, and the
+        clients connected to the room. Rooms are created on demand when a user chooses
+        to do so from the home page. Rooms are identified by a sequence of 4 random
+        words. Users can share this sequence with others who can use it to join
+        the room and draw on a shared canvas in real time. When all members leave a
+        room there is a short grace period where reconnections are permitted
+        before the room and all associated drawing data is destroyed. Clients
+        who connect to an existing room will have the current state of the canvas
+        transmitted and immediately appear when entering. This program is made using
+        <a href="http://processing.org" rel="noopener noreferrer">The Processing Foundation</a>'s
+        p5.js library for working with the canvas. The collaborative aspect is built using
+        <a href="http://socket.io" rel="noopener noreferrer">socket.io</a>.
+
+
+      </p>
+      <p class="projectDescription">
+        The app can be viewed and used <a href="http://socdraw.herokuapp.com" rel="noopener noreferrer">here on
+          Heroku</a>.
+      </p>
+    </div>
+
+    <div class="fadesIn projectContainer">
+      <h2 class="projectName">
+        The Redistricter
       </h2>
       <img width="50%" height="auto" src="/assets/projects/programming/redistricter_head.jpg"
         alt="A screenshot of the Redistricter application with a state in view and sidebar open." />
@@ -85,6 +121,9 @@
         to be able to systematically draw district lines to prevent gerrymandering and have districts
         which are drawn based on objective criteria instead of to force a partisan advantage. It was
         done in a team of 4 over the course of the Fall 2018 semester at Stony Brook University for CSE 308.
+      </p>
+      <p class="projectDescription">
+        <i>This project is not currently open source.</i>
       </p>
     </div>
     <div class="fadesIn projectContainer">
@@ -125,19 +164,7 @@
         all duplicate files next to each other, or sorting files by name for convenient searching.
       </p>
     </div>
-    <div class="fadesIn projectContainer">
-      <h2 class="projectName">
-        <a href="http://gitlab.com/tpovinelli/TomUtils" target="_blank" ref="noreferrer noopener">
-          TomUtils
-        </a>
-      </h2>
-      <p class="projectDescription">
-        TomUtils is a collection of useful things written in Kotlin. It contains
-        several things including classes, functions, extension functions, and variables.
-        I use these utils in many of the projects that I make and they are available publicly
-        for anyone to use.
-      </p>
-    </div>
+
     <div class="fadesIn projectContainer">
       <h2 class="projectName">
         Other Projects

@@ -1,7 +1,7 @@
 window.onload = () => {
-  run_common();
   typeText('Programming Projects', '#mainHeader', () => {
     fade();
+    run_common();
   });
 
   let images = document.querySelectorAll('img');
