@@ -14,7 +14,7 @@ function typeText(text, selector, then, timeout) {
       setTimeout(() => {
         clearInterval(interval);
         then();
-      }, Math.round(timeout * 0.6));
+      }, Math.round(timeout * 0.2));
     }
   }, timeout);
 }
