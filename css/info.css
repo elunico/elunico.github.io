@@ -50,3 +50,7 @@ a.headerLink {
   text-decoration: none;
   color: var(--my-green-color);
 }
+
+#footer {
+  font-size: 0.95em;
+}
