@@ -1,22 +1,20 @@
-const typeTextSpeed = 45;
-
-
-function typeText(text, selector, then, timeout) {
-  timeout = timeout || typeTextSpeed;
+function typeText(text, selector, then, period) {
+  period = period || 2;
   let index = 0;
   let elt = document.querySelector(selector);
-  let completed = false;
-  let interval = setInterval(() => {
-    elt.innerHTML = text.substring(0, index++) + '<span class="cursor">&#x258A;</span>'
-    if (index > text.length && !completed) {
-      // surprise! but not really
-      completed = true;
-      setTimeout(() => {
-        clearInterval(interval);
-        then();
-      }, Math.round(timeout * 0.2));
+
+  function animateText(active, elt, text, index) {
+    if (active % period == 0)
+      elt.innerHTML = text.substring(0, index++) + '<span class="cursor">&#x258A;</span>'
+    if (index > text.length) {
+      then();
+    } else {
+      requestAnimationFrame(() => animateText(++active, elt, text, index));
     }
-  }, timeout);
+
+  }
+
+  requestAnimationFrame(() => animateText(1, elt, text, index));
 }
 
 function fade() {
