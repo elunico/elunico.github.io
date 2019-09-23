@@ -16,6 +16,56 @@
   /* --my-dark-accent-color: rgb(207, 143, 3); */
   /* --my-link-visited-color: rgb(167, 124, 8); */
   /* --my-link-hover-color: #FFCC00; */
+
+  --button-background-color: rgb(24, 24, 24);
+
+  --progPage-color: white;
+
+  --projectContainer-color: white;
+}
+
+body.home {
+  background-color: rgb(24, 24, 24);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --my-main-font: "Inconsolata", "IBM Plex Mono", monospace;
+    --my-button-fade-time: 1s;
+    /* grayscale only use this */
+    /* --my-green-color: rgb(138, 138, 138); */
+    --my-green-color: #32CD32;
+    --my-dark-accent-color: rgb(126, 126, 126);
+    --my-link-visited-color: rgb(102, 102, 102);
+    --my-link-hover-color: #e2e2e2;
+    --button-background-color: rgb(24, 24, 24);
+    --progPage-color: white;
+    --projectContainer-color: white;
+
+  }
+
+  body.home {
+    background-color: rgb(24, 24, 24);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --my-main-font: "Inconsolata", "IBM Plex Mono", monospace;
+    --my-button-fade-time: 1s;
+    --my-green-color: rgb(47, 163, 47);
+    --my-dark-accent-color: rgb(189, 189, 189);
+    --my-link-visited-color: #2E8B57;
+    --my-link-hover-color: #00ff00;
+    --button-background-color: rgb(240, 238, 238);
+    --progPage-color: black;
+    --projectContainer-color: black;
+
+  }
+
+  body.home {
+    background-color:#fefefe;
+  }
 }
 
 body {
@@ -23,9 +73,7 @@ body {
   line-height: 155%;
 }
 
-body.home {
-  background-color: rgb(24, 24, 24);
-}
+
 
 a:link {
   color: var(--my-green-color);
@@ -61,7 +109,7 @@ a.buttonLink {
   font-size: 3vw;
   height: 110px;
   font-family: var(--my-main-font), monospace;
-  background-color: rgb(24, 24, 24);
+  background-color: var(--button-background-color);
   color: var(--my-green-color);
   width: 22vw;
   /* Center horizontally */
@@ -104,7 +152,7 @@ a.buttonLink {
 
 .progPageDescription {
   font-size: 1.3em;
-  color: white;
+  color: var(--progPage-color);
   font-family: var(--my-main-font), monospace;
   text-align: justify;
 }

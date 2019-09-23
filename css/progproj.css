@@ -6,7 +6,7 @@
 }
 
 .projectDescription {
-  color: white;
+  color: var(--projectContainer-color);
   font-size: 1.15em;
   font-family: var(--my-main-font), monospace;
   text-align: justify;

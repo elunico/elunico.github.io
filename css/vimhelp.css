@@ -12,5 +12,5 @@
 }
 
 .projectContainer {
-  color: white;
+  color: var(--projectContainer-color);
 }

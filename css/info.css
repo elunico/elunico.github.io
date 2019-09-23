@@ -1,12 +1,12 @@
 .contactList {
   font-size: 1.2em;
-  color: white;
+  color: var(--projectContainer-color);
   font-family: var(--my-main-font), monospace;
 }
 
 .list {
   font-size: 1.15em;
-  color: white;
+  color: var(--projectContainer-color);
   font-family: var(--my-main-font), monospace;
   margin-left: 2%;
   margin-right: 2%;
@@ -37,7 +37,7 @@ td {
 }
 
 .projectContainer {
-  color: white;
+  color: var(--projectContainer-color);
 }
 
 .experienceRole {
