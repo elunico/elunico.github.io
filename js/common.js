@@ -3,6 +3,16 @@ function typeText(text, selector, then, period) {
   let index = 0;
   let elt = document.querySelector(selector);
 
+  // no need to watch. Function is only called on page load
+  // if match changes between page loads, it has no effect
+  // until next page load
+  let match = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (match.matches) {
+    elt.innerHTML = text + '<span class="cursor">&#x258A;</span>';
+    then();
+    return;
+  }
+
   function animateText(active, elt, text, index) {
     if (active % period == 0)
       elt.innerHTML = text.substring(0, index++) + '<span class="cursor">&#x258A;</span>'

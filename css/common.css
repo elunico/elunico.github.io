@@ -120,6 +120,33 @@ a.buttonLink {
   justify-content: center;
 }
 
+@media screen and (prefers-reduced-motion: reduce) {
+  .button {
+    /* transition: opacity var(--my-button-fade-time) linear, color 80ms linear, transform 80ms linear !important; */
+    text-decoration: none;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    line-height: 100%;
+    border-width: 5px;
+    border-color: var(--my-green-color);
+    border-style: solid;
+    font-size: 3vw;
+    height: 110px;
+    font-family: var(--my-main-font), monospace;
+    background-color: var(--button-background-color);
+    color: var(--my-green-color);
+    width: 22vw;
+    /* Center horizontally */
+    text-align: center;
+    /* center vertically */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+
+
 .buttonActive {
   /* background-color: var(--my-dark-accent-color); */
   /* Dark active so hover is still green? */
@@ -132,6 +159,15 @@ a.buttonLink {
   transform: translate(0px, 8%);
   color: white;
   background-color: var(--my-green-color);
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .button:hover {
+    /* transform: scale(0.95); */
+    /* transform: translate(0px, 8%); */
+    color: white;
+    background-color: var(--my-green-color);
+  }
 }
 
 .cursor {
@@ -170,4 +206,11 @@ a.buttonLink {
 .fadesIn {
   transition: opacity var(--my-button-fade-time) linear;
   opacity: 0;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .fadesIn {
+    /* transition: opacity var(--my-button-fade-time) linear; */
+    opacity: 1;
+  }
 }
