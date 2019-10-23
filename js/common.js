@@ -216,7 +216,7 @@ function tmuxStart() {
   ];
 
 
-  let rightSpan = `<span id="tmux-span-right">(ctrl, b) Thomas Povinelli | elunico</span>`
+  let rightSpan = `<span id="tmux-span-right">(ctrl, b) | Thomas Povinelli </span>`
   let openTabs = '';
   let path = window.location.pathname;
   for (let name of names) {

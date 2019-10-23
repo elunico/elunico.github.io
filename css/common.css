@@ -234,15 +234,19 @@ a.buttonLink {
   color: var(--my-green-color);
 }
 
-@media only screen and (pointer: none) {
+@media only screen and (max-width: 900px) {
   #tmux {
     visibility: hidden;
   }
-}
+  #vim {
+    bottom: 1px;
 
-@media only screen and (max-width: 1000px) {
-  #tmux {
-    visibility: hidden;
+    font-family: var(--my-main-font), monospace;
+    font-size: 1.25vw;
+    color: var(--my-green-color);
+    position: fixed;
+    left: 1px;
+    top: auto;
   }
 }
 @media screen and (prefers-reduced-motion: reduce) {
