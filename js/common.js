@@ -198,36 +198,45 @@ function vimHandle() {
 }
 
 const pages = {
-  '/': '1. Home',
-  '/progproj.html': '2. Programming',
-  '/langproj.html': '3. Linguistics',
-  '/info.html': '4. Info &amp; Contact',
-  '/vimhelp.html': '5. VIM Info'
+  '/': '1:Home',
+  '/progproj.html': '2:Programming',
+  '/langproj.html': '3:Linguistics',
+  '/info.html': '4:Info &amp; Contact',
+  '/vimhelp.html': '5:VIM Info'
 };
+
 
 function tmuxStart() {
 
+  time = new Date().toLocaleTimeString();
+
   const names = [
-    '1. Home',
-    '2. Programming',
-    '3. Linguistics',
-    '4. Info &amp; Contact',
-    '5. VIM Info'
+    '1:Home',
+    '2:Programming',
+    '3:Linguistics',
+    '4:Info &amp; Contact',
+    '5:VIM Info'
   ];
 
 
-  let rightSpan = `<span id="tmux-span-right">(ctrl, b) | Thomas Povinelli </span>`
+  let rightSpan = `<span id="tmux-span-right">(ctrl, b) | ${time} </span>`
   let openTabs = '';
   let path = window.location.pathname;
-  for (let name of names) {
+  let pageNo = 0;
+  for (let i = 0; i < names.length; i++) {
+    let name = names[i];
     if (pages[path] == name) {
-      openTabs += `&nbsp;<span id="tmux-current-page">${name}</span>&nbsp;`
-    } else {
-      openTabs += `&nbsp;${name}&nbsp;`
+      pageNo = i + 1;
     }
+    openTabs += `&nbsp;${name}&nbsp;`
+
   }
 
-  document.querySelector('#tmux').innerHTML = `<span id="tmux-span-left">${openTabs} </span>${rightSpan}`;
+  document.querySelector('#tmux').innerHTML = `<span id="tmux-span-left">[${pageNo}]&nbsp;${openTabs} </span>${rightSpan}`;
+
+  requestAnimationFrame(() => {
+    tmuxStart();
+  });
 
 }
 
