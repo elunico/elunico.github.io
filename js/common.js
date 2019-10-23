@@ -3,6 +3,9 @@ function typeText(text, selector, then, period) {
   let index = 0;
   let elt = document.querySelector(selector);
 
+  // place tmux on screen first
+  tmuxStart();
+
   // no need to watch. Function is only called on page load
   // if match changes between page loads, it has no effect
   // until next page load
@@ -128,11 +131,43 @@ function executeAction() {
 }
 
 let listening = false;
+let ctrlPushed = false;
+let tmuxEscape = false;
 function vimHandle() {
 
   let bodies = document.getElementsByTagName('body');
   for (let body of bodies) {
     body.onkeydown = function (event) {
+      if (event.keyCode === 17) {
+        ctrlPushed = true;
+      } else if (ctrlPushed) {
+        if (event.keyCode === 66) {
+          tmuxEscape = true;
+        } else if (tmuxEscape) {
+          if (event.keyCode - 49 >= 0 && event.keyCode - 49 < 5) {
+            console.log('shortcut activated');
+            let page = Object.keys(pages)[event.keyCode - 49];
+            console.log(`Going to ${page}`);
+            window.location = page;
+          } else if (event.keyCode === 67) {
+            window.open('https://github.com/tmux/tmux');
+          }
+        } else {
+          tmuxEscape = false;
+          ctrlPushed = false;
+        }
+
+      } else {
+        ctrlPushed = false;
+      }
+      if (ctrlPushed) {
+        if (event.keyCode - 49 >= 0 && event.keyCode - 49 < 5) {
+          console.log('shortcut activated');
+          let page = Object.keys(pages)[event.keyCode - 49];
+          console.log(`Going to ${page}`);
+          window.location = page;
+        }
+      }
       if (event.keyCode === 27) {
         listening = !listening;
         let p = document.querySelector('#vim');
@@ -160,6 +195,40 @@ function vimHandle() {
       }
     }
   }
+}
+
+const pages = {
+  '/': '1. Home',
+  '/progproj.html': '2. Programming',
+  '/langproj.html': '3. Linguistics',
+  '/info.html': '4. Info &amp; Contact',
+  '/vimhelp.html': '5. VIM Info'
+};
+
+function tmuxStart() {
+
+  const names = [
+    '1. Home',
+    '2. Programming',
+    '3. Linguistics',
+    '4. Info &amp; Contact',
+    '5. VIM Info'
+  ];
+
+
+  let rightSpan = `<span id="tmux-span-right">(ctrl, b) Thomas Povinelli | elunico</span>`
+  let openTabs = '';
+  let path = window.location.pathname;
+  for (let name of names) {
+    if (pages[path] == name) {
+      openTabs += `&nbsp;<span id="tmux-current-page">${name}</span>&nbsp;`
+    } else {
+      openTabs += `&nbsp;${name}&nbsp;`
+    }
+  }
+
+  document.querySelector('#tmux').innerHTML = `<span id="tmux-span-left">${openTabs} </span>${rightSpan}`;
+
 }
 
 

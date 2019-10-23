@@ -199,7 +199,7 @@ a.buttonLink {
   color: var(--my-green-color);
   position: fixed;
   left: 1px;
-  bottom: 1px;
+  bottom: 10px;
   top: auto;
 }
 
@@ -208,6 +208,43 @@ a.buttonLink {
   opacity: 0;
 }
 
+#tmux {
+  font-family: var(--my-main-font);
+  position: fixed;
+  background-color: var(--my-green-color);
+  color: var(--progPage-color);
+  left: 0px;
+  right: 0px;
+  bottom:-15px;
+}
+
+#tmux-span-left {
+  display: inline-block;
+  width: 68%;
+}
+
+#tmux-span-right {
+  display: inline-block;
+  width: 31%;
+  text-align: right;
+}
+
+#tmux-current-page {
+  background-color: white;
+  color: var(--my-green-color);
+}
+
+@media only screen and (pointer: none) {
+  #tmux {
+    visibility: hidden;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  #tmux {
+    visibility: hidden;
+  }
+}
 @media screen and (prefers-reduced-motion: reduce) {
   .fadesIn {
     /* transition: opacity var(--my-button-fade-time) linear; */
