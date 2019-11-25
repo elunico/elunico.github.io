@@ -157,6 +157,7 @@ function vimHandle() {
           p.textContent = p.textContent.substring(0, p.textContent.length - 1) + event.key;
           p.innerHTML = p.innerHTML + '<span class="cursor">&#x258A;</span>';
         }
+        event.preventDefault();
       }
     }
   }

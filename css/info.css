@@ -23,19 +23,6 @@ td {
   width: 50%;
 }
 
-.projectName {
-  font-size: 1.6em;
-  font-family: var(--my-main-font), monospace;
-  text-align: justify;
-  color: var(--my-green-color);
-}
-
-.projectDescription {
-  font-size: 1.15em;
-  font-family: var(--my-main-font), monospace;
-  text-align: justify;
-}
-
 .projectContainer {
   color: var(--projectContainer-color);
 }
