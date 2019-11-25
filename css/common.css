@@ -176,7 +176,7 @@ a.buttonLink {
 }
 
 .mainHeader {
-  font-size: 3.5vw;
+  font-size: 3.15vw;
   font-family: var(--my-main-font), monospace;
   color: var(--my-green-color);
 }
@@ -187,7 +187,7 @@ a.buttonLink {
 }
 
 .progPageDescription {
-  font-size: 1.2em;
+  font-size: 1.1em;
   color: var(--progPage-color);
   font-family: var(--my-main-font), monospace;
   text-align: justify;
@@ -208,7 +208,7 @@ a.buttonLink {
 
 #vim {
   font-family: var(--my-main-font), monospace;
-  font-size: 1.25vw;
+  font-size: 1.15vw;
   color: var(--my-green-color);
   position: fixed;
   left: 1px;
