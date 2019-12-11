@@ -204,6 +204,7 @@ a.buttonLink {
   font-size: 1.1em;
   font-family: var(--my-main-font), monospace;
   text-align: justify;
+  color: var(--progPage-color);
 }
 
 #vim {
