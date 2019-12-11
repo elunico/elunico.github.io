@@ -2,9 +2,10 @@
 
 /* @import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,400i,700,700i&display=swap'); */
 
-@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,400i,700&display=swap');
+/* @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,400i,700&display=swap'); */
+@import url('https://fonts.googleapis.com/css?family=Courier+Prime:400,400i,700&display=swap');
 :root {
-  --my-main-font: "IBM Plex Mono", monospace;
+  --my-main-font: "Courier Prime", monospace;
   --my-button-fade-time: 1s;
   /* green */
   --my-green-color: #32CD32;
@@ -30,7 +31,7 @@ body.home {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --my-main-font: "IBM Plex Mono", monospace;
+    --my-main-font: "Courier Prime", monospace;
     --my-button-fade-time: 1s;
     /* grayscale only use this */
     /* --my-green-color: rgb(138, 138, 138); */
@@ -51,7 +52,7 @@ body.home {
 
 @media (prefers-color-scheme: light) {
   :root {
-    --my-main-font: "IBM Plex Mono", monospace;
+    --my-main-font: "Courier Prime", monospace;
     --my-button-fade-time: 1s;
     --my-green-color: rgb(47, 163, 47);
     --my-dark-accent-color: rgb(189, 189, 189);
