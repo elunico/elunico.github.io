@@ -4,19 +4,19 @@
 
 p.sample-native {
   font-family: var(--my-main-font), monospace;
-  font-size: 1em;
+  font-size: 1.15em;
   font-style: italic;
   margin-left: 4%;
 }
 
 p.sample-name {
   font-family: var(--my-main-font), monospace;
-  font-size: 1em;
+  font-size: 1.15em;
   margin-left: 2%;
 }
 
 h4 {
   font-family: var(--my-main-font), monospace;
   font-weight: 700;
-  font-size: 1.05em;
+  font-size: 1.2em;
 }
