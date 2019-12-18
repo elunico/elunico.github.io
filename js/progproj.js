@@ -10,10 +10,10 @@ window.onload = () => {
   });
 
   let socdrawGallery = new Gallery('socdraw-gallery', {
-    "/assets/projects/programming/SocDraw_head1.png": "A screenshot of the duplicate file manager program.",
-    "/assets/projects/programming/SocDraw_head2.png": "Another screenshot of the duplicate file manager program.",
-    "/assets/projects/programming/SocDraw_head3.png": "Another screenshot of the duplicate file manager program.",
-    "/assets/projects/programming/SocDraw_head4.png": "A 4th screenshot of the duplicate file manager program."
+    "/assets/projects/programming/SocDraw_head1.png": "A screenshot of the main page of SocDraw showing create room and join room options.",
+    "/assets/projects/programming/SocDraw_head2.png": "A screenshot of SocDraw showing an open room and a canvas with drawing.",
+    "/assets/projects/programming/SocDraw_head3.png": "A screenshot showing SocDraw in a room with a drawing and another window with the main page open.",
+    "/assets/projects/programming/SocDraw_head4.png": "A screenshot showing two clients in the same SocDraw room displaying the same drawing."
   });
 
   let redistricerGallery = new Gallery('redistricter-gallery', {
