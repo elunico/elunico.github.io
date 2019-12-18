@@ -40,9 +40,6 @@ class Gallery {
 
   init() {
     // entire gallery lives inside of container
-    let empty = document.createElement('div');
-    empty.tabIndex = 0;
-
     let container = document.createElement('div')
     container.className = `container`;
 
@@ -129,7 +126,6 @@ class Gallery {
     container.appendChild(row);
 
     // add container to parent
-    container.appendChild(empty);
     document.querySelector(`#${this._pid}`).appendChild(container);
 
     this.currentSlide(1);
