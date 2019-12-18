@@ -7,6 +7,7 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="/css/common.css">
   <link rel="stylesheet" type="text/css" href="/css/progproj.css">
+  <link rel="stylesheet" type="text/css" href="/js/gallery/gallery.css">
   <style>
     a {
       color: var(--my-green-color);
@@ -44,7 +45,7 @@
       for some projects as well.
     </p>
     <p style="font-style: italic" class="fadesIn progPageDescription">
-      Click an image to enlarge; click again to shrink.
+      Click an image to open in a new tab; Click the thumbnail area for keyboard navigation
     </p>
 
     <div class="fadesIn projectContainer">
@@ -54,11 +55,8 @@
           JPEdit
         </a>
       </h2>
-      <img width="50%" height="auto" src="/assets/projects/programming/jpedit_head1.png"
-        alt="A screenshot an empty JPEdit Window with the file menu open." />
-      <p></p>
-      <img width="50%" height="auto" src="/assets/projects/programming/jpedit_head2.png"
-        alt="A screenshot an empty JPEdit Window with the file menu open." />
+      <div id='jpedit-gallery'>
+      </div>
       <p class="projectDescription">
         A simple text editor written in Java 10 using JavaFX. This was
         an excercise in JavaFX and GUI design. It is a fairly simple text editor that
@@ -77,17 +75,8 @@
           SocDraw
         </a>
       </h2>
-      <img width="50%" height="auto" src="/assets/projects/programming/SocDraw_head1.png"
-        alt="A screenshot of the duplicate file manager program." />
-      <p></p>
-      <img width="50%" height="auto" src="/assets/projects/programming/SocDraw_head2.png"
-        alt="Another screenshot of the duplicate file manager program." />
-      <p></p>
-      <img width="50%" height="auto" src="/assets/projects/programming/SocDraw_head3.png"
-        alt="Another screenshot of the duplicate file manager program." />
-      <p></p>
-      <img width="50%" height="auto" src="/assets/projects/programming/SocDraw_head4.png"
-        alt="A 4th screenshot of the duplicate file manager program." />
+      <div id='socdraw-gallery'></div>
+
 
       <p class="projectDescription">
 
@@ -118,8 +107,7 @@
       <h2 class="projectName">
         The Redistricter
       </h2>
-      <img width="50%" height="auto" src="/assets/projects/programming/redistricter_head.jpg"
-        alt="A screenshot of the Redistricter application with a state in view and sidebar open." />
+      <div id='redistricter-gallery'></div>
       <p class="projectDescription">
         The Redistricter is a single page web app whose purpose is to optimize the shape, size,
         and contents of US Congressional districts in a way that maximizes certain characteristics
@@ -142,8 +130,7 @@
           ClipboardManager
         </a>
       </h2>
-      <img width="50%" height="auto" src="/assets/projects/programming/ClipboardManager_head.png"
-        alt="A screenshot of the clipboard manager program with 2 entries in the table." />
+      <div id='clipboardmanager-gallery'></div>
       <p class="projectDescription">
         ClipboardManager is a program written in Java to manage clipboard history. It allows the user
         to keep track of their clipboard history and recopy old entries. It supports rich data as well
@@ -156,11 +143,8 @@
           Duplicate File Manager
         </a>
       </h2>
-      <img width="50%" height="auto" src="/assets/projects/programming/DuplicateFileManager_head1.png"
-        alt="A screenshot of the duplicate file manager program." />
-      <p></p>
-      <img width="50%" height="auto" src="/assets/projects/programming/DuplicateFileManager_head2.png"
-        alt="Another screenshot of the duplicate file manager program." />
+      <div id='duplicatefilemanager-gallery'></div>
+
       <p class="projectDescription">
         DuplicateFileManager is a program written in Java and Kotlin that can recursively scan
         any number of directories and detect duplicate files that exist between them as well
@@ -187,10 +171,10 @@
     </div>
   </div>
   <p id="vim"> </p>
+  <script src="/js/gallery/gallery-generator.js"></script>
   <script src="/js/common.js"></script>
-  <script src="/js/progproj.js">
+  <script src="/js/progproj.js"></script>
 
-  </script>
 
 
 

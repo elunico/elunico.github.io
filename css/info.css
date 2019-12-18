@@ -1,11 +1,11 @@
 .contactList {
-  font-size: 1.1em;
+  font-size: 1.15em;
   color: var(--projectContainer-color);
   font-family: var(--my-main-font), monospace;
 }
 
 .list {
-  font-size: 1.15em;
+  font-size: 1.2em;
   color: var(--projectContainer-color);
   font-family: var(--my-main-font), monospace;
   margin-left: 2%;
@@ -28,7 +28,7 @@ td {
 }
 
 .experienceRole {
-  font-size: 1.15em;
+  font-size: 1.25em;
   font-weight: 700;
   text-decoration: underline;
 }
@@ -39,5 +39,5 @@ a.headerLink {
 }
 
 #footer {
-  font-size: 0.95em;
+  font-size: 1.1em;
 }

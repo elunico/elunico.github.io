@@ -1,0 +1,227 @@
+let _gallery_count = 1;
+
+// local closure over index didn't work
+function createThumbnailOnclick(obj, index) {
+  return function (event) {
+    obj.currentSlide(index);
+  }
+}
+
+
+class Gallery {
+  static _next_gallery() {
+    return _gallery_count++;
+  }
+
+  /**
+   * construct an image gallery based on W3Schools example gallery.
+   * Pass images (and optional alt text) and the gallery will be
+   * stored in the desired node of the document
+   *
+   * @param {string} parent_id the id of the node that will contain the gallery. NOT a selector! Do not use #
+   * @param {string[] | Object.<string, string>} urls a list of urls to images that will be used in the gallery, or an object of image urls to their respective alt text which will be used in the gallery
+   */
+  constructor(parent_id, urls) {
+    this._pid = parent_id;
+    if (typeof urls == "Array") {
+      this.urls = urls;
+      this.alts = new Array(urls.length).fill("");
+    } else {
+      this.urls = Object.keys(urls);
+      this.alts = Object.values(urls);
+    }
+    this.slideIndex = 1;
+    this.id = Gallery._next_gallery();
+    this.init();
+    this.clearCoordinates();
+  }
+
+  length() { return this.urls.length; }
+
+  init() {
+    // entire gallery lives inside of container
+    let empty = document.createElement('div');
+    empty.tabIndex = 0;
+
+    let container = document.createElement('div')
+    container.className = `container`;
+
+    container.onkeydown = (event) => this.keyPressed(event);
+    container.tabIndex = 0;
+
+    // create all full sized images
+    let currentNumber = 1;
+    let lastNumber = this.length();
+    for (let url of this.urls) {
+      let mySlides = document.createElement('div')
+      mySlides.className = `mySlides slides_gallery${this.id}`;
+
+      let numbertext = document.createElement('div');
+      numbertext.className = `numbertext`;
+      numbertext.innerHTML = `${currentNumber} / ${lastNumber}`;
+
+      let link = document.createElement('a');
+      link.href = url;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+
+      let img = document.createElement('img');
+      img.src = url;
+      img.style.width = '100%';
+      img.ontouchstart = (event) => this.touchStart(event);
+      img.ontouchmove = (event) => this.touchMove(event);
+      img.ontouchend = (event) => this.touchEnd(event);
+      img.ontouchcancel = (event) => this.touchCancel(event);
+
+      link.appendChild(img);
+
+      mySlides.appendChild(numbertext);
+      mySlides.appendChild(link);
+      container.appendChild(mySlides);
+
+    }
+
+    // create previous and next buttons for moving through images
+    let prevButton = document.createElement('a');
+    prevButton.className = 'prev';
+    prevButton.onclick = () => this.plusSlides(-1);
+    prevButton.innerHTML = '&#10094;'
+
+    let nextButton = document.createElement('a');
+    nextButton.className = 'next';
+    nextButton.onclick = () => this.plusSlides(1);
+    nextButton.innerHTML = '&#10095;'
+
+    container.appendChild(prevButton);
+    container.appendChild(nextButton);
+
+    // create caption area
+    let caption_container = document.createElement('div');
+    caption_container.className = `caption-container`;
+
+    let caption = document.createElement('p');
+    caption.id = `caption_gallery${this.id}`;
+
+    caption_container.appendChild(caption);
+
+    container.appendChild(caption_container);
+
+    // create and add thumbnails
+
+    let row = document.createElement('div');
+    row.className = `row`;
+
+    let index = 1;
+    for (let url of this.urls) {
+      let col = document.createElement('div');
+      col.className = `column`;
+      let img = document.createElement('img');
+      img.src = url;
+      img.style.width = '100%';
+      img.alt = this.alts[index - 1];
+      img.className = `demo demo_gallery${this.id} img-cursor`;
+      img.onclick = createThumbnailOnclick(this, index);
+      col.appendChild(img);
+      row.appendChild(col);
+      index++;
+    }
+
+    container.appendChild(row);
+
+    // add container to parent
+    container.appendChild(empty);
+    document.querySelector(`#${this._pid}`).appendChild(container);
+
+    this.currentSlide(1);
+  }
+
+  clearCoordinates() {
+    this.beganX = null;
+    this.beganY = null;
+    this.lastX = null;
+    this.lastY = null;
+  }
+
+  keyPressed(event) {
+    if (event.keyCode == 37) { // left
+      this.plusSlides(-1);
+      event.currentTarget.focus();
+      event.preventDefault();
+    } else if (event.keyCode == 39) { //right
+      this.plusSlides(1);
+      event.currentTarget.focus();
+      event.preventDefault();
+    }
+  }
+
+  touchStart(event) {
+    this.beganX = event.touches[0].clientX;
+    this.beganY = event.touches[0].clientY;
+    this.changing = true;
+  }
+
+  touchMove(event) {
+    let x = event.touches[0].clientX;
+    let y = event.touches[0].clientY;
+    let dx = x - this.beganX;
+    let dy = y - this.beganY;
+    if (dy / dx > 1.5) {
+      this.clearCoordinates();
+      this.changing = false;
+    } else {
+      this.lastX = x;
+      this.lastY = y;
+      event.preventDefault();
+    }
+  }
+
+  touchEnd(event) {
+    if (this.changing && this.lastX == null) {
+      // event.target.parentNode.click();
+      return;
+    }
+    let dx = this.beganX - this.lastX;
+    this.plusSlides(dx > 0 ? 1 : -1);
+    this.clearCoordinates();
+    this.changing = false;
+  }
+
+  touchCancel(event) {
+    console.log(event);
+    this.clearCoordinates()
+    this.changing = false;
+  }
+
+  // Next/previous controls
+  plusSlides(n) {
+    this.showSlides(this.slideIndex += n);
+  }
+
+  // Thumbnail image controls
+  currentSlide(n) {
+    this.showSlides(this.slideIndex = n);
+  }
+
+  showSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName(`slides_gallery${this.id}`);
+    if (slides.length == 0) {
+      return;
+    }
+    let dots = document.getElementsByClassName(`demo_gallery${this.id}`);
+    let captionText = document.getElementById(`caption_gallery${this.id}`);
+    if (n > slides.length) { this.slideIndex = 1 }
+    if (n < 1) { this.slideIndex = slides.length }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = `none`;
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(` active`, "");
+    }
+    slides[this.slideIndex - 1].style.display = "block";
+    dots[this.slideIndex - 1].className += ` active`;
+    captionText.innerHTML = dots[this.slideIndex - 1].alt;
+  }
+
+
+}

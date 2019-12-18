@@ -19,14 +19,10 @@
   /* --my-link-hover-color: #FFCC00; */
 
   --button-background-color: rgb(24, 24, 24);
-
   --progPage-color: white;
-
   --projectContainer-color: white;
-}
-
-body.home {
-  background-color: rgb(24, 24, 24);
+  --my-background-color: rgb(24, 24, 24);
+  --my-caption-background-color: rgb(48, 48, 48);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -42,12 +38,10 @@ body.home {
     --button-background-color: rgb(24, 24, 24);
     --progPage-color: white;
     --projectContainer-color: white;
-
+    --my-background-color: rgb(24, 24, 24);
+    --my-caption-background-color: rgb(48, 48, 48);
   }
 
-  body.home {
-    background-color: rgb(24, 24, 24);
-  }
 }
 
 @media (prefers-color-scheme: light) {
@@ -61,20 +55,21 @@ body.home {
     --button-background-color: rgb(240, 238, 238);
     --progPage-color: black;
     --projectContainer-color: black;
+    --my-background-color: #fefefe;
+    --my-caption-background-color: #f3f3f3;
 
   }
 
-  body.home {
-    background-color:#fefefe;
-  }
+}
+
+body.home {
+  background-color: var(--my-background-color);
 }
 
 body {
   font-variant-ligatures: none;
   line-height: 165%;
 }
-
-
 
 a:link {
   color: var(--my-green-color);
@@ -183,34 +178,35 @@ a.buttonLink {
 }
 
 .projectPage {
-  margin-left: 17.5%;
-  margin-right: 17.5%;
+  margin-left: 14.5%;
+  margin-right: 14.5%;
 }
 
+
 .progPageDescription {
-  font-size: 1.1em;
+  font-size: 1.15em;
   color: var(--progPage-color);
   font-family: var(--my-main-font), monospace;
-  text-align: justify;
+  text-align: left;
 }
 
 .projectName {
-  font-size: 1.55em;
+  font-size: 1.65em;
   font-family: var(--my-main-font), monospace;
-  text-align: justify;
+  text-align: left;
   color: var(--my-green-color);
 }
 
 .projectDescription {
-  font-size: 1.1em;
+  font-size: 1.15em;
   font-family: var(--my-main-font), monospace;
-  text-align: justify;
+  text-align: left;
   color: var(--progPage-color);
 }
 
 #vim {
   font-family: var(--my-main-font), monospace;
-  font-size: 1.15vw;
+  font-size: 1.1vw;
   color: var(--my-green-color);
   position: fixed;
   left: 1px;
