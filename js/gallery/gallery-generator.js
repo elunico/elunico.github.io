@@ -39,6 +39,42 @@ class Gallery {
   length() { return this.urls.length; }
 
   init() {
+
+    document.body.addEventListener('keydown', () => {
+      if (event.keyCode == 13) { // enter
+        this.closeModal();
+      }
+    });
+
+    // modal for popup images, hidden at first.
+    let modal = document.createElement('div');
+    modal.onkeydown = (event) => {
+      let slide = this.keyPressed(event);
+      let img = slide.getElementsByTagName('img')[0];
+      requestAnimationFrame(() => {
+        this.clearModalContents();
+        this.addModalContent(img.src);
+      });
+    };
+    modal.tabIndex = '0';
+    modal.className = 'modal';
+    modal.id = `myModal_${this._pid}`;
+
+    // <span class="close cursor" onclick="closeModal()">&times;</span>
+    let closeCursor = document.createElement('span');
+    closeCursor.className = 'close img-cursor'
+    closeCursor.onclick = () => this.closeModal();
+    closeCursor.innerHTML = '&times;';
+
+    modal.appendChild(closeCursor);
+
+    let modalContent = document.createElement('div');
+    modalContent.className = 'modal-content';
+    modalContent.id = `modal-content_${this._pid}`;
+
+    modal.appendChild(modalContent);
+    document.body.appendChild(modal);
+
     // entire gallery lives inside of container
     let container = document.createElement('div')
     container.className = `container`;
@@ -57,11 +93,6 @@ class Gallery {
       numbertext.className = `numbertext`;
       numbertext.innerHTML = `${currentNumber} / ${lastNumber}`;
 
-      let link = document.createElement('a');
-      link.href = url;
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
-
       let img = document.createElement('img');
       img.src = url;
       img.style.width = '100%';
@@ -69,11 +100,12 @@ class Gallery {
       img.ontouchmove = (event) => this.touchMove(event);
       img.ontouchend = (event) => this.touchEnd(event);
       img.ontouchcancel = (event) => this.touchCancel(event);
+      img.onmouseup = (event) => this.imageClicked(event);
 
-      link.appendChild(img);
+      // link.appendChild(img);
 
       mySlides.appendChild(numbertext);
-      mySlides.appendChild(link);
+      mySlides.appendChild(img);
       container.appendChild(mySlides);
 
     }
@@ -131,6 +163,58 @@ class Gallery {
     this.currentSlide(1);
   }
 
+  addModalContent(imageURL) {
+    let modalContent = document.querySelector(`#modal-content_${this._pid}`);
+
+    let src = imageURL;
+    let img = document.createElement('img');
+    img.src = src;
+    img.style.maxWidth = '100%';
+    img.style.maxHeight = '80vh';
+    modalContent.style.display = 'grid';
+    modalContent.style.alignContent = 'center';
+    modalContent.style.justifyContent = 'center';
+
+    let slide = document.createElement('div');
+    slide.style.display = 'block';
+    slide.appendChild(img);
+
+    modalContent.appendChild(slide);
+
+    let modal = document.querySelector(`#myModal_${this._pid}`);
+    if (!modal.onclick) {
+      modal.onclick = (event) => {
+        if (event.target.tagName.toLowerCase() != 'img') {
+          this.closeModal();
+        }
+      };
+    }
+  }
+
+  imageClicked(event) {
+    this.addModalContent(event.currentTarget.src);
+    this.openModal();
+  }
+
+  openModal() {
+    let modal = document.getElementById(`myModal_${this._pid}`);
+    modal.style.display = "block";
+    modal.focus();
+  }
+
+  clearModalContents() {
+    let modalContent = document.getElementById(`modal-content_${this._pid}`);
+    // clear children
+    modalContent.innerHTML = ' ';
+  }
+
+  // Close the Modal
+  closeModal() {
+    let modal = document.getElementById(`myModal_${this._pid}`);
+    modal.style.display = "none";
+    this.clearModalContents();
+  }
+
   clearCoordinates() {
     this.beganX = null;
     this.beganY = null;
@@ -140,13 +224,15 @@ class Gallery {
 
   keyPressed(event) {
     if (event.keyCode == 37) { // left
-      this.plusSlides(-1);
+      let newSlide = this.plusSlides(-1);
       event.currentTarget.focus();
       event.preventDefault();
+      return newSlide;
     } else if (event.keyCode == 39) { //right
-      this.plusSlides(1);
+      let newSlide = this.plusSlides(1);
       event.currentTarget.focus();
       event.preventDefault();
+      return newSlide;
     }
   }
 
@@ -189,13 +275,15 @@ class Gallery {
   }
 
   // Next/previous controls
+  // returns the new current div 'mySlide'
   plusSlides(n) {
-    this.showSlides(this.slideIndex += n);
+    return this.showSlides(this.slideIndex += n);
   }
 
   // Thumbnail image controls
+  // returns the new current div 'mySlide'
   currentSlide(n) {
-    this.showSlides(this.slideIndex = n);
+    return this.showSlides(this.slideIndex = n);
   }
 
   showSlides(n) {
@@ -217,6 +305,7 @@ class Gallery {
     slides[this.slideIndex - 1].style.display = "block";
     dots[this.slideIndex - 1].className += ` active`;
     captionText.innerHTML = dots[this.slideIndex - 1].alt;
+    return slides[this.slideIndex - 1];
   }
 
 

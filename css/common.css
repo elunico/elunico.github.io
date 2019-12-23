@@ -32,8 +32,8 @@
     /* grayscale only use this */
     /* --my-green-color: rgb(138, 138, 138); */
     --my-green-color: #32CD32;
-    --my-dark-accent-color: rgb(126, 126, 126);
-    --my-link-visited-color: rgb(102, 102, 102);
+    --my-dark-accent-color: darkgreen;
+    --my-link-visited-color: #2E8B57;
     --my-link-hover-color: #e2e2e2;
     --button-background-color: rgb(24, 24, 24);
     --progPage-color: white;
@@ -49,7 +49,7 @@
     --my-main-font: "Courier Prime", monospace;
     --my-button-fade-time: 1s;
     --my-green-color: rgb(47, 163, 47);
-    --my-dark-accent-color: rgb(189, 189, 189);
+    --my-dark-accent-color: darkgreen;
     --my-link-visited-color: #2E8B57;
     --my-link-hover-color: #00ff00;
     --button-background-color: rgb(240, 238, 238);
