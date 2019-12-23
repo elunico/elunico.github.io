@@ -1,22 +1,35 @@
-/* @import url('https://fonts.googleapis.com/css?family=Anonymous+Pro:400,700&display=swap'); */
+@font-face {
+  font-family: 'Courier Prime Code';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src:  url(../assets/fonts/CourierPrimeCode.ttf) format('truetype');
+}
 
-/* @import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,400i,700,700i&display=swap'); */
+@font-face {
+  font-family: 'Courier Prime Code';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src:  url(../assets/fonts/CourierPrimeCode-Italic.ttf) format('truetype');
+}
 
-/* @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,400i,700&display=swap'); */
-@import url('https://fonts.googleapis.com/css?family=Courier+Prime:400,400i,700&display=swap');
+@font-face {
+  font-family: 'Courier Prime Code';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src:  url(../assets/fonts/CourierPrimeSans-Bold.ttf) format('truetype');
+}
+
 :root {
-  --my-main-font: "Courier Prime", monospace;
+  --my-main-font: "Courier Prime Code", monospace;
   --my-button-fade-time: 1s;
   /* green */
   --my-green-color: #32CD32;
   --my-dark-accent-color: darkgreen;
   --my-link-visited-color: #2E8B57;
   --my-link-hover-color: #00ff00;
-  /* amber */
-  /* --my-green-color: #FFB000; */
-  /* --my-dark-accent-color: rgb(207, 143, 3); */
-  /* --my-link-visited-color: rgb(167, 124, 8); */
-  /* --my-link-hover-color: #FFCC00; */
 
   --button-background-color: rgb(24, 24, 24);
   --progPage-color: white;
@@ -27,7 +40,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --my-main-font: "Courier Prime", monospace;
+    --my-main-font: "Courier Prime Code", monospace;
     --my-button-fade-time: 1s;
     /* grayscale only use this */
     /* --my-green-color: rgb(138, 138, 138); */
@@ -46,7 +59,7 @@
 
 @media (prefers-color-scheme: light) {
   :root {
-    --my-main-font: "Courier Prime", monospace;
+    --my-main-font: "Courier Prime Code", monospace;
     --my-button-fade-time: 1s;
     --my-green-color: rgb(47, 163, 47);
     --my-dark-accent-color: darkgreen;
@@ -57,9 +70,7 @@
     --projectContainer-color: black;
     --my-background-color: #fefefe;
     --my-caption-background-color: #f3f3f3;
-
   }
-
 }
 
 body.home {

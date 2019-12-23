@@ -106,7 +106,7 @@
   background-color: var(--my-caption-background-color);
   padding: 2px 16px;
   color: var(--progPage-color);
-  font-family: "Courier Prime";
+  font-family: var(--my-main-font);
   font-size: 1em;
   font-style: italic;
 }
