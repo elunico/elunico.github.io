@@ -41,7 +41,7 @@ class Gallery {
   init() {
 
     document.body.addEventListener('keydown', () => {
-      if (event.keyCode == 13) { // enter
+      if (event.keyCode == 27) { // escape
         this.closeModal();
       }
     });
@@ -50,12 +50,29 @@ class Gallery {
     let modal = document.createElement('div');
     modal.onkeydown = (event) => {
       let slide = this.keyPressed(event);
+      if (!slide) return;
       let img = slide.getElementsByTagName('img')[0];
       requestAnimationFrame(() => {
         this.clearModalContents();
         this.addModalContent(img.src);
       });
     };
+    
+    modal.ontouchstart = (event) => this.touchStart(event); 
+    modal.ontouchmove = (event) => this.touchMove(event);
+    modal.ontouchend = (event) => {
+      let slide = this.touchEnd(event);
+      if (!slide) { 
+        this.touchCancel(); 
+        return;
+      }
+      let img = slide.getElementsByTagName('img')[0];
+      requestAnimationFrame(() => {
+        this.clearModalContents(); 
+        this.addModalContent(img.src);
+      });
+    };
+    
     modal.tabIndex = '0';
     modal.className = 'modal';
     modal.id = `myModal_${this._pid}`;
@@ -263,13 +280,13 @@ class Gallery {
       return;
     }
     let dx = this.beganX - this.lastX;
-    this.plusSlides(dx > 0 ? 1 : -1);
+    let result = this.plusSlides(dx > 0 ? 1 : -1);
     this.clearCoordinates();
     this.changing = false;
+    return result; 
   }
 
   touchCancel(event) {
-    console.log(event);
     this.clearCoordinates()
     this.changing = false;
   }
