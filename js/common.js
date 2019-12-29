@@ -27,12 +27,38 @@ function typeText(text, selector, then, period) {
   requestAnimationFrame(() => animateText(1, elt, text, index));
 }
 
+// only called once on page load
 function fade() {
-  let elts = document.querySelectorAll('.fadesIn');
+  let elts = document.querySelectorAll('.fadesInOnce');
   for (let elt of elts) {
-    elt.style.opacity = 1.0;
+    elt.style.transition = '';
+  }
+  scrollFade();
+}
+
+
+// called on every scroll
+function scrollFade() {
+  let elts = document.querySelectorAll('.fadesIn');
+  let bottomY = window.innerHeight;
+  for (let elt of elts) {
+    let top = elt.getBoundingClientRect().top;
+    let bottom = elt.getBoundingClientRect().bottom;
+    if (top + 25 < bottomY) {
+      elt.style.opacity = 1.0;
+      elt.style.transform = 'translate(0px,0px)';
+    } else {
+      elt.style.opacity = 0.0;
+      elt.style.transform = 'translate(-300px,0px)'
+    }
+    if (bottom < 0) {
+      elt.style.transform = 'translate(-300px,0px)';
+      elt.style.opacity = 0.0;
+    }
   }
 }
+
+window.onscroll = scrollFade;
 
 function cursorFade() {
   console.trace('Calling cursor fade');
@@ -128,6 +154,7 @@ function executeAction() {
 }
 
 let listening = false;
+
 function vimHandle() {
 
   let bodies = document.getElementsByTagName('body');

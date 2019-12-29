@@ -24,7 +24,7 @@
 
 :root {
   --my-main-font: "Courier Prime Code", monospace;
-  --my-button-fade-time: 1s;
+  --my-button-fade-time: 775ms;
   /* green */
   --my-green-color: #32CD32;
   --my-dark-accent-color: darkgreen;
@@ -41,7 +41,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --my-main-font: "Courier Prime Code", monospace;
-    --my-button-fade-time: 1s;
+    --my-button-fade-time: 775ms;
     /* grayscale only use this */
     /* --my-green-color: rgb(138, 138, 138); */
     --my-green-color: #32CD32;
@@ -60,7 +60,7 @@
 @media (prefers-color-scheme: light) {
   :root {
     --my-main-font: "Courier Prime Code", monospace;
-    --my-button-fade-time: 1s;
+    --my-button-fade-time: 775ms;
     --my-green-color: rgb(47, 163, 47);
     --my-dark-accent-color: darkgreen;
     --my-link-visited-color: #2E8B57;
@@ -105,7 +105,7 @@ a.buttonLink {
 }
 
 .button {
-  transition: opacity var(--my-button-fade-time) linear, color 80ms linear, transform 80ms linear !important;
+  transition: opacity var(--my-button-fade-time) ease-in-out, color 80ms ease-in-out, transform 80ms ease-in-out !important;
   text-decoration: none;
   margin-left: 1vw;
   margin-right: 1vw;
@@ -226,8 +226,16 @@ a.buttonLink {
 }
 
 .fadesIn {
-  transition: opacity var(--my-button-fade-time) linear;
+  transition: all var(--my-button-fade-time) ease-in-out;
   opacity: 0;
+}
+
+.fadesStatic {
+  transition: opacity var(--my-button-fade-time) ease-in-out;
+}
+
+.fadesInOnce {
+  transition: all var(--my-button-fade-time) ease-in-out;
 }
 
 @media screen and (prefers-reduced-motion: reduce) {
