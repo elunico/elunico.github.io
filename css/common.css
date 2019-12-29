@@ -24,7 +24,7 @@
 
 :root {
   --my-main-font: "Courier Prime Code", monospace;
-  --my-button-fade-time: 775ms;
+  --my-button-fade-time: 650ms;
   /* green */
   --my-green-color: #32CD32;
   --my-dark-accent-color: darkgreen;
@@ -41,7 +41,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --my-main-font: "Courier Prime Code", monospace;
-    --my-button-fade-time: 775ms;
+    --my-button-fade-time: 650ms;
     /* grayscale only use this */
     /* --my-green-color: rgb(138, 138, 138); */
     --my-green-color: #32CD32;
@@ -60,7 +60,7 @@
 @media (prefers-color-scheme: light) {
   :root {
     --my-main-font: "Courier Prime Code", monospace;
-    --my-button-fade-time: 775ms;
+    --my-button-fade-time: 650ms;
     --my-green-color: rgb(47, 163, 47);
     --my-dark-accent-color: darkgreen;
     --my-link-visited-color: #2E8B57;
@@ -234,8 +234,16 @@ a.buttonLink {
   transition: opacity var(--my-button-fade-time) ease-in-out;
 }
 
-.fadesInOnce {
+.fadesOffscreen {
   transition: all var(--my-button-fade-time) ease-in-out;
+  opacity: 0;
+  transform: translate(-400px, 0px);
+}
+
+.fadesOnScreen {
+  transition: all var(--my-button-fade-time) ease-in-out;
+  opacity: 1;
+  transform: translate(0px, 0px);
 }
 
 @media screen and (prefers-reduced-motion: reduce) {
