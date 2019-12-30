@@ -42,14 +42,11 @@ function fade() {
       elt.classList.remove('fadesOffscreen');
     } else {
       // not visible ever
-      // elt.style.opacity = 0.0;
-      // elt.style.transform = 'scale(0.8)'
+      elt.classList.remove('fadesOnScreen');
       elt.classList.add('fadesOffscreen');
     }
     if (bottom < 0) {
       // scrolling past the top
-      // elt.style.transform = 'scale(0.8)';
-      // elt.style.opacity = 0.0;
       elt.classList.add('fadesOffscreen');
       elt.classList.remove('fadesOnScreen');
 
