@@ -226,22 +226,22 @@ a.buttonLink {
 }
 
 .fadesIn {
-  transition: all var(--my-button-fade-time) ease-in-out;
+  transition: opacity var(--my-button-fade-time) ease-in-out, transform var(--my-button-fade-time) ease-in-out;
   opacity: 0;
 }
 
 .fadesStatic {
-  transition: opacity var(--my-button-fade-time) ease-in-out;
+  transition: opacity var(--my-button-fade-time) ease-in-out, transform var(--my-button-fade-time) ease-in-out;
 }
 
 .fadesOffscreen {
-  transition: all var(--my-button-fade-time) ease-in-out;
+  transition: opacity var(--my-button-fade-time) ease-in-out, transform var(--my-button-fade-time) ease-in-out;
   opacity: 0;
   transform: translate(-400px, 0px);
 }
 
 .fadesOnScreen {
-  transition: all var(--my-button-fade-time) ease-in-out;
+  transition: opacity var(--my-button-fade-time) ease-in-out, transform var(--my-button-fade-time) ease-in-out;
   opacity: 1;
   transform: translate(0px, 0px);
 }

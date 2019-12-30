@@ -35,21 +35,18 @@ function fade() {
     let top = elt.getBoundingClientRect().top;
     let bottom = elt.getBoundingClientRect().bottom;
     if (top + 25 < bottomY) {
-      // appear
-      // elt.style.opacity = 1.0;
-      // elt.style.transform = 'scale(1)';
+      // scroll into view from bottom
       elt.classList.add('fadesOnScreen');
       elt.classList.remove('fadesOffscreen');
     } else {
-      // not visible ever
-      elt.classList.remove('fadesOnScreen');
+      // below visible area
       elt.classList.add('fadesOffscreen');
+      elt.classList.remove('fadesOnScreen');
     }
     if (bottom < 0) {
-      // scrolling past the top
+      // past the top
       elt.classList.add('fadesOffscreen');
       elt.classList.remove('fadesOnScreen');
-
     }
   }
 }
