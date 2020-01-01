@@ -1,29 +1,29 @@
 @font-face {
-  font-family: 'Courier Prime Code';
+  font-family: 'DejaVu Sans Mono';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src:  url(../assets/fonts/CourierPrimeCode.ttf) format('truetype');
+  src:  url(../assets/fonts/DejaVuSansMono.ttf) format('truetype');
 }
 
 @font-face {
-  font-family: 'Courier Prime Code';
+  font-family: 'DejaVu Sans Mono';
   font-style: italic;
   font-weight: 400;
   font-display: swap;
-  src:  url(../assets/fonts/CourierPrimeCode-Italic.ttf) format('truetype');
+  src:  url(../assets/fonts/DejaVuSansMono-Oblique.ttf) format('truetype');
 }
 
 @font-face {
-  font-family: 'Courier Prime Code';
+  font-family: 'DejaVu Sans Mono';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src:  url(../assets/fonts/CourierPrimeSans-Bold.ttf) format('truetype');
+  src:  url(../assets/fonts/DejaVuSansMono-Bold.ttf) format('truetype');
 }
 
 :root {
-  --my-main-font: "Courier Prime Code", monospace;
+  --my-main-font: Menlo, "DejaVu Sans Mono", monospace;
   --my-button-fade-time: 650ms;
   /* green */
   --my-green-color: #32CD32;
@@ -40,7 +40,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --my-main-font: "Courier Prime Code", monospace;
+    --my-main-font: Menlo, "DejaVu Sans Mono", monospace;
     --my-button-fade-time: 650ms;
     /* grayscale only use this */
     /* --my-green-color: rgb(138, 138, 138); */
@@ -59,7 +59,7 @@
 
 @media (prefers-color-scheme: light) {
   :root {
-    --my-main-font: "Courier Prime Code", monospace;
+    --my-main-font: Menlo, "DejaVu Sans Mono", monospace;
     --my-button-fade-time: 650ms;
     --my-green-color: rgb(47, 163, 47);
     --my-dark-accent-color: darkgreen;
@@ -79,7 +79,7 @@ body.home {
 
 body {
   font-variant-ligatures: none;
-  line-height: 165%;
+  line-height: 175%;
 }
 
 a:link {
@@ -109,7 +109,7 @@ a.buttonLink {
   text-decoration: none;
   margin-left: 1vw;
   margin-right: 1vw;
-  line-height: 100%;
+  line-height: 110%;
   border-width: 5px;
   border-color: var(--my-green-color);
   border-style: solid;
@@ -133,7 +133,7 @@ a.buttonLink {
     text-decoration: none;
     margin-left: 1vw;
     margin-right: 1vw;
-    line-height: 100%;
+    line-height: 110%;
     border-width: 5px;
     border-color: var(--my-green-color);
     border-style: solid;
