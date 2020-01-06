@@ -25,6 +25,7 @@
 :root {
   --my-main-font: Menlo, "DejaVu Sans Mono", monospace;
   --my-button-fade-time: 650ms;
+  --my-slide-in-time: 500ms;
   /* green */
   --my-green-color: #32CD32;
   --my-dark-accent-color: darkgreen;
@@ -42,6 +43,7 @@
   :root {
     --my-main-font: Menlo, "DejaVu Sans Mono", monospace;
     --my-button-fade-time: 650ms;
+    --my-slide-in-time: 500ms;
     /* grayscale only use this */
     /* --my-green-color: rgb(138, 138, 138); */
     --my-green-color: #32CD32;
@@ -61,6 +63,7 @@
   :root {
     --my-main-font: Menlo, "DejaVu Sans Mono", monospace;
     --my-button-fade-time: 650ms;
+    --my-slide-in-time: 500ms;
     --my-green-color: rgb(47, 163, 47);
     --my-dark-accent-color: darkgreen;
     --my-link-visited-color: #2E8B57;
@@ -226,29 +229,46 @@ a.buttonLink {
 }
 
 .fadesIn {
-  transition: opacity var(--my-button-fade-time) ease-in-out, transform var(--my-button-fade-time) ease-in-out;
+  transition: opacity var(--my-button-fade-time) ease-in-out, transform var(--my-slide-in-time) ease-in-out;
   opacity: 0;
 }
 
 .fadesStatic {
-  transition: opacity var(--my-button-fade-time) ease-in-out, transform var(--my-button-fade-time) ease-in-out;
+  transition: opacity var(--my-button-fade-time) ease-in-out, transform var(--my-slide-in-time) ease-in-out;
 }
 
 .fadesOffscreen {
-  transition: opacity var(--my-button-fade-time) ease-in-out, transform var(--my-button-fade-time) ease-in-out;
+  transition: opacity var(--my-button-fade-time) ease-in-out, transform var(--my-slide-in-time) ease-in-out;
   opacity: 0;
   transform: translate(-400px, 0px);
 }
 
 .fadesOnScreen {
-  transition: opacity var(--my-button-fade-time) ease-in-out, transform var(--my-button-fade-time) ease-in-out;
+  transition: opacity var(--my-button-fade-time) ease-in-out, transform var(--my-slide-in-time) ease-in-out;
   opacity: 1;
   transform: translate(0px, 0px);
 }
 
 @media screen and (prefers-reduced-motion: reduce) {
   .fadesIn {
-    /* transition: opacity var(--my-button-fade-time) linear; */
     opacity: 1;
+    transition: none;
+  }
+
+  .fadesStatic {
+    transition: none;
+  }
+
+  .fadesOffscreen {
+    opacity: 1;
+    transform: translate(0px, 0px);
+    transition: none;
+
+  }
+
+  .fadesOnScreen {
+    opacity: 1;
+    transform: translate(0px, 0px);
+    transition: none;
   }
 }
