@@ -9,6 +9,11 @@ window.onload = () => {
     "/assets/projects/programming/jpedit_head2.png": "A screenshot a JPEdit Window with text and the Time and Date Prompt open."
   });
 
+  let keycodecheckerGallery = new Gallery('keycodeChecker-gallery', {
+    "/assets/projects/programming/keycodechecker_home.png": "",
+    "/assets/projects/programming/keycodechecker_more.png": ""
+  });
+
   let socdrawGallery = new Gallery('socdraw-gallery', {
     "/assets/projects/programming/SocDraw_head1.png": "A screenshot of the main page of SocDraw showing create room and join room options.",
     "/assets/projects/programming/SocDraw_head2.png": "A screenshot of SocDraw showing an open room and a canvas with drawing.",
