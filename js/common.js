@@ -1,3 +1,7 @@
+const LS_FONT_CHOICE_NAME = 'font-choice';
+const MY_MAIN_FONT_VAR = '--my-main-font';
+const DEFAULT_FONT_CHOICE = 'mdj';
+
 function typeText(text, selector, then, period) {
   period = period || 2;
   let index = 0;
@@ -92,8 +96,23 @@ function commandSucceed(msg) {
 
 function executeAction() {
   let p = document.querySelector('#vim');
-  let char = p.textContent.substring(0, p.textContent.length - 1);
-  switch (char) {
+  let input = p.textContent.substring(0, p.textContent.length - 1);
+  input = input.trim();
+  if (input.charAt(0) == 'f') {
+    let fontChoice = input.split(/\s+/g)[1];
+    let result = setFontFromChoice(fontChoice);
+    if (!result) {
+      commandError(`Invalid choice for font: ${fontChoice}`);
+    } else {
+      commandSucceed('Successfully updated font preference');
+    }
+    return result;
+  }
+  switch (input) {
+    case 'cls':
+      commandSucceed('Cleared localStorage');
+      localStorage.clear();
+      return true;
     case '?':
       commandSucceed('Going to help');
       window.location = '/vimhelp.html';
@@ -115,7 +134,7 @@ function executeAction() {
       window.location = '/langproj.html';
       return true;
     case '!!':
-      commandError(char, 'Turning off fade not yet supported');
+      commandError(input, 'Turning off fade not yet supported');
       return false;
     case ']]':
       window.scrollBy(0, sectionSize);
@@ -134,16 +153,69 @@ function executeAction() {
       commandSucceed('go to beginning of file');
       return true;
     case ':q':
-      commandError(char, 'file not saved!');
+      commandError(input, 'file not saved!');
       return false;
     case ':q!':
       window.location = 'http://google.com';
       commandSucceed('exiting...');
       return true;
     default:
-      commandError(char, 'UNKNOWN COMMAND! try using `?`');
+      commandError(input, 'UNKNOWN COMMAND! try using `?`');
       return false;
   }
+}
+
+const fontDataForChoice = {
+  // fonts that cannot be loaded from Google Fonts are considered to
+  // be loaded by default since they only work if they are local font files
+  'dflt-s': { familyName: "serif", loaded: true, loaderObject: null },
+  'dflt-ss': { familyName: "sans-serif", loaded: true, loaderObject: null },
+  'dflt-m': { familyName: "monospace", loaded: true, loaderObject: null },
+  'c': { familyName: "Consolas", loaded: true, loaderObject: null },
+  'mon': { familyName: "Monaco", loaded: true, loaderObject: null },
+
+  // djv sans mono is distributed with the site so no extra loading is required.
+  'mdj': { familyName: `"Menlo", "DejaVu Sans Mono"`, loaded: true, loaderObject: null },
+
+  // these fonts must be loaded from the Google fonts API if the user wishes to use them
+  // They are loaded with the Google and TypeScript WebFontLoader by calling WebFont.load(.loaderObject)
+  'um': { familyName: "Ubuntu Mono", loaded: false, loaderObject: { google: { families: ['Ubuntu Mono:400,400i,700,700i'] } } },
+  'scp': { familyName: "Source Code Pro", loaded: false, loaderObject: { google: { families: ['Source Code Pro:400,400i,700,700i'] } } },
+  'sm': { familyName: "Space Mono", loaded: false, loaderObject: { google: { families: ['Space Mono:400,400i,700,700i'] } } },
+  'i': { familyName: "Inconsolata", loaded: false, loaderObject: { google: { families: ['Inconsolata:400,400i,700,700i'] } } },
+  'crpr': { familyName: "Courier Prime", loaded: false, loaderObject: { google: { families: ['Courier Prime:400,400i,700,700i'] } } },
+};
+
+function setFontFromChoice(choice) {
+  if (!choice) { return false; }
+
+  if (choice === "reset") {
+    setFontFromChoice(DEFAULT_FONT_CHOICE);
+    localStorage.removeItem(LS_FONT_CHOICE_NAME);
+    return true;
+  }
+
+  let fontObject = fontDataForChoice[choice];
+  if (!fontObject) { return false; }
+
+  localStorage.setItem(LS_FONT_CHOICE_NAME, choice);
+
+  // this check prevents loading the fonts multiple
+  // times while the user reamins on the same page,
+  // specifically because it is required to load the
+  // font from Google Fonts on each page load, but
+  // if the user switches back and forth multiple times
+  // on only one page, we only wanna load the font the
+  // first time
+  if (!fontObject.loaded) {
+    WebFont.load(fontObject.loaderObject);
+    fontObject.loaded = true;
+  }
+
+  let familyName = fontObject.familyName;
+  let root = document.documentElement;
+  root.style.setProperty(MY_MAIN_FONT_VAR, familyName);
+  return true;
 }
 
 let listening = false;
@@ -183,8 +255,15 @@ function vimHandle() {
   }
 }
 
+function reloadFontChoice() {
+  let choice = localStorage.getItem(LS_FONT_CHOICE_NAME);
+  if (choice) {
+    setFontFromChoice(choice)
+  }
+}
 
 function run_common() {
+  fade();
   cursorFade();
   vimHandle();
 }

@@ -220,7 +220,7 @@ a.buttonLink {
 
 #vim {
   font-family: var(--my-main-font), monospace;
-  font-size: 1.1vw;
+  font-size: 0.95em;
   color: var(--my-green-color);
   position: fixed;
   left: 1px;

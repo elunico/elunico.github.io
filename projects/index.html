@@ -7,27 +7,36 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Projects Hosted on elunico.github.io</title>
   <link rel="stylesheet" href="../css/common.css">
+  <script src="../js/common.js"></script>
 </head>
+<!-- header -->
+<span class="buttons">
+  <a class="buttonLink" href="/">
+    <div class="fadesIn fadesStatic button" id="home">Home</div>
+  </a>
+  <a class="buttonLink" href="progproj.html">
+    <div class="fadesIn fadesStatic button" id="progproj">Programming</div>
+  </a>
+  <a class="buttonLink" href="langproj.html">
+    <div class="fadesIn fadesStatic button" id="langproj">Linguistics</div>
+  </a>
+  <a class="buttonLink" href="info.html">
+    <div class="fadesIn fadesStatic button" id="info">Info &amp; Contact</div>
+  </a>
+
+</span>
+<p>&nbsp;</p>
 
 <body class="home projectPage">
-  <h1 class="projectName">
-    Projects Hosted on <code>elunico.github.io</code>
-  </h1>
-  <p class="progPageDescription">
-    This page will let you access all the projects that I host on <code>elunico.github.io</code>.
-    You probably came here from <a target="_blank" rel="noopener noreferrer" href="../progproj.html">my project list
-      page</a> on my website.
-    Many of my projects are not hosted or are hosted in other places. Visit
-    <a target="_blank" rel="noopener noreferrer" href="../">my website</a>, <a target="_blank" rel="noopener noreferrer"
-      href="https://github.com/elunico">my GitHub</a>, or
-    <a target="_blank" rel="noopener noreferrer" href="https://gitlab.com/tpovinelli">my GitLab</a> to see my othe
-    projects.
-  </p>
-  <ul class="progPageDescription">
-    <li><a target="_blank" rel="noopener noreferrer" href="./keycodechecker">KeyCode Checker</a> - A project to show
-      information
-      about KeyEvents in Javascript</li>
-  </ul>
+
+  <script>
+
+    typeText('Projects Hosted on <code>elunico.github.io</code>', '.projectName', () => {
+      fade();
+      run_common();
+    });
+
+  </script>
 </body>
 
 </html>

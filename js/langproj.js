@@ -1,6 +1,6 @@
 window.onload = () => {
+  reloadFontChoice();
   typeText('Language Projects', '#mainHeader', () => {
-    fade();
     run_common();
   });
 };

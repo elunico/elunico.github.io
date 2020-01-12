@@ -32,6 +32,12 @@ class Gallery {
     }
     this.slideIndex = 1;
     this.id = Gallery._next_gallery();
+
+    let place = document.querySelector(`#${parent_id}`);
+    if (!place) {
+      throw new TypeError(`Gallery passed parent_id="${parent_id}" but that id was not found in the document`);
+    }
+
     this.init();
     this.clearCoordinates();
   }
@@ -57,22 +63,22 @@ class Gallery {
         this.addModalContent(img.src);
       });
     };
-    
-    modal.ontouchstart = (event) => this.touchStart(event); 
+
+    modal.ontouchstart = (event) => this.touchStart(event);
     modal.ontouchmove = (event) => this.touchMove(event);
     modal.ontouchend = (event) => {
       let slide = this.touchEnd(event);
-      if (!slide) { 
-        this.touchCancel(); 
+      if (!slide) {
+        this.touchCancel();
         return;
       }
       let img = slide.getElementsByTagName('img')[0];
       requestAnimationFrame(() => {
-        this.clearModalContents(); 
+        this.clearModalContents();
         this.addModalContent(img.src);
       });
     };
-    
+
     modal.tabIndex = '0';
     modal.className = 'modal';
     modal.id = `myModal_${this._pid}`;
@@ -283,7 +289,7 @@ class Gallery {
     let result = this.plusSlides(dx > 0 ? 1 : -1);
     this.clearCoordinates();
     this.changing = false;
-    return result; 
+    return result;
   }
 
   touchCancel(event) {

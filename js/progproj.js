@@ -1,17 +1,12 @@
 window.onload = () => {
+  reloadFontChoice();
   typeText('Programming Projects', '#mainHeader', () => {
-    fade();
     run_common();
   });
 
   let jpeditGallery = new Gallery('jpedit-gallery', {
     "/assets/projects/programming/jpedit_head1.png": "A screenshot an empty JPEdit Window with the file menu open.",
     "/assets/projects/programming/jpedit_head2.png": "A screenshot a JPEdit Window with text and the Time and Date Prompt open."
-  });
-
-  let keycodecheckerGallery = new Gallery('keycodeChecker-gallery', {
-    "/assets/projects/programming/keycodechecker_home.png": "",
-    "/assets/projects/programming/keycodechecker_more.png": ""
   });
 
   let socdrawGallery = new Gallery('socdraw-gallery', {
