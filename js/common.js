@@ -178,7 +178,7 @@ const fontDataForChoice = {
   'mdj': { familyName: `"Menlo", "DejaVu Sans Mono"`, loaded: true, loaderObject: null },
 
   // these fonts must be loaded from the Google fonts API if the user wishes to use them
-  // They are loaded with the Google and TypeScript WebFontLoader by calling WebFont.load(.loaderObject)
+  // They are loaded with the Google and TypeKit WebFontLoader by calling WebFont.load(.loaderObject)
   'um': { familyName: "Ubuntu Mono", loaded: false, loaderObject: { google: { families: ['Ubuntu Mono:400,400i,700,700i'] } } },
   'scp': { familyName: "Source Code Pro", loaded: false, loaderObject: { google: { families: ['Source Code Pro:400,400i,700,700i'] } } },
   'sm': { familyName: "Space Mono", loaded: false, loaderObject: { google: { families: ['Space Mono:400,400i,700,700i'] } } },
