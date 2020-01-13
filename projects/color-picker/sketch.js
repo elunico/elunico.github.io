@@ -16,6 +16,8 @@ let resultBoc;
 let hexResult;
 let threeResult;
 
+let startedInCanvas = false;
+
 const pangrams = [
   "Jived fox nymph grabs quick waltz.",
   "Glib jocks quiz nymph to vex dwarf.",
@@ -110,13 +112,17 @@ function idx(x, y) {
 }
 
 function mouseDragged() {
-  mousePressed();
+  if (startedInCanvas) {
+    mousePressed();
+  }
 }
 
 function mousePressed() {
   if (mouseX < 0 || mouseX > width || mouseY > height || mouseY < 0) {
+    startedInCanvas = false;
     return;
   }
+  startedInCanvas = true;
   dotPlace = createVector(mouseX, mouseY);
   colorMode(HSB);
   clr = color(mouseX, mouseY, brightnessSlider.value());
