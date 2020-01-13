@@ -41,9 +41,74 @@ function setup() {
   greenSlider = select('#green-input');
   blueSlider = select('#blue-input');
 
+  hexResult = select('#hex-result');
+  threeResult = select('#3-result');
+
+  hexResult.input(() => {
+    let s = hexResult.value();
+    if (s.length !== 4 && s.length !== 7) {
+      return;
+    }
+
+    var r, g, b;
+    if (s.length == 7) {
+      r = s.substring(1, 3);
+      g = s.substring(3, 5);
+      b = s.substring(5, 7);
+    } else if (s.length == 4) {
+      r = s.charAt(1);
+      g = s.charAt(2);
+      b = s.charAt(3);
+    }
+    r = parseInt(r, 16);
+    g = parseInt(g, 16);
+    b = parseInt(b, 16);
+
+    if (s.length == 4) {
+      r = (r << 4) | r;
+      g = (g << 4) | g;
+      b = (b << 4) | b;
+    }
+
+    colorMode(RGB);
+    clr = color(r, g, b);
+    threeResult.value(`rgb(${nf(red(clr), 1, 0)}, ${nf(green(clr), 1, 0)}, ${nf(blue(clr), 1, 0)})`);
+    redSlider.value(r);
+    greenSlider.value(g);
+    blueSlider.value(b);
+    colorMode(HSB);
+    brightnessSlider.value(floor((brightness(clr) / 100) * 100));
+    tint(brightness(clr));
+    dotPlace = createVector(hue(clr), saturation(clr));
+  });
+
+  threeResult.input(() => {
+    let s = threeResult.value();
+    let parts = s.split(/(\d+)/g).filter(s => /\d+/.test(s)).map(s => Number(s));
+    if (parts.length != 3) {
+      return;
+    }
+
+    let [r, g, b] = parts;
+    colorMode(RGB);
+    clr = color(r, g, b);
+    hexResult.value(`#${nf(floor(red(clr)).toString(16), 2, 0)}${nf(floor(green(clr)).toString(16), 2, 0)}${nf(floor(blue(clr)).toString(16), 2, 0)}`);
+    redSlider.value(r);
+    greenSlider.value(g);
+    blueSlider.value(b);
+    colorMode(HSB);
+    brightnessSlider.value(floor((brightness(clr) / 100) * 100));
+    tint(brightness(clr));
+    dotPlace = createVector(hue(clr), saturation(clr));
+
+  })
+
   brightnessSlider.input(() => {
     colorMode(HSB);
     clr = color(hue(clr), saturation(clr), brightnessSlider.value());
+    colorMode(RGB);
+    threeResult.value(`rgb(${nf(red(clr), 1, 0)}, ${nf(green(clr), 1, 0)}, ${nf(blue(clr), 1, 0)})`);
+    hexResult.value(`#${nf(floor(red(clr)).toString(16), 2, 0)}${nf(floor(green(clr)).toString(16), 2, 0)}${nf(floor(blue(clr)).toString(16), 2, 0)}`);
     redSlider.value(red(clr));
     greenSlider.value(green(clr));
     blueSlider.value(blue(clr));
@@ -53,6 +118,8 @@ function setup() {
   redSlider.input(() => {
     colorMode(RGB);
     clr = color(redSlider.value(), greenSlider.value(), blueSlider.value());
+    threeResult.value(`rgb(${nf(red(clr), 1, 0)}, ${nf(green(clr), 1, 0)}, ${nf(blue(clr), 1, 0)})`);
+    hexResult.value(`#${nf(floor(red(clr)).toString(16), 2, 0)}${nf(floor(green(clr)).toString(16), 2, 0)}${nf(floor(blue(clr)).toString(16), 2, 0)}`);
     colorMode(HSB);
     brightnessSlider.value(floor((brightness(clr) / 100) * 100));
     tint(brightness(clr));
@@ -61,6 +128,8 @@ function setup() {
   greenSlider.input(() => {
     colorMode(RGB);
     clr = color(redSlider.value(), greenSlider.value(), blueSlider.value());
+    threeResult.value(`rgb(${nf(red(clr), 1, 0)}, ${nf(green(clr), 1, 0)}, ${nf(blue(clr), 1, 0)})`);
+    hexResult.value(`#${nf(floor(red(clr)).toString(16), 2, 0)}${nf(floor(green(clr)).toString(16), 2, 0)}${nf(floor(blue(clr)).toString(16), 2, 0)}`);
     colorMode(HSB);
     brightnessSlider.value(floor((brightness(clr) / 100) * 100));
     tint(brightness(clr));
@@ -69,6 +138,8 @@ function setup() {
   blueSlider.input(() => {
     colorMode(RGB);
     clr = color(redSlider.value(), greenSlider.value(), blueSlider.value());
+    threeResult.value(`rgb(${nf(red(clr), 1, 0)}, ${nf(green(clr), 1, 0)}, ${nf(blue(clr), 1, 0)})`);
+    hexResult.value(`#${nf(floor(red(clr)).toString(16), 2, 0)}${nf(floor(green(clr)).toString(16), 2, 0)}${nf(floor(blue(clr)).toString(16), 2, 0)}`);
     colorMode(HSB);
     brightnessSlider.value(floor((brightness(clr) / 100) * 100));
     tint(brightness(clr));
@@ -89,8 +160,7 @@ function setup() {
   resultWoc = select('#white-on-color');
   resultBoc = select('#black-on-color');
 
-  hexResult = select('#hex-result');
-  threeResult = select('#3-result');
+
 
   blueSlider.elt.dispatchEvent(new Event('input', {
     bubbles: true,
@@ -169,6 +239,4 @@ function draw() {
   resultBoc.style('background-color', `rgb(${red(clr)}, ${green(clr)}, ${blue(clr)})`);
   resultBoc.style('color', `#000`);
 
-  threeResult.html(`rgb(${nf(red(clr), 1, 0)}, ${nf(green(clr), 1, 0)}, ${nf(blue(clr), 1, 0)})`);
-  hexResult.html(`#${nf(floor(red(clr)).toString(16), 2, 0)}${nf(floor(green(clr)).toString(16), 2, 0)}${nf(floor(blue(clr)).toString(16), 2, 0)}`);
 }
