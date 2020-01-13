@@ -51,22 +51,25 @@ function setup() {
   redSlider.input(() => {
     colorMode(RGB);
     clr = color(redSlider.value(), greenSlider.value(), blueSlider.value());
-    brightnessSlider.value(floor((brightness(clr) / 100) * 255));
-    tint(brightnessSlider.value());
+    colorMode(HSB);
+    brightnessSlider.value(floor((brightness(clr) / 100) * 100));
+    tint(brightness(clr));
     dotPlace = createVector(hue(clr), saturation(clr));
   });
   greenSlider.input(() => {
     colorMode(RGB);
     clr = color(redSlider.value(), greenSlider.value(), blueSlider.value());
-    brightnessSlider.value(floor((brightness(clr) / 100) * 255));
-    tint(brightnessSlider.value());
+    colorMode(HSB);
+    brightnessSlider.value(floor((brightness(clr) / 100) * 100));
+    tint(brightness(clr));
     dotPlace = createVector(hue(clr), saturation(clr));
   });
   blueSlider.input(() => {
     colorMode(RGB);
     clr = color(redSlider.value(), greenSlider.value(), blueSlider.value());
-    brightnessSlider.value(floor((brightness(clr) / 100) * 255));
-    tint(brightnessSlider.value());
+    colorMode(HSB);
+    brightnessSlider.value(floor((brightness(clr) / 100) * 100));
+    tint(brightness(clr));
     dotPlace = createVector(hue(clr), saturation(clr));
   });
 
