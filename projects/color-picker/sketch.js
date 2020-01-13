@@ -27,24 +27,59 @@ const pangrams = [
   "Pack my box with five dozen liquor jugs."
 ];
 
-function preload() {
-  img = loadImage('all-colors.png');
-}
+function setUpInputEventHandlers() {
 
-function setup() {
-  let container = select('#canvas-container');
-  canvas = createCanvas(375, 300);
-  canvas.parent(container);
+  function updateGUIFromRGB(r, g, b) {
+    /**
+     * Given some r, g, b (0-255) this function
+     * updates all 4 sliders and the dot on the canvas
+     * as well as tinting the image for brightness.
+     * It does NOT update the hex result or rgb result
+     * input since those two cannot be circular they must
+     * be handled separated.
+     */
+    colorMode(RGB);
+    clr = color(r, g, b);
+    redSlider.value(r);
+    greenSlider.value(g);
+    blueSlider.value(b);
+    colorMode(HSB);
+    brightnessSlider.value(brightness(clr));
+    tint(brightness(clr));
+    dotPlace = createVector(hue(clr), saturation(clr));
+  }
 
-  brightnessSlider = select('#brightness-input');
-  redSlider = select('#red-input');
-  greenSlider = select('#green-input');
-  blueSlider = select('#blue-input');
+  function updateGUIFromHSB(h, s, b) {
+    /**
+     * Given some h, s, b (0-255, 0-100, 0-100) this function
+     * updates all 4 sliders and the dot on the canvas
+     * as well as tinting the image for brightness.
+     * It does NOT update the hex result or rgb result
+     * input since those two cannot be circular they must
+     * be handled separated.
+     */
+    colorMode(HSB);
+    clr = color(h, s, b);
+    tint(b);
+    colorMode(RGB);
+    redSlider.value(red(clr));
+    greenSlider.value(green(clr));
+    blueSlider.value(blue(clr));
+    dotPlace = createVector(h, s);
+  }
 
-  hexResult = select('#hex-result');
-  threeResult = select('#3-result');
+  function rgbSliderOnInput() {
+    /**
+     * Callback for the `input` event of all 3 RGB sliders
+     */
+    updateGUIFromRGB(redSlider.value(), greenSlider.value(), blueSlider.value());
+    colorMode(RGB);
+    threeResult.value(`rgb(${nf(red(clr), 1, 0)}, ${nf(green(clr), 1, 0)}, ${nf(blue(clr), 1, 0)})`);
+    hexResult.value(`#${nf(floor(red(clr)).toString(16), 2, 0)}${nf(floor(green(clr)).toString(16), 2, 0)}${nf(floor(blue(clr)).toString(16), 2, 0)}`);
+  }
 
   hexResult.input(() => {
+    // we support both #abc 3 digit and #aabbcc 6 digit colors
     let s = hexResult.value();
     if (s.length !== 4 && s.length !== 7) {
       return;
@@ -70,19 +105,13 @@ function setup() {
       b = (b << 4) | b;
     }
 
+    updateGUIFromRGB(r, g, b);
     colorMode(RGB);
-    clr = color(r, g, b);
     threeResult.value(`rgb(${nf(red(clr), 1, 0)}, ${nf(green(clr), 1, 0)}, ${nf(blue(clr), 1, 0)})`);
-    redSlider.value(r);
-    greenSlider.value(g);
-    blueSlider.value(b);
-    colorMode(HSB);
-    brightnessSlider.value(brightness(clr));
-    tint(brightness(clr));
-    dotPlace = createVector(hue(clr), saturation(clr));
   });
 
   threeResult.input(() => {
+    // supports any deliminated list of 3 colors but always outputs in the form rgb(r, g, b)
     let s = threeResult.value();
     let parts = s.split(/(\d+)/g).filter(s => /\d+/.test(s)).map(s => Number(s));
     if (parts.length != 3) {
@@ -90,83 +119,69 @@ function setup() {
     }
 
     let [r, g, b] = parts;
-    colorMode(RGB);
-    clr = color(r, g, b);
-    hexResult.value(`#${nf(floor(red(clr)).toString(16), 2, 0)}${nf(floor(green(clr)).toString(16), 2, 0)}${nf(floor(blue(clr)).toString(16), 2, 0)}`);
-    redSlider.value(r);
-    greenSlider.value(g);
-    blueSlider.value(b);
-    colorMode(HSB);
-    brightnessSlider.value(brightness(clr));
-    tint(brightness(clr));
-    dotPlace = createVector(hue(clr), saturation(clr));
 
-  })
+    updateGUIFromRGB(r, g, b);
+    colorMode(RGB);
+    hexResult.value(`#${nf(floor(red(clr)).toString(16), 2, 0)}${nf(floor(green(clr)).toString(16), 2, 0)}${nf(floor(blue(clr)).toString(16), 2, 0)}`);
+  });
 
   brightnessSlider.input(() => {
     colorMode(HSB);
-    clr = color(hue(clr), saturation(clr), brightnessSlider.value());
-    tint(brightnessSlider.value());
+    updateGUIFromHSB(hue(clr), saturation(clr), brightnessSlider.value());
     colorMode(RGB);
     threeResult.value(`rgb(${nf(red(clr), 1, 0)}, ${nf(green(clr), 1, 0)}, ${nf(blue(clr), 1, 0)})`);
     hexResult.value(`#${nf(floor(red(clr)).toString(16), 2, 0)}${nf(floor(green(clr)).toString(16), 2, 0)}${nf(floor(blue(clr)).toString(16), 2, 0)}`);
-    redSlider.value(red(clr));
-    greenSlider.value(green(clr));
-    blueSlider.value(blue(clr));
-    dotPlace = createVector(hue(clr), saturation(clr));
-  });
-  redSlider.input(() => {
-    colorMode(RGB);
-    clr = color(redSlider.value(), greenSlider.value(), blueSlider.value());
-    threeResult.value(`rgb(${nf(red(clr), 1, 0)}, ${nf(green(clr), 1, 0)}, ${nf(blue(clr), 1, 0)})`);
-    hexResult.value(`#${nf(floor(red(clr)).toString(16), 2, 0)}${nf(floor(green(clr)).toString(16), 2, 0)}${nf(floor(blue(clr)).toString(16), 2, 0)}`);
-    colorMode(HSB);
-    brightnessSlider.value(brightness(clr));
-    tint(brightness(clr));
-    dotPlace = createVector(hue(clr), saturation(clr));
-  });
-  greenSlider.input(() => {
-    colorMode(RGB);
-    clr = color(redSlider.value(), greenSlider.value(), blueSlider.value());
-    threeResult.value(`rgb(${nf(red(clr), 1, 0)}, ${nf(green(clr), 1, 0)}, ${nf(blue(clr), 1, 0)})`);
-    hexResult.value(`#${nf(floor(red(clr)).toString(16), 2, 0)}${nf(floor(green(clr)).toString(16), 2, 0)}${nf(floor(blue(clr)).toString(16), 2, 0)}`);
-    colorMode(HSB);
-    brightnessSlider.value(brightness(clr));
-    tint(brightness(clr));
-    dotPlace = createVector(hue(clr), saturation(clr));
-  });
-  blueSlider.input(() => {
-    colorMode(RGB);
-    clr = color(redSlider.value(), greenSlider.value(), blueSlider.value());
-    threeResult.value(`rgb(${nf(red(clr), 1, 0)}, ${nf(green(clr), 1, 0)}, ${nf(blue(clr), 1, 0)})`);
-    hexResult.value(`#${nf(floor(red(clr)).toString(16), 2, 0)}${nf(floor(green(clr)).toString(16), 2, 0)}${nf(floor(blue(clr)).toString(16), 2, 0)}`);
-    colorMode(HSB);
-    brightnessSlider.value(brightness(clr));
-    tint(brightness(clr));
-    dotPlace = createVector(hue(clr), saturation(clr));
   });
 
+  redSlider.input(rgbSliderOnInput);
+  greenSlider.input(rgbSliderOnInput);
+  blueSlider.input(rgbSliderOnInput);
+}
+
+function preload() {
+  img = loadImage('all-colors.png');
+}
+
+function setup() {
+  // selecting necessary elements
+  let container = select('#canvas-container');
+  canvas = createCanvas(365, 165);
+  canvas.parent(container);
+
+  brightnessSlider = select('#brightness-input');
+  redSlider = select('#red-input');
+  greenSlider = select('#green-input');
+  blueSlider = select('#blue-input');
+
+  hexResult = select('#hex-result');
+  threeResult = select('#3-result');
+
+  // create handlers for updating GUI
+  setUpInputEventHandlers();
+
+  // simplifies pixel calculations
   pixelDensity(1);
-  clr = color(255, 0, 100);
-  colorMode(HSB);
 
+  // get the initial color from the state of the sliders.
+  colorMode(HSB);
   clr = color(redSlider.value(), greenSlider.value(), blueSlider.value());
   brightnessSlider.value(brightness(clr));
   dotPlace = createVector(hue(clr), saturation(clr));
 
+  // update entire gui by firing a single input event on any elt
+  blueSlider.elt.dispatchEvent(new Event('input', {
+    bubbles: true,
+    cancelable: true,
+  }));
+
+  // resulting color will be displayed here
   resultDiv = select('#colorDiv');
   resultCob = select('#color-on-black');
   resultCow = select('#color-on-white');
   resultWoc = select('#white-on-color');
   resultBoc = select('#black-on-color');
 
-
-
-  blueSlider.elt.dispatchEvent(new Event('input', {
-    bubbles: true,
-    cancelable: true,
-  }));
-
+  // choose a pangram for sample text
   let pangram = random(pangrams);
   let samples = selectAll('.sample');
   for (let sample of samples) {
@@ -174,15 +189,21 @@ function setup() {
   }
 
   select('#colorDiv').html('&nbsp;');
-
 }
 
 function idx(x, y) {
+  /**
+   * Given some x, y in pixel space, return the index
+   * into the pixels array of the r value.
+   * The pixel array is 4 * width * height because
+   * it stores one pixel as rgba values across 4 indices
+   */
   return (x + y * width) * 4;
 }
 
 function mouseDragged() {
   if (startedInCanvas) {
+    // prevent dragging into the canvas from changing the color
     mousePressed();
   }
 }
@@ -196,15 +217,22 @@ function mousePressed() {
   dotPlace = createVector(mouseX, mouseY);
   colorMode(HSB);
   clr = color(mouseX, mouseY, brightnessSlider.value());
+  brightnessSlider.value(brightness(clr));
+  colorMode(RGB)
   redSlider.value(red(clr));
   greenSlider.value(green(clr));
   blueSlider.value(blue(clr));
-  brightnessSlider.value(brightness(clr));
+  threeResult.value(`rgb(${nf(red(clr), 1, 0)}, ${nf(green(clr), 1, 0)}, ${nf(blue(clr), 1, 0)})`);
+  hexResult.value(`#${nf(floor(red(clr)).toString(16), 2, 0)}${nf(floor(green(clr)).toString(16), 2, 0)}${nf(floor(blue(clr)).toString(16), 2, 0)}`);
+
 }
 
 function draw() {
   image(img, 0, 0);
 
+  // This code builds the background image
+  // but is very slow so we use the image instead.
+  // colorMode(HSB);
   // loadPixels();
   // for (let y = 0; y < height; y++) {
   //   for (let x = 0; x < width; x++) {
