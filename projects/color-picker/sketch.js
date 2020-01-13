@@ -45,6 +45,10 @@ function setUpInputEventHandlers() {
     blueSlider.value(b);
     colorMode(HSB);
     brightnessSlider.value(brightness(clr));
+    let h = hue(clr);
+    let s = saturation(clr);
+    let br = brightness(clr);
+    console.log(`h: ${h}, s: ${s}, b: ${br}`)
     tint(brightness(clr));
     dotPlace = createVector(hue(clr), saturation(clr));
   }
