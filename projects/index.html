@@ -9,33 +9,19 @@
   <link rel="stylesheet" href="../css/common.css">
   <script src="../js/common.js"></script>
 </head>
-<!-- header -->
-<span class="buttons">
-  <a class="buttonLink" href="/">
-    <div class="fadesIn fadesStatic button" id="home">Home</div>
-  </a>
-  <a class="buttonLink" href="progproj.html">
-    <div class="fadesIn fadesStatic button" id="progproj">Programming</div>
-  </a>
-  <a class="buttonLink" href="langproj.html">
-    <div class="fadesIn fadesStatic button" id="langproj">Linguistics</div>
-  </a>
-  <a class="buttonLink" href="info.html">
-    <div class="fadesIn fadesStatic button" id="info">Info &amp; Contact</div>
-  </a>
 
-</span>
-<p>&nbsp;</p>
 
-<body class="home projectPage">
-
+<body>
+  <h1>
+    Redirecting...
+  </h1>
   <script>
 
-    typeText('Projects Hosted on <code>elunico.github.io</code>', '.projectName', () => {
-      fade();
-      run_common();
-    });
-
+    window.onload = () => {
+      setTimeout(() => {
+        window.location = '../progproj.html';
+      }, 250);
+    }
   </script>
 </body>
 
