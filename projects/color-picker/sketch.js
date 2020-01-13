@@ -77,7 +77,7 @@ function setup() {
     greenSlider.value(g);
     blueSlider.value(b);
     colorMode(HSB);
-    brightnessSlider.value(floor((brightness(clr) / 100) * 100));
+    brightnessSlider.value(brightness(clr));
     tint(brightness(clr));
     dotPlace = createVector(hue(clr), saturation(clr));
   });
@@ -97,7 +97,7 @@ function setup() {
     greenSlider.value(g);
     blueSlider.value(b);
     colorMode(HSB);
-    brightnessSlider.value(floor((brightness(clr) / 100) * 100));
+    brightnessSlider.value(brightness(clr));
     tint(brightness(clr));
     dotPlace = createVector(hue(clr), saturation(clr));
 
@@ -106,13 +106,13 @@ function setup() {
   brightnessSlider.input(() => {
     colorMode(HSB);
     clr = color(hue(clr), saturation(clr), brightnessSlider.value());
+    tint(brightnessSlider.value());
     colorMode(RGB);
     threeResult.value(`rgb(${nf(red(clr), 1, 0)}, ${nf(green(clr), 1, 0)}, ${nf(blue(clr), 1, 0)})`);
     hexResult.value(`#${nf(floor(red(clr)).toString(16), 2, 0)}${nf(floor(green(clr)).toString(16), 2, 0)}${nf(floor(blue(clr)).toString(16), 2, 0)}`);
     redSlider.value(red(clr));
     greenSlider.value(green(clr));
     blueSlider.value(blue(clr));
-    tint(brightnessSlider.value());
     dotPlace = createVector(hue(clr), saturation(clr));
   });
   redSlider.input(() => {
@@ -121,7 +121,7 @@ function setup() {
     threeResult.value(`rgb(${nf(red(clr), 1, 0)}, ${nf(green(clr), 1, 0)}, ${nf(blue(clr), 1, 0)})`);
     hexResult.value(`#${nf(floor(red(clr)).toString(16), 2, 0)}${nf(floor(green(clr)).toString(16), 2, 0)}${nf(floor(blue(clr)).toString(16), 2, 0)}`);
     colorMode(HSB);
-    brightnessSlider.value(floor((brightness(clr) / 100) * 100));
+    brightnessSlider.value(brightness(clr));
     tint(brightness(clr));
     dotPlace = createVector(hue(clr), saturation(clr));
   });
@@ -131,7 +131,7 @@ function setup() {
     threeResult.value(`rgb(${nf(red(clr), 1, 0)}, ${nf(green(clr), 1, 0)}, ${nf(blue(clr), 1, 0)})`);
     hexResult.value(`#${nf(floor(red(clr)).toString(16), 2, 0)}${nf(floor(green(clr)).toString(16), 2, 0)}${nf(floor(blue(clr)).toString(16), 2, 0)}`);
     colorMode(HSB);
-    brightnessSlider.value(floor((brightness(clr) / 100) * 100));
+    brightnessSlider.value(brightness(clr));
     tint(brightness(clr));
     dotPlace = createVector(hue(clr), saturation(clr));
   });
@@ -141,7 +141,7 @@ function setup() {
     threeResult.value(`rgb(${nf(red(clr), 1, 0)}, ${nf(green(clr), 1, 0)}, ${nf(blue(clr), 1, 0)})`);
     hexResult.value(`#${nf(floor(red(clr)).toString(16), 2, 0)}${nf(floor(green(clr)).toString(16), 2, 0)}${nf(floor(blue(clr)).toString(16), 2, 0)}`);
     colorMode(HSB);
-    brightnessSlider.value(floor((brightness(clr) / 100) * 100));
+    brightnessSlider.value(brightness(clr));
     tint(brightness(clr));
     dotPlace = createVector(hue(clr), saturation(clr));
   });
