@@ -44,7 +44,7 @@ function setup() {
     clr = color(hue(clr), saturation(clr), brightnessSlider.value());
     redSlider.value(red(clr));
     greenSlider.value(green(clr));
-    blueSlider.value(red(clr));
+    blueSlider.value(blue(clr));
     tint(brightnessSlider.value());
     dotPlace = createVector(hue(clr), saturation(clr));
   });
@@ -160,6 +160,6 @@ function draw() {
   resultBoc.style('background-color', `rgb(${red(clr)}, ${green(clr)}, ${blue(clr)})`);
   resultBoc.style('color', `#000`);
 
-  threeResult.html(`rgb(${nf(red(clr), 1, 0)}, ${nf(blue(clr), 1, 0)}, ${nf(green(clr), 1, 0)})`);
-  hexResult.html(`#${nf(floor(red(clr)).toString(16), 2, 0)}${nf(floor(blue(clr)).toString(16), 2, 0)}${nf(floor(green(clr)).toString(16), 2, 0)}`);
+  threeResult.html(`rgb(${nf(red(clr), 1, 0)}, ${nf(green(clr), 1, 0)}, ${nf(blue(clr), 1, 0)})`);
+  hexResult.html(`#${nf(floor(red(clr)).toString(16), 2, 0)}${nf(floor(green(clr)).toString(16), 2, 0)}${nf(floor(blue(clr)).toString(16), 2, 0)}`);
 }
