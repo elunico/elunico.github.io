@@ -5,7 +5,7 @@
 }
 
 .list {
-  font-size: 1.2em;
+  font-size: 1.1em;
   color: var(--projectContainer-color);
   font-family: var(--my-main-font), monospace;
   margin-left: 2%;
@@ -27,8 +27,12 @@ td {
   color: var(--projectContainer-color);
 }
 
+.projectDescription {
+  font-size: 1.1em;
+}
+
 .experienceRole {
-  font-size: 1.25em;
+  font-size: 1.1em;
   font-weight: 700;
   text-decoration: underline;
 }
