@@ -58,7 +58,6 @@ function fade() {
 window.onscroll = fade;
 
 function cursorFade() {
-  console.trace('Calling cursor fade');
   setInterval(() => {
     let cursors = document.querySelectorAll('.cursor');
     for (let cursor of cursors) {
@@ -98,6 +97,12 @@ function executeAction() {
   let p = document.querySelector('#vim');
   let input = p.textContent.substring(0, p.textContent.length - 1);
   input = input.trim();
+  if (input.substring(0, 2) == 'cf') {
+    let choice = input.split(/\s+/g).slice(1).join(" ");
+    setCustomFontDev(choice);
+    commandSucceed(`Attempted to update font family to ${choice}.`);
+    return true;
+  }
   if (input.charAt(0) == 'f') {
     let fontChoice = input.split(/\s+/g)[1];
     let result = setFontFromChoice(fontChoice);
@@ -186,6 +191,12 @@ const fontDataForChoice = {
   'crpr': { familyName: "Courier Prime", loaded: false, loaderObject: { google: { families: ['Courier Prime:400,400i,700,700i'] } } },
 };
 
+function setCustomFontDev(choice) {
+  if (!choice) return;
+  localStorage.setItem(LS_FONT_CHOICE_NAME, choice);
+  changeMainFontFamily(choice);
+}
+
 function setFontFromChoice(choice) {
   if (!choice) { return false; }
 
@@ -212,10 +223,13 @@ function setFontFromChoice(choice) {
     fontObject.loaded = true;
   }
 
-  let familyName = fontObject.familyName;
-  let root = document.documentElement;
-  root.style.setProperty(MY_MAIN_FONT_VAR, familyName);
+  changeMainFontFamily(fontObject.familyName);
   return true;
+}
+
+function changeMainFontFamily(toFamily) {
+  let root = document.documentElement;
+  root.style.setProperty(MY_MAIN_FONT_VAR, toFamily);
 }
 
 let listening = false;
@@ -258,7 +272,11 @@ function vimHandle() {
 function reloadFontChoice() {
   let choice = localStorage.getItem(LS_FONT_CHOICE_NAME);
   if (choice) {
-    setFontFromChoice(choice)
+    let result = setFontFromChoice(choice)
+    if (!result) {
+      // attempt to set font-family name directly 
+      changeMainFontFamily(choice);
+    }
   }
 }
 
