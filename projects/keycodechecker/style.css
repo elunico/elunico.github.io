@@ -1,8 +1,8 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --my-font-fg: black;
+    --my-font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   }
-
   html {
     content: "dark";
   }
@@ -11,8 +11,8 @@
 @media (prefers-color-scheme: light) {
   :root {
     --my-font-fg: white;
+    --my-font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   }
-
   html {
     content: "light";
   }
@@ -28,7 +28,7 @@ a:link {
 }
 
 .gitlink {
-  font-family: "Helvetica Neue", "Helvetica",'Fira Mono', 'Menlo', 'Consolas', monospace;
+  font-family: var(--my-font-family);
   font-size: 0.85em;
   color: var(--my-font-fg);
   right: 2px;
@@ -48,7 +48,7 @@ a:link {
 
 .main {
   font-size: 11vw;
-  font-family: "Helvetica Neue", "Helvetica", "Fira Mono", 'Menlo', 'Consolas', monospace;
+  font-family: var(--my-font-family);
   font-weight: 700;
   text-align: left;
 }
@@ -81,7 +81,7 @@ a:link {
   table-layout: fixed;
   column-width: 22%;
   width: 100%;
-  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-family: var(--my-font-family);
   font-size: 4vw;
 }
 
