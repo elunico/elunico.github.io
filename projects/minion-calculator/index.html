@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hypixel Skyblock Minion Money Calculator</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Roboto:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link href="/index.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <script src="/minion_slot.js"></script>
+    <h1>
+        Hypixel Skyblock Minion Money Calculator
+    </h1>
+    <h3>Made possible by <a href="https://thirtyvirus.com/">ThirtyVirus</a></h3>
+
+    <body>
+        <p>
+            Use this tool to calculate the money you can make from various minion configurations.
+        </p>
+        <p> Start by adding a minion using the form below. </p>
+        <p id='hidden-notes-msg' class="note" hidden><i>...Notes are hidden...</i></p>
+        <span id="notes" class="note">
+            <p>
+                Note 1: this assumes you have enough fuel for however long
+                you want to know the coins for. In other words, if you say fuel=Foul Flesh the Earnings Per Week
+                calculation will assume you have a weeks worth or (24/5) * 7 = 34 foul flesh to put into the
+                minion
+            </p>
+            <p>
+                Note 2: Number of drops per action might not be what you think. A minion takes 1 action to place/spawn
+                an item/mob and then 1 action to mine/kill the item or mob. Therefore, whatever drops it gets (if its 4
+                snowballs, 1 diamond, 1 chicken + 1 feather + 1 egg etc.) it only gets every other action. This means
+                the
+                items per action should be (number of drops / 2). However, if you are using a farm setup where something
+                else kills the mob this results in every action being used to spawn and every mob being killed, so if
+                you are harvesting drops this way you can just use the number of drops without dividing by 2
+            </p>
+            <p>
+                Note 3: Currently the app does not pay attention to (super)compactors but in the future it will be able
+                to tell you if the minion will fill up in a day or week even with the compactors
+            </p>
+            <p>
+                Note 4: If you click "edit minion" the minion will be removed and the form will be changed to the values
+                of that minion. This streamlines the process of changing minions but it will overwrite anything in the
+                "Add Minion" section and will change the order of the minions. The edit button is a simple convenience
+                and is equivalent to deleting and readding a minion with the added benefit that the form is
+                automatically filled out with the stats of the minion that gets removed, so you can change them easily.
+            </p>
+        </span>
+        <p>
+            <input onclick="hideNotes()" type="button" value="Hide Notes" id='hide-notes-button'>
+            <script>
+                let hidden = false;
+
+                function hideNotes() {
+                    let btn = document.getElementById('hide-notes-button');
+                    let msg = document.getElementById('hidden-notes-msg');
+                    let notes = document.getElementById('notes');
+                    if (hidden) {
+                        btn.value = 'Hide Notes';
+                        notes.removeAttribute('hidden');
+                        hidden = false;
+                        msg.setAttribute('hidden', true);
+                    } else {
+                        btn.value = "Show Notes";
+                        notes.setAttribute('hidden', true);
+                        hidden = true;
+                        msg.removeAttribute('hidden');
+                    }
+                }
+            </script>
+        </p>
+        <div><b>Add a new minion:</b></div>
+        <div id="minion-form" class="modal-form">
+            <span style="width: 254px; display: inline-block;" class="small">Base stats of minion:</span>
+            <span class="small">Upgrades, Fuels, and Bonuses (from pets, crystals, etc.)</span>
+            <br>
+            <input style="width: 250px;" type="text" placeholder="Minion type/name (optional)" id='minion-name' />
+            <select style="width: 254px;" id="fuel">
+                <option value="none">No Fuel (see Note 1)</option>
+                <option value="coal">Coal</option>
+                <option value="ebread">Enchanted Bread</option>
+                <option value="ecoal">Enchanted Coal</option>
+                <option value="echarcoal">Enchanted Charcoal</option>
+                <option value="foulflesh">Foul Flesh</option>
+                <option value="hamsterwheel">Hamster Wheel</option>
+                <option value="catalyst">Catalyst</option>
+                <option value="elava">Enchanted Lava Bucket</option>
+            </select>
+            <br>
+            <input style="width: 250px;" type="number" placeholder="Minion action interval (seconds)" id='action-int' />
+            <select style="width: 254px;" id="updrade1">
+                <option value="none">No Upgrade 1</option>
+                <option value="flycatcher">Flycatcher</option>
+                <option value="diamondspreading">Diamond Spreading</option>
+                <option value="minionexpander">Minion Expander</option>
+                <option value="compactor">Compactor</option>
+                <option value="sc3000">Super Compactor 3000</option>
+            </select>
+            <br>
+            <input style="width: 250px;" type="number" placeholder="Items per action (see note 2)" id='item-action' />
+            <select style="width: 254px;" id="upgrade2">
+                <option value="none">No Upgrade 2</option>
+                <option value="flycatcher">Flycatcher</option>
+                <option value="diamondspreading">Diamond Spreading</option>
+                <option value="minionexpander">Minion Expander</option>
+                <option value="compactor">Compactor</option>
+                <option value="sc3000">Super Compactor 3000</option>
+            </select>
+            <br>
+            <input style="width: 250px;" type="number" placeholder="Unit price of item (coins)" id='item-price' />
+            <input style="width: 250px;" type="number" placeholder="Additional Speed % Bonus (optional)"
+                id='additional-bonus' />
+
+        </div>
+        <p>
+            <input id="add-minion-button" type="button" value="Add minion">
+            <input id="add-24-minion-button" type="button" value="Add minion 24 times">
+            <input id="remove-all-minion-button" type="button" value="Remove ALL minions">
+        </p>
+        <p id="add-status" class="status">&nbsp;</p>
+
+        <p>
+            <div><b>Coin Totals from All Minion</b></div>
+            <div class="coin-total"> Total coins per hour:
+                <span class="minion-stat" id="coin-total-hour"></span>
+            </div>
+            <div class="coin-total"> Total coins per day:
+                <span class="minion-stat" id="coin-total-day"></span>
+            </div>
+            <div class="coin-total"> Total coins per week:
+                <span class="minion-stat" id="coin-total-week"></span>
+            </div>
+        </p>
+
+        <div><b>Stats per minion:</b></div>
+        <p id="minion-container">
+            <p><span id="slot-count">0</span> Minion Slots Occupied</p>
+            <span id="slots">
+            </span>
+            <script>
+                let slots = document.getElementById('slots');
+                MinionSlot.setParentContainer(slots);
+            </script>
+        </p>
+    </body>
+
+
+    <script src="/index.js">
+
+    </script>
+</body>
+
+</html>
