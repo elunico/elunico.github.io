@@ -5,6 +5,7 @@
     --link-visited-color: #455de4;
     --link-color: #1657e4;
     --stat-color: #0060dd;
+    --border-color: #0a0a0a;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -15,6 +16,7 @@
         --link-visited-color: rgb(165, 170, 238);
         --link-color: #3e75ee;
         --stat-color: #fff;
+        --border-color: #5f5faf;
     }
 }
 
@@ -51,9 +53,9 @@ a:visited {
     font-family: 'Source Code Pro', 'Menlo', 'Monaco', 'Consolas', 'Source Code Pro', 'Courier New', Courier, monospace;
     color: var(--stat-color);
     font-size: 90%;
-    border-right: 1px solid black;
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
+    border-right: 1px solid var(--border-color);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
     border-left: none !important;
     padding-right: 1%;
 }
@@ -63,9 +65,9 @@ a:visited {
     font-family: 'Source Code Pro', 'Menlo', 'Monaco', 'Consolas', 'Source Code Pro', 'Courier New', Courier, monospace;
     color: var(--stat-color);
     font-size: 90%;
-    border-right: 1px solid black;
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
+    border-right: 1px solid var(--border-color);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
     border-left: none !important;
     text-align: right;
 }
@@ -74,14 +76,14 @@ a:visited {
     padding-right: 1%;
     padding: 10px;
     text-align: right;
-    border-left: 1px solid black;
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
+    border-left: 1px solid var(--border-color);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
     border-right: none !important;
 }
 
 td {
-    border: 1px solid black;
+    border: 1px solid var(--border-color);
     width: 16%;
 }
 
