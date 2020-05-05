@@ -2,6 +2,21 @@ const LS_FONT_CHOICE_NAME = 'font-choice';
 const MY_MAIN_FONT_VAR = '--my-main-font';
 const DEFAULT_FONT_CHOICE = 'mdj';
 
+
+let lsd = localStorage.getItem('savedDark');
+let savedDark = lsd === 'true';
+
+document.onreadystatechange = () => {
+  if (document.readyState == 'complete') {
+    const mediaMatchesDark = matchMedia('(prefers-color-scheme: dark)').matches;
+    if ((!mediaMatchesDark && savedDark) || (mediaMatchesDark && !savedDark)) {
+      savedDark = !savedDark;
+      changeColorScheme();
+    }
+  }
+}
+
+
 function typeText(text, selector, then, period) {
   period = period || 2;
   let index = 0;
@@ -93,13 +108,23 @@ function commandSucceed(msg) {
   }, 1500);
 }
 
-let isDark = matchMedia('(prefers-color-scheme: dark)').matches;
+function resetColorScheme() {
+  let query = '(prefers-color-scheme: dark)';
+  let matches = matchMedia(query).matches;
+  localStorage.setItem('savedDark', matches);
+  if (savedDark !== matches) {
+    changeColorScheme();
+  }
+  savedDark = matches;
+  return true;
+}
+
 
 function changeColorScheme() {
   let root = document.documentElement;
   let codes = document.getElementsByClassName('my-code');
 
-  if (!isDark) {
+  if (!savedDark) {
     // dark properties 
     root.style.setProperty("--my-green-color", "#32CD32");
     root.style.setProperty("--my-dark-accent-color", "darkgreen");
@@ -128,7 +153,8 @@ function changeColorScheme() {
       code.style.setProperty('background-color', 'rgb(230, 230, 230)');
     }
   }
-  isDark = !isDark;
+  savedDark = !savedDark;
+  localStorage.setItem("savedDark", savedDark);
 }
 
 function executeAction() {
@@ -156,6 +182,11 @@ function executeAction() {
       changeColorScheme();
       commandSucceed('Changed color scheme');
       return true;
+    case 'rcs': {
+      resetColorScheme();
+      commandSucceed(`Reset color scheme choice to (prefers-color-scheme: ) query`);
+      return true;
+    }
     case 'cls':
       commandSucceed('Cleared localStorage');
       localStorage.clear();
