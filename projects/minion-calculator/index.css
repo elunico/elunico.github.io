@@ -1,0 +1,95 @@
+:root {
+    --input-color: #152689;
+    --background-color: #fff;
+    --foreground-color: #152689;
+    --link-visited-color: #455de4;
+    --link-color: #1657e4;
+    --stat-color: #0060dd;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --input-color: #000;
+        --background-color: #09165f;
+        --foreground-color: #c0c0c0;
+        --link-visited-color: rgb(165, 170, 238);
+        --link-color: #3e75ee;
+        --stat-color: #fff;
+    }
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--foreground-color);
+    margin: 1% 15% 1% 15%;
+    font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+}
+
+input, option, select {
+    color: var(--input-color);
+}
+
+a {
+    color: var(--link-color);
+}
+
+a:visited {
+    color: var(--link-visited-color);
+}
+
+.small {
+    font-size: 80%;
+}
+
+.minion-stat {
+    font-family: 'Source Code Pro', 'Menlo', 'Monaco', 'Consolas', 'Source Code Pro', 'Courier New', Courier, monospace;
+    color: var(--stat-color);
+    font-size: 90%;
+}
+
+.minion-stat-cell {
+    font-family: 'Source Code Pro', 'Menlo', 'Monaco', 'Consolas', 'Source Code Pro', 'Courier New', Courier, monospace;
+    color: var(--stat-color);
+    font-size: 90%;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-left: none !important;
+    padding-right: 1%;
+}
+
+.minion-stat-cell-coins {
+    padding-right: 1%;
+    font-family: 'Source Code Pro', 'Menlo', 'Monaco', 'Consolas', 'Source Code Pro', 'Courier New', Courier, monospace;
+    color: var(--stat-color);
+    font-size: 90%;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-left: none !important;
+    text-align: right;
+}
+
+.minion-cell {
+    padding-right: 1%;
+    padding: 10px;
+    text-align: right;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-right: none !important;
+}
+
+td {
+    border: 1px solid black;
+    width: 16%;
+}
+
+.note {
+    font-size: 0.95em;
+}
+
+.status {
+    font-family: 'Source Code Pro', 'Menlo', 'Monaco', 'Consolas', 'Source Code Pro', 'Courier New', Courier, monospace;
+    font-size: 90%;
+}
