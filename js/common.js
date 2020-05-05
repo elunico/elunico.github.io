@@ -93,6 +93,44 @@ function commandSucceed(msg) {
   }, 1500);
 }
 
+let isDark = matchMedia('(prefers-color-scheme: dark)').matches;
+
+function changeColorScheme() {
+  let root = document.documentElement;
+  let codes = document.getElementsByClassName('my-code');
+
+  if (!isDark) {
+    // dark properties 
+    root.style.setProperty("--my-green-color", "#32CD32");
+    root.style.setProperty("--my-dark-accent-color", "darkgreen");
+    root.style.setProperty("--my-link-visited-color", "#2E8B57");
+    root.style.setProperty("--my-link-hover-color", "#e2e2e2");
+    root.style.setProperty("--button-background-color", "rgb(24, 24, 24)");
+    root.style.setProperty("--progPage-color", "white");
+    root.style.setProperty("--projectContainer-color", "white");
+    root.style.setProperty("--my-background-color", "rgb(24, 24, 24)");
+    root.style.setProperty("--my-caption-background-color", "rgb(48, 48, 48)");
+    for (let code of codes) {
+      code.style.setProperty('background-color', 'rgb(51, 51, 51)');
+    }
+  } else {
+    // light properties
+    root.style.setProperty("--my-green-color", "rgb(47, 163, 47)");
+    root.style.setProperty("--my-dark-accent-color", "darkgreen");
+    root.style.setProperty("--my-link-visited-color", "#2E8B57");
+    root.style.setProperty("--my-link-hover-color", "#00ff00");
+    root.style.setProperty("--button-background-color", "rgb(240, 238, 238)");
+    root.style.setProperty("--progPage-color", "black");
+    root.style.setProperty("--projectContainer-color", "black");
+    root.style.setProperty("--my-background-color", "#fefefe");
+    root.style.setProperty("--my-caption-background-color", "#f3f3f3");
+    for (let code of codes) {
+      code.style.setProperty('background-color', 'rgb(230, 230, 230)');
+    }
+  }
+  isDark = !isDark;
+}
+
 function executeAction() {
   let p = document.querySelector('#vim');
   let input = p.textContent.substring(0, p.textContent.length - 1);
@@ -114,6 +152,10 @@ function executeAction() {
     return result;
   }
   switch (input) {
+    case 'ccs':
+      changeColorScheme();
+      commandSucceed('Changed color scheme');
+      return true;
     case 'cls':
       commandSucceed('Cleared localStorage');
       localStorage.clear();

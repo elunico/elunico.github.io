@@ -3,7 +3,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src:  url(../assets/fonts/DejaVuSansMono.ttf) format('truetype');
+  src: url(../assets/fonts/DejaVuSansMono.ttf) format('truetype');
 }
 
 @font-face {
@@ -11,7 +11,7 @@
   font-style: italic;
   font-weight: 400;
   font-display: swap;
-  src:  url(../assets/fonts/DejaVuSansMono-Oblique.ttf) format('truetype');
+  src: url(../assets/fonts/DejaVuSansMono-Oblique.ttf) format('truetype');
 }
 
 @font-face {
@@ -19,7 +19,7 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src:  url(../assets/fonts/DejaVuSansMono-Bold.ttf) format('truetype');
+  src: url(../assets/fonts/DejaVuSansMono-Bold.ttf) format('truetype');
 }
 
 :root {
@@ -31,13 +31,11 @@
   --my-dark-accent-color: darkgreen;
   --my-link-visited-color: #2E8B57;
   --my-link-hover-color: #00ff00;
-
   --button-background-color: rgb(24, 24, 24);
   --progPage-color: white;
   --projectContainer-color: white;
   --my-background-color: rgb(24, 24, 24);
   --my-caption-background-color: rgb(48, 48, 48);
-
 }
 
 @media (prefers-color-scheme: dark) {
@@ -57,14 +55,12 @@
     --my-background-color: rgb(24, 24, 24);
     --my-caption-background-color: rgb(48, 48, 48);
   }
-
-  code {
+  .my-code {
     font-size: 95%;
     background-color: rgb(51, 51, 51);
     border-radius: 5px;
     padding: 3px;
   }
-
 }
 
 @media (prefers-color-scheme: light) {
@@ -82,7 +78,6 @@
     --my-background-color: #fefefe;
     --my-caption-background-color: #f3f3f3;
   }
-
   code {
     font-size: 95%;
     background-color: rgb(230, 230, 230);
@@ -170,8 +165,6 @@ a.buttonLink {
   }
 }
 
-
-
 .buttonActive {
   /* background-color: var(--my-dark-accent-color); */
   /* Dark active so hover is still green? */
@@ -210,7 +203,6 @@ a.buttonLink {
   margin-left: 14.5%;
   margin-right: 14.5%;
 }
-
 
 .progPageDescription {
   font-size: 1.15em;
@@ -269,18 +261,14 @@ a.buttonLink {
     opacity: 1;
     transition: none;
   }
-
   .fadesStatic {
     transition: none;
   }
-
   .fadesOffscreen {
     opacity: 1;
     transform: translate(0px, 0px);
     transition: none;
-
   }
-
   .fadesOnScreen {
     opacity: 1;
     transform: translate(0px, 0px);
