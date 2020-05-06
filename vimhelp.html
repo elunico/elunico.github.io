@@ -7,7 +7,7 @@
   <link rel="stylesheet" type="text/css" href="/css/vimhelp.css">
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
   <meta charset="UTF-8">
-  <title>VIM-like Help - Thomas Povinelli</title>
+  <title>Commands: Help - Thomas Povinelli</title>
 </head>
 
 <body class="home">
@@ -46,19 +46,26 @@
       </h2>
       <div class="projectDescription">
         <ul>
+          <h3>Color Scheme Changes</h3>
+          <li><strong>ccs</strong> - Change color scheme</li>
+          <li><strong>rcs</strong> - Reset color scheme (to prefers-color-scheme query)</li>
+          <br>
+          <h3>Page Navigation</h3>
           <li><strong>-&gt;h</strong> - Go to page Home</li>
           <li><strong>-&gt;p</strong> - Go to page Programming</li>
           <li><strong>-&gt;l</strong> - Go to page Linguistics</li>
           <li><strong>-&gt;i</strong> - Go to page Info</li>
-          <li><strong>ccs</strong> - Change color scheme</li>
-          <li><strong>rcs</strong> - Reset color scheme (to prefers-color-scheme query)</li>
+          <li><strong>?</strong> - Naviagte to this help page</li>
+          <br>
+          <h3>Scrolling Commands</h3>
           <li><strong>]]</strong> - Scroll to next section</li>
           <li><strong>[[</strong> - Scroll to previous section</li>
           <li><strong>gg</strong> - Scroll to page beginning</li>
           <li><strong>G</strong> - Scroll to page end</li>
+          <br>
+          <h3>Navigation commands</h3>
           <li><strong>:q</strong> - Quit website</li>
           <li><strong>:q!</strong> - Forcibly quit website</li>
-          <li><strong>?</strong> - Naviagte to this help page</li>
 
         </ul>
       </div>
@@ -76,18 +83,31 @@
       </div>
       <div class="projectDescription">
         <ul>
+          <h3>Browser &amp; Site Defaults</h3>
           <li><strong>f reset</strong> - Set font to website default</i></li>
           <li><strong>f dflt-s</strong> - Set font to browser's default serif font</i></li>
           <li><strong>f dflt-ss</strong> - Set font to browser's default sans-serif font</i></li>
           <li><strong>f dflt-m</strong> - Set font to browser's default monospace font</i></li>
+          <br>
+          <h3>Propriety Fonts</h3>
           <li><strong>f c</strong> - Set font to Consolas&dagger;</l>
           <li><strong>f mon</strong> - Set font to Monaco&dagger;</li>
+          <br>
+          <h3>Web fonts</h3>
           <li><strong>f mdj</strong> - Set font to Menlo/DejaVu Sans*</li>
           <li><strong>f um</strong> - Set font to Ubuntu Mono </li>
           <li><strong>f scp</strong> - Set font to Source Code Pro</li>
           <li><strong>f sm</strong> - Set Font to Space Mono</li>
           <li><strong>f i</strong> - Set font to Inconsolata</li>
           <li><strong>f crpr</strong> - Set font to Courier Prime</li>
+          <li><strong>f fs</strong> - Set Font to Fontdiner Swanky</li>
+          <li><strong>f ua</strong> - Set Font to Uncial Antiqua</li>
+          <li><strong>f samt</strong> - Set Font to Sacramento </li>
+          <li><strong>f se</strong> - Set Font to Special Elite</li>
+          <br>
+          <h3>Custom Font Family</h3>
+          <li><strong>cf &lt;family-name&gt;</strong> - Set the <code>font-family</code> property to whatever is given
+            after the <code>cf</code>.</li>
 
         </ul>
         <div>&dagger; <i>These fonts are propriety. Font file must be present on the local machine for this to work.</i>

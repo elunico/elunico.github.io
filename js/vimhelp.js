@@ -1,6 +1,6 @@
 window.onload = () => {
   reloadFontChoice();
-  typeText('VIM-like Commands', '#mainHeader', () => {
+  typeText('Commands: Help', '#mainHeader', () => {
     run_common();
   });
 };

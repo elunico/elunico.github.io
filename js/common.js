@@ -262,6 +262,10 @@ const fontDataForChoice = {
   'sm': { familyName: "Space Mono", loaded: false, loaderObject: { google: { families: ['Space Mono:400,400i,700,700i'] } } },
   'i': { familyName: "Inconsolata", loaded: false, loaderObject: { google: { families: ['Inconsolata:400,400i,700,700i'] } } },
   'crpr': { familyName: "Courier Prime", loaded: false, loaderObject: { google: { families: ['Courier Prime:400,400i,700,700i'] } } },
+  'fs': { familyName: "Fontdiner Swanky", loaded: false, loaderObject: { google: { families: ['Fontdiner Swanky:400,400i,700,700i'] } } },
+  'ua': { familyName: "Uncial Antiqua", loaded: false, loaderObject: { google: { families: ['Uncial Antiqua:400,400i,700,700i'] } } },
+  'samt': { familyName: "Sacramento", loaded: false, loaderObject: { google: { families: ['Sacramento:400,400i,700,700i'] } } },
+  'se': { familyName: "Special Elite", loaded: false, loaderObject: { google: { families: ['Special Elite:400,400i,700,700i'] } } }
 };
 
 function setCustomFontDev(choice) {
