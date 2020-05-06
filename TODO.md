@@ -27,15 +27,15 @@
 -  *NONE*
 
 ## Major Bugs
--  Sometimes the pages fade out then in instead of just in on first load
-  -  Only happens when not using cache (i.e. in Incognito or with Inspector open)
+-  ~~Sometimes the pages fade out then in instead of just in on first load~~
+  -  ~~Only happens when not using cache (i.e. in Incognito or with Inspector open)~~
 
 ## Minor Bugs
--  when going back the fade is broken
+-  ~~when going back the fade is broken~~
 
 ## Fun Things
 -  Add more photos of projects
-  -  maybe a Gallery or a page that hosts simple photos (boring)
-  -  probably would want template or some sort of plug n play thing for gallery work
+  -  ~~maybe a Gallery or a page that hosts simple photos (boring)~~
+  -  ~~probably would want template or some sort of plug n play thing for gallery work~~
 -  Add state so scrolling actually scrolls to next div (use scrollIntoView())
 -  ~~Add VIM style commands~~
