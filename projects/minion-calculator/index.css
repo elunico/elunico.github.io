@@ -1,3 +1,19 @@
+@font-face {
+    font-family: 'Minecraft';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(assets/fonts/Minecraft.otf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Minecraft';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url(assets/fonts/MinecraftBold.otf) format('truetype');
+}
+
 :root {
     --input-color: #152689;
     --background-color: #fff;
@@ -6,6 +22,8 @@
     --link-color: #1657e4;
     --stat-color: #0060dd;
     --border-color: #0a0a0a;
+    --main-font: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
+    --mono-font: "Source Code Pro", "Menlo", "Monaco", "Consolas", monospace;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,6 +35,8 @@
         --link-color: #3e75ee;
         --stat-color: #fff;
         --border-color: #5f5faf;
+        --main-font: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
+        --mono-font: "Source Code Pro", "Menlo", "Monaco", "Consolas", monospace;
     }
 }
 
@@ -24,7 +44,7 @@ body {
     background-color: var(--background-color);
     color: var(--foreground-color);
     margin: 1% 15% 1% 15%;
-    font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    font-family: var(--main-font);
 }
 
 input, option, select {
@@ -44,13 +64,13 @@ a:visited {
 }
 
 .minion-stat {
-    font-family: 'Source Code Pro', 'Menlo', 'Monaco', 'Consolas', 'Source Code Pro', 'Courier New', Courier, monospace;
+    font-family: var(--mono-font);
     color: var(--stat-color);
     font-size: 90%;
 }
 
 .minion-stat-cell {
-    font-family: 'Source Code Pro', 'Menlo', 'Monaco', 'Consolas', 'Source Code Pro', 'Courier New', Courier, monospace;
+    font-family: var(--mono-font);
     color: var(--stat-color);
     font-size: 90%;
     border-right: 1px solid var(--border-color);
@@ -62,7 +82,7 @@ a:visited {
 
 .minion-stat-cell-coins {
     padding-right: 1%;
-    font-family: 'Source Code Pro', 'Menlo', 'Monaco', 'Consolas', 'Source Code Pro', 'Courier New', Courier, monospace;
+    font-family: var(--mono-font);
     color: var(--stat-color);
     font-size: 90%;
     border-right: 1px solid var(--border-color);
@@ -92,6 +112,6 @@ td {
 }
 
 .status {
-    font-family: 'Source Code Pro', 'Menlo', 'Monaco', 'Consolas', 'Source Code Pro', 'Courier New', Courier, monospace;
+    font-family: var(--mono-font);
     font-size: 90%;
 }

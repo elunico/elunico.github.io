@@ -9,6 +9,7 @@ const addButton = document.getElementById('add-minion-button');
 const add24Button = document.getElementById('add-24-minion-button');
 const removeAllButton = document.getElementById('remove-all-minion-button');
 const colorSchemeButton = document.getElementById('color-scheme-button');
+const fontButton = document.getElementById('font-button');
 
 let isDark = matchMedia('(prefers-color-scheme: dark)').matches;
 colorSchemeButton.value = isDark ? "Switch to Light Mode" : "Switch to Dark Mode";
@@ -63,6 +64,27 @@ addButton.onclick = () => {
 
     addMinionFromForm();
 };
+
+let bitmapFontLevel = 0;
+
+fontButton.onclick = () => {
+    let root = document.documentElement;
+    if (bitmapFontLevel == 0) {
+        root.style.setProperty('--main-font', 'Minecraft');
+        root.style.setProperty('--mono-font', 'Minecraft');
+        bitmapFontLevel++;
+        fontButton.value = 'Less Bitmap Font';
+    } else if (bitmapFontLevel == 2) {
+        root.style.setProperty('--main-font', '"Source Sans Pro", "Helvetica", "Arial", sans-serif');
+        root.style.setProperty('--mono-font', '"Source Code Pro", "Menlo", "Monaco", "Consolas", monospace');
+        bitmapFontLevel = 0;
+        fontButton.value = 'More Bitmap Font';
+    } else if (bitmapFontLevel == 1) {
+        root.style.setProperty('--main-font', '"Source Sans Pro", "Helvetica", "Arial", sans-serif');
+        bitmapFontLevel++;
+        fontButton.value = 'No Bitmap Font';
+    }
+}
 
 let timeout = null;
 

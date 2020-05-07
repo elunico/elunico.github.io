@@ -25,7 +25,7 @@
             Use this tool to calculate the money you can make from various minion configurations.
         </p>
         <p> Start by adding a minion using the form below. </p>
-        <p id='hidden-notes-msg' class="note" hidden><i>...Notes are hidden...</i></p>
+        <p id='hidden-notes-msg' class="note" hidden>...Notes are hidden...</p>
         <span id="notes" class="note">
             <p>
                 Note 1: this assumes you have enough fuel for however long
@@ -56,6 +56,7 @@
         </span>
         <p>
             <input onclick="switchScheme()" type="button" value="Turn Dark Mode Off" id='color-scheme-button'>
+            <input onclick="switchFont()" type="button" value="More Bitmap Font" id='font-button'>
             <input onclick="hideNotes()" type="button" value="Hide Notes" id='hide-notes-button'>
             <script>
                 let hidden = false;
@@ -150,6 +151,14 @@
                 let slots = document.getElementById('slots');
                 MinionSlot.setParentContainer(slots);
             </script>
+        </p>
+        <p class="ack">
+            The Bitmap font used on this website is provided by
+            <a target="_blank" rel="noreferrer noopener" href="https://www.fontspace.com/jdgraphics">JDGrpahics</a> and
+            is downloaded from
+            <a target="_blank" rel="noreferrer noopener" href="https://www.fontspace.com/minecraft-font-f28180">this
+                website</a>
+            Many thanks for making it available for embedding on sites.
         </p>
     </body>
 
