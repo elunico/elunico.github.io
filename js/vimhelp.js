@@ -1,6 +1,6 @@
 window.onload = () => {
-  reloadFontChoice();
+  run_common_before_type();
   typeText('Commands: Help', '#mainHeader', () => {
-    run_common();
+    run_common_after_type();
   });
 };

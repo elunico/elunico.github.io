@@ -1,6 +1,6 @@
 window.onload = () => {
-  reloadFontChoice();
+  run_common_before_type();
   typeText('Thomas Povinelli', '#mainTitle', () => {
-    run_common();
+    run_common_after_type();
   }, 3);
 }

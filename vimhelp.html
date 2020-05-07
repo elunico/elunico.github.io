@@ -47,10 +47,17 @@
       <div class="projectDescription">
         <ul>
           <h3>Color Scheme Changes</h3>
-          <li><strong>ccs</strong> - Change color scheme</li>
-          <li><strong>rcs</strong> - Reset color scheme (to prefers-color-scheme query)</li>
+          <li><strong>tdm</strong> - Toggle Dark Mode (<em>this will reset all custom colors to defaults!</em>)
+          </li>
+          <li><strong>rcs</strong> - Reset color scheme (resets all colors and uses whatever mode is specified by
+            (prefers-color-scheme: dark))</li>
+          <li><strong>gmc</strong> - Get main color scheme color. Shown in command status area.</li>
+          <li><strong>gac</strong> - Get accent color scheme color. Shown in command status area.</li>
+          <li><strong>smc</strong> - Set main color scheme color. Color should be '#RGB' or '#RRGGBB' color.</li>
+          <li><strong>sac</strong> - Set accent color scheme color. Color should be '#RGB' or '#RRGGBB' color.</li>
           <br>
           <h3>Page Navigation</h3>
+          <li><strong>-&gt;c</strong> - Go to color picker (wow how convenience; see above)</li>
           <li><strong>-&gt;h</strong> - Go to page Home</li>
           <li><strong>-&gt;p</strong> - Go to page Programming</li>
           <li><strong>-&gt;l</strong> - Go to page Linguistics</li>
@@ -66,8 +73,13 @@
           <h3>Navigation commands</h3>
           <li><strong>:q</strong> - Quit website</li>
           <li><strong>:q!</strong> - Forcibly quit website</li>
+          <h3>History</h3>
+          <li><strong><i>up arrow</i></strong> - fill in the previously issued command</li>
+          <li><strong><i>down arrow</i></strong> - fill in the subsequently issued command</li>
 
         </ul>
+        <div><em>Note: when you have the vim cursor blinking you can paste. You can also copy by selecting the text as
+            normal.</em></div>
       </div>
     </div>
 

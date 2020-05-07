@@ -1,20 +1,59 @@
-const LS_FONT_CHOICE_NAME = 'font-choice';
+const DOMAIN = 'io.github.elunico-';
+
+const LS_FONT_CHOICE_NAME = `${DOMAIN}font-choice`;
+const LS_DARK_SET = `${DOMAIN}-set-dark`;
+const LS_MAIN_COLOR = `${DOMAIN}-main-color`;
+const LS_ACCENT_COLOR = `${DOMAIN}-accent-color`;
 const MY_MAIN_FONT_VAR = '--my-main-font';
 const DEFAULT_FONT_CHOICE = 'mdj';
+const CURSOR_SPAN = '<span class="cursor">&#x258A;</span>';
 
+// TODO: persist between pages?
+class CommandHistory {
+  constructor() {
+    this.backLog = [];
+    this.foreLog = [];
+    this.currentCommand = null;
+  }
 
-let lsd = localStorage.getItem('savedDark');
-let savedDark = lsd === 'true';
+  pushCommand(input) {
+    this.backLog.push(input);
+  }
 
-document.onreadystatechange = () => {
-  if (document.readyState == 'complete') {
-    const mediaMatchesDark = matchMedia('(prefers-color-scheme: dark)').matches;
-    if ((!mediaMatchesDark && savedDark) || (mediaMatchesDark && !savedDark)) {
-      savedDark = !savedDark;
-      changeColorScheme();
+  previousCommand() {
+    let c = this.backLog.pop();
+    if (c) {
+      this.foreLog.push(this.currentCommand);
+      this.currentCommand = c;
+    }
+    return c;
+  }
+
+  nextCommand() {
+    let c = this.foreLog.pop();
+    if (c) {
+      this.backLog.push(this.currentCommand);
+      this.currentCommand = c;
+    }
+    return c;
+  }
+
+  resetPosition() {
+    if (this.currentCommand) {
+      this.backLog.push(this.currentCommand);
+      this.currentCommand = null;
+    }
+    // FIXME: this should definitely be an index and a single list
+    // because as the history grows, this will get unsustainable 
+    while (this.foreLog.length > 0) {
+      this.backLog.push(this.foreLog.pop());
     }
   }
 }
+
+const commandHistory = new CommandHistory();
+let lsd = localStorage.getItem(LS_DARK_SET);
+let savedDark = lsd === 'true';
 
 
 function typeText(text, selector, then, period) {
@@ -27,14 +66,14 @@ function typeText(text, selector, then, period) {
   // until next page load
   let match = window.matchMedia('(prefers-reduced-motion: reduce)');
   if (match.matches) {
-    elt.innerHTML = text + '<span class="cursor">&#x258A;</span>';
+    elt.innerHTML = text + CURSOR_SPAN;
     then();
     return;
   }
 
   function animateText(active, elt, text, index) {
     if (active % period == 0)
-      elt.innerHTML = text.substring(0, index++) + '<span class="cursor">&#x258A;</span>'
+      elt.innerHTML = text.substring(0, index++) + CURSOR_SPAN
     if (index > text.length) {
       then();
     } else {
@@ -95,25 +134,69 @@ function commandError(cmd, reason) {
     if (!listening) {
       p.textContent = '';
     }
-  }, 2500);
+  }, 3500);
+  return false;
 }
 
 function commandSucceed(msg) {
   let p = document.querySelector('#vim');
+  p.style['background-color'] = cssValueOf('--my-background-color');
   p.textContent = `Success: ${msg}`;
   setTimeout(() => {
     if (!listening) {
       p.textContent = '';
+      p.style.removeProperty('background-color');
     }
-  }, 1500);
+  }, 3500);
+  return true;
+}
+
+function loadDarkModeDefaults() {
+  let codes = document.getElementsByClassName('my-code');
+
+  cssRootPut("--my-green-color", "#32CD32");
+  cssRootPut("--my-dark-accent-color", "darkgreen");
+  cssRootPut("--my-link-visited-color", "#2E8B57");
+  cssRootPut("--my-link-hover-color", "#e2e2e2");
+  cssRootPut("--button-background-color", "rgb(24, 24, 24)");
+  cssRootPut("--progPage-color", "white");
+  cssRootPut("--projectContainer-color", "white");
+  cssRootPut("--my-background-color", "rgb(24, 24, 24)");
+  cssRootPut("--my-caption-background-color", "rgb(48, 48, 48)");
+  for (let code of codes) {
+    code.style.setProperty('background-color', 'rgb(51, 51, 51)');
+  }
+}
+
+function loadLightModeDefaults() {
+  let codes = document.getElementsByClassName('my-code');
+
+  cssRootPut("--my-green-color", "rgb(47, 163, 47)");
+  cssRootPut("--my-dark-accent-color", "darkgreen");
+  cssRootPut("--my-link-visited-color", "#2E8B57");
+  cssRootPut("--my-link-hover-color", "#00ff00");
+  cssRootPut("--button-background-color", "rgb(240, 238, 238)");
+  cssRootPut("--progPage-color", "black");
+  cssRootPut("--projectContainer-color", "black");
+  cssRootPut("--my-background-color", "#fefefe");
+  cssRootPut("--my-caption-background-color", "#f3f3f3");
+  for (let code of codes) {
+    code.style.setProperty('background-color', 'rgb(230, 230, 230)');
+  }
 }
 
 function resetColorScheme() {
   let query = '(prefers-color-scheme: dark)';
   let matches = matchMedia(query).matches;
-  localStorage.setItem('savedDark', matches);
-  if (savedDark !== matches) {
-    changeColorScheme();
+  localStorage.setItem(LS_DARK_SET, matches);
+  if (matches) {
+    loadDarkModeDefaults();
+    localStorage.setItem(LS_ACCENT_COLOR, "darkgreen");
+    localStorage.setItem(LS_MAIN_COLOR, "#32CD32");
+  } else {
+    loadLightModeDefaults();
+    localStorage.setItem(LS_MAIN_COLOR, "rgb(47, 163, 47)");
+    localStorage.setItem(LS_ACCENT_COLOR, "darkgreen");
   }
   savedDark = matches;
   return true;
@@ -121,72 +204,88 @@ function resetColorScheme() {
 
 
 function changeColorScheme() {
-  let root = document.documentElement;
-  let codes = document.getElementsByClassName('my-code');
+  // if no preference for color scheme exists, we are using
+  // media query so default to that
+  if (!lsd) {
+    savedDark = matchMedia('(prefers-color-scheme: dark)').matches;
+  }
 
   if (!savedDark) {
     // dark properties 
-    root.style.setProperty("--my-green-color", "#32CD32");
-    root.style.setProperty("--my-dark-accent-color", "darkgreen");
-    root.style.setProperty("--my-link-visited-color", "#2E8B57");
-    root.style.setProperty("--my-link-hover-color", "#e2e2e2");
-    root.style.setProperty("--button-background-color", "rgb(24, 24, 24)");
-    root.style.setProperty("--progPage-color", "white");
-    root.style.setProperty("--projectContainer-color", "white");
-    root.style.setProperty("--my-background-color", "rgb(24, 24, 24)");
-    root.style.setProperty("--my-caption-background-color", "rgb(48, 48, 48)");
-    for (let code of codes) {
-      code.style.setProperty('background-color', 'rgb(51, 51, 51)');
-    }
+    loadDarkModeDefaults();
   } else {
     // light properties
-    root.style.setProperty("--my-green-color", "rgb(47, 163, 47)");
-    root.style.setProperty("--my-dark-accent-color", "darkgreen");
-    root.style.setProperty("--my-link-visited-color", "#2E8B57");
-    root.style.setProperty("--my-link-hover-color", "#00ff00");
-    root.style.setProperty("--button-background-color", "rgb(240, 238, 238)");
-    root.style.setProperty("--progPage-color", "black");
-    root.style.setProperty("--projectContainer-color", "black");
-    root.style.setProperty("--my-background-color", "#fefefe");
-    root.style.setProperty("--my-caption-background-color", "#f3f3f3");
-    for (let code of codes) {
-      code.style.setProperty('background-color', 'rgb(230, 230, 230)');
-    }
+    loadLightModeDefaults();
   }
   savedDark = !savedDark;
-  localStorage.setItem("savedDark", savedDark);
+  localStorage.setItem(LS_DARK_SET, savedDark);
+}
+
+function cssValueOf(v) {
+  let root = document.documentElement;
+  let value = getComputedStyle(root).getPropertyValue(v);
+  return value;
+}
+
+function cssRootPut(k, v) {
+  let root = document.documentElement;
+  root.style.setProperty(k, v);
 }
 
 function executeAction() {
   let p = document.querySelector('#vim');
   let input = p.textContent.substring(0, p.textContent.length - 1);
   input = input.trim();
-  if (input.substring(0, 2) == 'cf') {
-    let choice = input.split(/\s+/g).slice(1).join(" ");
-    setCustomFontDev(choice);
-    commandSucceed(`Attempted to update font family to ${choice}.`);
-    return true;
-  }
-  if (input.charAt(0) == 'f') {
-    let fontChoice = input.split(/\s+/g)[1];
-    let result = setFontFromChoice(fontChoice);
-    if (!result) {
-      commandError(`Invalid choice for font: ${fontChoice}`);
-    } else {
-      commandSucceed('Successfully updated font preference');
+  let parts = input.split(/\s+/g);
+  let command = parts[0];
+  let args = parts.slice(1);
+  commandHistory.pushCommand(input);
+  switch (command) {
+    case 'gmc':
+      return commandSucceed(`Main color is ${cssValueOf('--my-green-color')}`);
+    case 'gac':
+      return commandSucceed(`Accent color is ${cssValueOf('--my-dark-accent-color')}`);
+    case 'smc': {
+      let color = args[0];
+      if (!color.startsWith('#') || (color.length != 4 && color.length != 7)) {
+        return commandError('Provide a color that is `#RGB` or `#RRGGBB`')
+      }
+      cssRootPut('--my-green-color', color);
+      localStorage.setItem(LS_MAIN_COLOR, color);
+      return commandSucceed(`Set main color to ${color}`);
     }
-    return result;
-  }
-  switch (input) {
-    case 'ccs':
+    case 'sac': {
+      let color = args[0];
+      if (!color.startsWith('#') || (color.length != 4 && color.length != 7)) {
+        return commandError('Provide a color that is `#RGB` or `#RRGGBB`')
+      }
+      cssRootPut('--my-dark-accent-color', color);
+      localStorage.setItem(LS_ACCENT_COLOR, color);
+      return commandSucceed(`Set accent color to ${color}`);
+    }
+    case 'cf': {
+      let choice = args.join(" ");
+      setCustomFontDev(choice);
+      commandSucceed(`Attempted to update font family to ${choice}.`);
+      return true;
+    }
+    case 'f': {
+      let result = setFontFromChoice(args[0]);
+      if (!result) {
+        commandError(`Invalid choice for font: ${args[0]}`);
+      } else {
+        commandSucceed('Successfully updated font preference');
+      }
+      return result;
+    }
+    case 'tdm':
       changeColorScheme();
       commandSucceed('Changed color scheme');
       return true;
-    case 'rcs': {
+    case 'rcs':
       resetColorScheme();
-      commandSucceed(`Reset color scheme choice to (prefers-color-scheme: ) query`);
+      commandSucceed(`Reset color scheme default colors and mode`);
       return true;
-    }
     case 'cls':
       commandSucceed('Cleared localStorage');
       localStorage.clear();
@@ -194,6 +293,10 @@ function executeAction() {
     case '?':
       commandSucceed('Going to help');
       window.location = '/vimhelp.html';
+      return true;
+    case '->c':
+      commandSucceed('Going to color picker');
+      window.location = '/projects/color-picker/'
       return true;
     case '->p':
       commandSucceed('Going to programming!');
@@ -311,34 +414,53 @@ function changeMainFontFamily(toFamily) {
 
 let listening = false;
 
-function vimHandle() {
+function trimCursorText(text) {
+  console.log(text);
+  return text.replace('\u258A', '');
+}
 
+function vimHandle() {
   let bodies = document.getElementsByTagName('body');
   for (let body of bodies) {
     body.onkeydown = function (event) {
-      if (event.keyCode === 27) {
+      let p = document.querySelector('#vim');
+      if (event.keyCode === 27 || (!listening && event.keyCode == 84) ||
+        (!listening && event.keyCode == 191)) {
         listening = !listening;
-        let p = document.querySelector('#vim');
+        commandHistory.resetPosition();
         if (listening) {
-          p.innerHTML = '<span class="cursor">&#x258A;</span>';
+          p.innerHTML = CURSOR_SPAN;
         } else {
           p.innerHTML = '';
         }
       } else if (listening) {
-        if (event.keyCode === 13) {
+        if (event.keyCode === 86 && event.ctrlKey) {
+          navigator.clipboard.readText().then((text) => {
+            p.innerHTML = `${trimCursorText(p.textContent)}${text}${CURSOR_SPAN}`;
+          });
+        } else if (event.keyCode === 13) {
           listening = false;
+          commandHistory.resetPosition();
           executeAction();
         } else if (event.keyCode == 8) {
-          let p = document.querySelector('#vim');
           p.textContent = p.textContent.substring(0, p.textContent.length - 2);
-          p.innerHTML += '<span class="cursor">&#x258A;</span>';
-        } else {
+          p.innerHTML += CURSOR_SPAN;
+        } else if (event.keyCode == 38) {
+          let cmd = commandHistory.previousCommand();
+          if (cmd != null)
+            p.innerHTML = `${cmd}${CURSOR_SPAN}`;
+        } else if (event.keyCode == 40) {
+          let cmd = commandHistory.nextCommand();
+          if (cmd != null)
+            p.innerHTML = `${cmd}${CURSOR_SPAN}`;
+        }
+        else {
           if (event.key.length != 1) {
             return;
           }
           let p = document.querySelector('#vim');
           p.textContent = p.textContent.substring(0, p.textContent.length - 1) + event.key;
-          p.innerHTML = p.innerHTML + '<span class="cursor">&#x258A;</span>';
+          p.innerHTML = p.innerHTML + CURSOR_SPAN;
         }
         event.preventDefault();
       }
@@ -357,7 +479,39 @@ function reloadFontChoice() {
   }
 }
 
-function run_common() {
+function loadCustomColors() {
+  let main = localStorage.getItem(LS_MAIN_COLOR);
+  let accent = localStorage.getItem(LS_ACCENT_COLOR);
+  cssRootPut('--my-green-color', main);
+  cssRootPut('--my-accent-color', accent);
+}
+
+function loadBrightnessPreference() {
+  const mediaMatchesDark = matchMedia('(prefers-color-scheme: dark)').matches;
+  // lsd checks to see if anything is set in localStorage
+  // if no preference is recorded don't change the color scheme, since
+  // the page is already responding to (prefers-color-scheme: ) 
+  // only if there is an explicit override AND it does not match the media query
+  // should we change
+  if (!lsd) return;
+  if (savedDark) {
+    loadDarkModeDefaults();
+  } else {
+    loadLightModeDefaults();
+  }
+}
+
+
+function run_common_before_type() {
+  reloadFontChoice();
+  loadBrightnessPreference();
+  loadCustomColors();
+  window.onorientationchange = function (event) {
+    console.log(event);
+    alert("motion");
+  };
+}
+function run_common_after_type() {
   fade();
   cursorFade();
   vimHandle();

@@ -2,9 +2,9 @@ window.onload = () => {
   const done = '<a class="headerLink" href="#information">Information</a> ' +
     '&amp; <a class="headerLink" href="#content">Contact</a>';
 
-  reloadFontChoice();
+  run_common_before_type();
   typeText('Information &amp; Contact', '#mainHeader', () => {
-    run_common();
+    run_common_after_type();
     let m = document.querySelector('#mainHeader');
     m.innerHTML = done;
   });

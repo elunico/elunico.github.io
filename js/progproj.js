@@ -1,7 +1,7 @@
 window.onload = () => {
-  reloadFontChoice();
+  run_common_before_type();
   typeText('Programming Projects', '#mainHeader', () => {
-    run_common();
+    run_common_after_type();
   });
 
   let jpeditGallery = new Gallery('jpedit-gallery', {
