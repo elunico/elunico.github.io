@@ -214,9 +214,17 @@ function changeColorScheme() {
   if (!savedDark) {
     // dark properties 
     loadDarkModeDefaults();
+    let main = localStorage.getItem(LS_MAIN_COLOR);
+    let accent = localStorage.getItem(LS_ACCENT_COLOR);
+    cssRootPut('--my-green-color', main);
+    cssRootPut('--my-dark-accent-color', accent);
   } else {
     // light properties
     loadLightModeDefaults();
+    let main = localStorage.getItem(LS_MAIN_COLOR);
+    let accent = localStorage.getItem(LS_ACCENT_COLOR);
+    cssRootPut('--my-green-color', main);
+    cssRootPut('--my-dark-accent-color', accent);
   }
   savedDark = !savedDark;
   localStorage.setItem(LS_DARK_SET, savedDark);
