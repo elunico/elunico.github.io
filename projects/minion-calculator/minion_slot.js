@@ -80,8 +80,9 @@ function calculateHour(actionInterval, itemsPerAction, pricePerItem, fuel, up1, 
 }
 
 class MinionSlot {
-    static totalSlots = 0;
-    static minionSlotContainer = null;
+    // not supported outside of Chrome, initialzed below
+    //static totalSlots = 0;
+    //static minionSlotContainer = null;
 
     constructor(name, actionTime, itemsPerAction, pricePerItem, fuel, upgrade1, upgrade2, additionalBonusPercentage) {
         this.name = name;
@@ -133,7 +134,6 @@ class MinionSlot {
         obj.occupied = true;
 
         obj.render();
-        console.log(JSON.stringify(obj));
     }
 
     static setParentContainer(elt) {
@@ -364,3 +364,7 @@ class MinionSlot {
         return data;
     }
 }
+
+// static fields are not yet supported 
+MinionSlot.totalSlots = 0;
+MinionSlot.minionSlotContainer = null;

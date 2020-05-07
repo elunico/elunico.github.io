@@ -1,7 +1,6 @@
 class DropDown {
     constructor(parentEltOrId, ...options) {
         if (typeof parentEltOrId == 'string') {
-            console.log(parentEltOrId);
             this.element = document.getElementById(parentEltOrId);
             this.parent = this.element.parentNode;
             this.options = new Array(this.element.options.length).fill(0).map((value, idx) => this.element.options[idx].value);
