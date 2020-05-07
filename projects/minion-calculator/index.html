@@ -62,9 +62,9 @@
                 let hidden = false;
 
                 function hideNotes() {
-                    let btn = document.getElementById('hide-notes-button');
-                    let msg = document.getElementById('hidden-notes-msg');
-                    let notes = document.getElementById('notes');
+                    const btn = document.getElementById('hide-notes-button');
+                    const msg = document.getElementById('hidden-notes-msg');
+                    const notes = document.getElementById('notes');
                     if (hidden) {
                         btn.value = 'Hide Notes';
                         notes.removeAttribute('hidden');
@@ -148,7 +148,7 @@
             <span id="slots">
             </span>
             <script>
-                let slots = document.getElementById('slots');
+                const slots = document.getElementById('slots');
                 MinionSlot.setParentContainer(slots);
             </script>
         </p>

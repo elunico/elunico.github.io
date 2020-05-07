@@ -15,7 +15,7 @@ class DropDown {
 
     indexOf(optionName) {
         let idx = 0;
-        for (let option of this.options) {
+        for (const option of this.options) {
             if (option == optionName)
                 return idx;
             idx++;
@@ -28,7 +28,7 @@ class DropDown {
     }
 
     selectItem(optionName) {
-        let index = this.indexOf(optionName);
+        const index = this.indexOf(optionName);
         if (index === -1)
             throw new Error(`No such element in option: ${optionName}`);
         this.element.selectedIndex = index;

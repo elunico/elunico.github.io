@@ -1,6 +1,6 @@
 const MAX_MINION_SLOTS = 24;
-
 const SLOT_REGISTER = {};
+
 for (let i = 1; i <= MAX_MINION_SLOTS; i++) {
     SLOT_REGISTER[i] = null;
 }
@@ -8,7 +8,7 @@ for (let i = 1; i <= MAX_MINION_SLOTS; i++) {
 function updateCoinTotals() {
     const formatter = Intl.NumberFormat('en-US');
     let hourTotal = 0
-    for (let value of Object.values(SLOT_REGISTER)) {
+    for (const value of Object.values(SLOT_REGISTER)) {
         if (value !== null)
             hourTotal += value.calculateHourlyCoins();
     }
@@ -43,7 +43,7 @@ function calculateNewSpeed(baseSpeed, fuel, up1, up2, addbonus) {
     // totalSpeed = total fraction of speed multipliers of all sources
     // i.e 0.25 (elava) + 0.3 (rabbit pet) = 0.55 total bus sum
     // bonus speed = base speed * (1 - (totalSpeed / (1 + totalSpeed)))
-    let bonus1 = getFuelSpeedMultiplier(fuel);
+    const bonus1 = getFuelSpeedMultiplier(fuel);
     let totalSpeed = bonus1 + Number(addbonus);
     if (up1 == 'flycatcher')
         totalSpeed += 0.2;
@@ -67,7 +67,7 @@ function calculateHour(actionInterval, itemsPerAction, pricePerItem, fuel, up1, 
     // later if needed (farms can kill mobs without minions so it is more 
     // flexible to keep it as items per action)
 
-    let speed = calculateNewSpeed(actionInterval, fuel, up1, up2, addbonus); // get speed
+    const speed = calculateNewSpeed(actionInterval, fuel, up1, up2, addbonus); // get speed
     if (fuel == 'catalyst')
         itemsPerAction *= 3;
 
@@ -105,7 +105,7 @@ class MinionSlot {
     }
 
     static getNextSlot() {
-        for (let key of Object.keys(SLOT_REGISTER)) {
+        for (const key of Object.keys(SLOT_REGISTER)) {
             if (SLOT_REGISTER[key] === null) {
                 MinionSlot.incrementMinionCount();
                 return key;
@@ -119,6 +119,7 @@ class MinionSlot {
     static fromLocalStorage(id) {
         const str = localStorage.getItem(`minion-slot-${id}`);
         if (!str) return;
+
         const data = JSON.parse(str);
 
         const obj = new MinionSlot();
@@ -289,7 +290,7 @@ class MinionSlot {
     }
 
     static removeMinion(id) {
-        let elt = document.getElementById(`minion-slot-${id}`);
+        const elt = document.getElementById(`minion-slot-${id}`);
         if (!elt) return;
 
         MinionSlot.removeFromLocalStorage(id);
@@ -341,7 +342,7 @@ class MinionSlot {
         document.getElementById(`sl${this.id}-upgrade2`).innerHTML = this.upgrade2
         document.getElementById(`sl${this.id}-additional-bonus`).innerHTML = this.additionalBonusPercentage
 
-        let hour = this.calculateHourlyCoins().toFixed(1);
+        const hour = this.calculateHourlyCoins().toFixed(1);
 
         document.getElementById(`sl${this.id}-coinshour`).innerHTML = formatter.format(hour);
         document.getElementById(`sl${this.id}-coinsday`).innerHTML = formatter.format(hour * 24);
