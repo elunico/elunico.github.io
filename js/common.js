@@ -204,10 +204,11 @@ function resetColorScheme() {
 
 
 function changeColorScheme() {
-  // if no preference for color scheme exists, we are using
-  // media query so default to that
-  if (!lsd) {
+  // // if no preference for color scheme exists, we are using
+  // // media query so default to that
+  if (lsd === null) {
     savedDark = matchMedia('(prefers-color-scheme: dark)').matches;
+    lsd = savedDark;
   }
 
   if (!savedDark) {
