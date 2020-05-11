@@ -424,7 +424,6 @@ function changeMainFontFamily(toFamily) {
 let listening = false;
 
 function trimCursorText(text) {
-  console.log(text);
   return text.replace('\u258A', '');
 }
 
