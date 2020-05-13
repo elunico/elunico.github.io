@@ -3,10 +3,14 @@ const DOMAIN = 'io.github.elunico-';
 const LS_FONT_CHOICE_NAME = `${DOMAIN}font-choice`;
 const LS_DARK_SET = `${DOMAIN}-set-dark`;
 const LS_MAIN_COLOR = `${DOMAIN}-main-color`;
+const LS_TEXT_COLOR = `${DOMAIN}-text-color`;
 const LS_ACCENT_COLOR = `${DOMAIN}-accent-color`;
+const LS_STATUS_TIMEOUT = `${DOMAIN}-status-timeout`;
 const MY_MAIN_FONT_VAR = '--my-main-font';
 const DEFAULT_FONT_CHOICE = 'mdj';
 const CURSOR_SPAN = '<span class="cursor">&#x258A;</span>';
+
+let status_timeout = 3500;
 
 // TODO: persist between pages?
 class CommandHistory {
@@ -125,44 +129,42 @@ function cursorFade() {
 const sectionSize = 600;
 const pageSize = 10000;
 
-function commandError(cmd, reason) {
+function commandStatus(text, color) {
   let p = document.querySelector('#vim');
-  p.style.color = 'red';
-  p.textContent = `Error!: ${cmd}: ${reason}`;
+  p.style.color = color;
+  p.style['background-color'] = cssGetVar('--my-background-color');
+  p.textContent = text;
   setTimeout(() => {
     p.style.color = '';
     if (!listening) {
       p.textContent = '';
+      p.style.removeProperty('background-color');
     }
-  }, 3500);
+  }, status_timeout);
+}
+
+function commandError(cmd, reason) {
+  commandStatus(`Error!: ${cmd}: ${reason}`, 'red');
   return false;
 }
 
 function commandSucceed(msg) {
-  let p = document.querySelector('#vim');
-  p.style['background-color'] = cssValueOf('--my-background-color');
-  p.textContent = `Success: ${msg}`;
-  setTimeout(() => {
-    if (!listening) {
-      p.textContent = '';
-      p.style.removeProperty('background-color');
-    }
-  }, 3500);
+  commandStatus(`Success: ${msg}`, '#32CD32');
   return true;
 }
 
 function loadDarkModeDefaults() {
   let codes = document.getElementsByClassName('my-code');
 
-  cssRootPut("--my-green-color", "#32CD32");
-  cssRootPut("--my-dark-accent-color", "darkgreen");
-  cssRootPut("--my-link-visited-color", "#2E8B57");
-  cssRootPut("--my-link-hover-color", "#e2e2e2");
-  cssRootPut("--button-background-color", "rgb(24, 24, 24)");
-  cssRootPut("--progPage-color", "white");
-  cssRootPut("--projectContainer-color", "white");
-  cssRootPut("--my-background-color", "rgb(24, 24, 24)");
-  cssRootPut("--my-caption-background-color", "rgb(48, 48, 48)");
+  cssSetVar("--my-green-color", "#32CD32");
+  cssSetVar("--my-dark-accent-color", "darkgreen");
+  cssSetVar("--my-link-visited-color", "#2E8B57");
+  cssSetVar("--my-link-hover-color", "#e2e2e2");
+  cssSetVar("--button-background-color", "rgb(24, 24, 24)");
+  cssSetVar("--progPage-color", "white");
+  cssSetVar("--projectContainer-color", "white");
+  cssSetVar("--my-background-color", "rgb(24, 24, 24)");
+  cssSetVar("--my-caption-background-color", "rgb(48, 48, 48)");
   for (let code of codes) {
     code.style.setProperty('background-color', 'rgb(51, 51, 51)');
   }
@@ -171,15 +173,15 @@ function loadDarkModeDefaults() {
 function loadLightModeDefaults() {
   let codes = document.getElementsByClassName('my-code');
 
-  cssRootPut("--my-green-color", "rgb(47, 163, 47)");
-  cssRootPut("--my-dark-accent-color", "darkgreen");
-  cssRootPut("--my-link-visited-color", "#2E8B57");
-  cssRootPut("--my-link-hover-color", "#00ff00");
-  cssRootPut("--button-background-color", "rgb(240, 238, 238)");
-  cssRootPut("--progPage-color", "black");
-  cssRootPut("--projectContainer-color", "black");
-  cssRootPut("--my-background-color", "#fefefe");
-  cssRootPut("--my-caption-background-color", "#f3f3f3");
+  cssSetVar("--my-green-color", "rgb(47, 163, 47)");
+  cssSetVar("--my-dark-accent-color", "darkgreen");
+  cssSetVar("--my-link-visited-color", "#2E8B57");
+  cssSetVar("--my-link-hover-color", "#00ff00");
+  cssSetVar("--button-background-color", "rgb(240, 238, 238)");
+  cssSetVar("--progPage-color", "black");
+  cssSetVar("--projectContainer-color", "black");
+  cssSetVar("--my-background-color", "#fefefe");
+  cssSetVar("--my-caption-background-color", "#f3f3f3");
   for (let code of codes) {
     code.style.setProperty('background-color', 'rgb(230, 230, 230)');
   }
@@ -193,10 +195,12 @@ function resetColorScheme() {
     loadDarkModeDefaults();
     localStorage.setItem(LS_ACCENT_COLOR, "darkgreen");
     localStorage.setItem(LS_MAIN_COLOR, "#32CD32");
+    localStorage.setItem(LS_TEXT_COLOR, 'white');
   } else {
     loadLightModeDefaults();
     localStorage.setItem(LS_MAIN_COLOR, "rgb(47, 163, 47)");
     localStorage.setItem(LS_ACCENT_COLOR, "darkgreen");
+    localStorage.setItem(LS_TEXT_COLOR, 'black');
   }
   savedDark = matches;
   return true;
@@ -216,27 +220,27 @@ function changeColorScheme() {
     loadDarkModeDefaults();
     let main = localStorage.getItem(LS_MAIN_COLOR);
     let accent = localStorage.getItem(LS_ACCENT_COLOR);
-    cssRootPut('--my-green-color', main);
-    cssRootPut('--my-dark-accent-color', accent);
+    cssSetVar('--my-green-color', main);
+    cssSetVar('--my-dark-accent-color', accent);
   } else {
     // light properties
     loadLightModeDefaults();
     let main = localStorage.getItem(LS_MAIN_COLOR);
     let accent = localStorage.getItem(LS_ACCENT_COLOR);
-    cssRootPut('--my-green-color', main);
-    cssRootPut('--my-dark-accent-color', accent);
+    cssSetVar('--my-green-color', main);
+    cssSetVar('--my-dark-accent-color', accent);
   }
   savedDark = !savedDark;
   localStorage.setItem(LS_DARK_SET, savedDark);
 }
 
-function cssValueOf(v) {
+function cssGetVar(v) {
   let root = document.documentElement;
   let value = getComputedStyle(root).getPropertyValue(v);
   return value;
 }
 
-function cssRootPut(k, v) {
+function cssSetVar(k, v) {
   let root = document.documentElement;
   root.style.setProperty(k, v);
 }
@@ -250,16 +254,39 @@ function executeAction() {
   let args = parts.slice(1);
   commandHistory.pushCommand(input);
   switch (command) {
+    case 'gsto':
+      return commandSucceed(`Status timeout is ${status_timeout / 1000} seconds`);
+    case 'gtc':
+      return commandSucceed(`Text color is ${cssGetVar('--progPage-color')}`);
     case 'gmc':
-      return commandSucceed(`Main color is ${cssValueOf('--my-green-color')}`);
+      return commandSucceed(`Main color is ${cssGetVar('--my-green-color')}`);
     case 'gac':
-      return commandSucceed(`Accent color is ${cssValueOf('--my-dark-accent-color')}`);
+      return commandSucceed(`Accent color is ${cssGetVar('--my-dark-accent-color')}`);
+    case 'ssto': {
+      let timeoutInput = args[0];
+      let timeout = Number(timeoutInput);
+      if (isNaN(timeout) || timeout < 1 || timeout > 120000) {
+        return commandError(`Timeout value ${timeoutInput} is invalid. Enter a number between 1 and 120000`);
+      }
+      status_timeout = timeout * 1000;
+      localStorage.setItem(LS_STATUS_TIMEOUT, status_timeout);
+      return commandSucceed(`Timeout set to ${timeout} seconds`);
+    }
+    case 'stc': {
+      let color = args[0];
+      if (!color.startsWith('#') || (color.length != 4 && color.length != 7)) {
+        return commandError('Provide a color that is `#RGB` or `#RRGGBB`')
+      }
+      cssSetVar('--progPage-color', color);
+      localStorage.setItem(LS_TEXT_COLOR, color);
+      return commandSucceed(`Set text color to ${color}`);
+    }
     case 'smc': {
       let color = args[0];
       if (!color.startsWith('#') || (color.length != 4 && color.length != 7)) {
         return commandError('Provide a color that is `#RGB` or `#RRGGBB`')
       }
-      cssRootPut('--my-green-color', color);
+      cssSetVar('--my-green-color', color);
       localStorage.setItem(LS_MAIN_COLOR, color);
       return commandSucceed(`Set main color to ${color}`);
     }
@@ -268,7 +295,7 @@ function executeAction() {
       if (!color.startsWith('#') || (color.length != 4 && color.length != 7)) {
         return commandError('Provide a color that is `#RGB` or `#RRGGBB`')
       }
-      cssRootPut('--my-dark-accent-color', color);
+      cssSetVar('--my-dark-accent-color', color);
       localStorage.setItem(LS_ACCENT_COLOR, color);
       return commandSucceed(`Set accent color to ${color}`);
     }
@@ -490,8 +517,10 @@ function reloadFontChoice() {
 function loadCustomColors() {
   let main = localStorage.getItem(LS_MAIN_COLOR);
   let accent = localStorage.getItem(LS_ACCENT_COLOR);
-  cssRootPut('--my-green-color', main);
-  cssRootPut('--my-accent-color', accent);
+  let text = localStorage.getItem(LS_TEXT_COLOR);
+  cssSetVar('--my-green-color', main);
+  cssSetVar('--my-accent-color', accent);
+  cssSetVar('--progPage-color', text);
 }
 
 function loadBrightnessPreference() {
@@ -514,6 +543,7 @@ function run_common_before_type() {
   reloadFontChoice();
   loadBrightnessPreference();
   loadCustomColors();
+  status_timeout = Number(localStorage.getItem(LS_STATUS_TIMEOUT)) || 3500;
   window.onorientationchange = function (event) {
     console.log(event);
     alert("motion");

@@ -1,12 +1,12 @@
 .contactList {
   font-size: 1.15em;
-  color: var(--projectContainer-color);
+  color: var(--progPage-color);
   font-family: var(--my-main-font), monospace;
 }
 
 .list {
   font-size: 1.1em;
-  color: var(--projectContainer-color);
+  color: var(--progPage-color);
   font-family: var(--my-main-font), monospace;
   margin-left: 2%;
   margin-right: 2%;
@@ -24,7 +24,7 @@ td {
 }
 
 .projectContainer {
-  color: var(--projectContainer-color);
+  color: var(--progPage-color);
 }
 
 .projectDescription {
