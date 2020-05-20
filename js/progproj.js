@@ -16,6 +16,10 @@ window.onload = () => {
     "/assets/projects/programming/SocDraw_head4.png": "A screenshot showing two clients in the same SocDraw room displaying the same drawing."
   });
 
+  let cysGallery = new Gallery('cys-gallery', {
+    "/assets/projects/programming/cys-browser-action.png": "A screenshot of the browser action popup window for Custom YouTube Speed"
+  });
+
   let redistricerGallery = new Gallery('redistricter-gallery', {
     "/assets/projects/programming/redistricter_head.jpg": "A screenshot of the Redistricter application with a state in view and sidebar open."
   });
