@@ -144,12 +144,12 @@ function commandStatus(text, color) {
 }
 
 function commandError(cmd, reason) {
-  commandStatus(`Error!: ${cmd}: ${reason}`, 'red');
+  commandStatus(`Error!: ${cmd}: ${reason}`, '#f00');
   return false;
 }
 
 function commandSucceed(msg) {
-  commandStatus(`Success: ${msg}`, '#32CD32');
+  commandStatus(`Success: ${msg}`, cssGetVar('--my-green-color'));
   return true;
 }
 
@@ -222,15 +222,27 @@ function changeColorScheme() {
     loadDarkModeDefaults();
     let main = localStorage.getItem(LS_MAIN_COLOR);
     let accent = localStorage.getItem(LS_ACCENT_COLOR);
+    let text = localStorage.getItem(LS_TEXT_COLOR);
+    if (!text || text == '#000') {
+      text = '#fff';
+      localStorage.setItem(LS_TEXT_COLOR, text);
+    }
     cssSetVar('--my-green-color', main);
     cssSetVar('--my-dark-accent-color', accent);
+    cssSetVar('--progPage-color', text);
   } else {
     // light properties
     loadLightModeDefaults();
     let main = localStorage.getItem(LS_MAIN_COLOR);
     let accent = localStorage.getItem(LS_ACCENT_COLOR);
+    let text = localStorage.getItem(LS_TEXT_COLOR);
+    if (!text || text == '#fff') {
+      text = '#000';
+      localStorage.setItem(LS_TEXT_COLOR, text);
+    }
     cssSetVar('--my-green-color', main);
     cssSetVar('--my-dark-accent-color', accent);
+    cssSetVar('--progPage-color', text);
   }
   savedDark = !savedDark;
   localStorage.setItem(LS_DARK_SET, savedDark);
@@ -532,6 +544,7 @@ function loadCustomColors() {
   let main = localStorage.getItem(LS_MAIN_COLOR);
   let accent = localStorage.getItem(LS_ACCENT_COLOR);
   let text = localStorage.getItem(LS_TEXT_COLOR);
+  console.log(text);
   cssSetVar('--my-green-color', main);
   cssSetVar('--my-accent-color', accent);
   cssSetVar('--progPage-color', text);
