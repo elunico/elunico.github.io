@@ -48,7 +48,7 @@ class CommandHistory {
       this.currentCommand = null;
     }
     // FIXME: this should definitely be an index and a single list
-    // because as the history grows, this will get unsustainable 
+    // because as the history grows, this will get unsustainable
     while (this.foreLog.length > 0) {
       this.backLog.push(this.foreLog.pop());
     }
@@ -194,11 +194,13 @@ function resetColorScheme() {
   if (matches) {
     loadDarkModeDefaults();
     localStorage.setItem(LS_ACCENT_COLOR, "darkgreen");
+    changeImageColor("32CD32")
     localStorage.setItem(LS_MAIN_COLOR, "#32CD32");
     localStorage.setItem(LS_TEXT_COLOR, 'white');
   } else {
     loadLightModeDefaults();
-    localStorage.setItem(LS_MAIN_COLOR, "rgb(47, 163, 47)");
+    localStorage.setItem(LS_MAIN_COLOR, "2fa32f");
+    changeImageColor("2fa32f")
     localStorage.setItem(LS_ACCENT_COLOR, "darkgreen");
     localStorage.setItem(LS_TEXT_COLOR, 'black');
   }
@@ -216,7 +218,7 @@ function changeColorScheme() {
   }
 
   if (!savedDark) {
-    // dark properties 
+    // dark properties
     loadDarkModeDefaults();
     let main = localStorage.getItem(LS_MAIN_COLOR);
     let accent = localStorage.getItem(LS_ACCENT_COLOR);
@@ -287,6 +289,7 @@ function executeAction() {
         return commandError('Provide a color that is `#RGB` or `#RRGGBB`')
       }
       cssSetVar('--my-green-color', color);
+      changeImageColor(color);
       localStorage.setItem(LS_MAIN_COLOR, color);
       return commandSucceed(`Set main color to ${color}`);
     }
@@ -508,9 +511,20 @@ function reloadFontChoice() {
   if (choice) {
     let result = setFontFromChoice(choice)
     if (!result) {
-      // attempt to set font-family name directly 
+      // attempt to set font-family name directly
       changeMainFontFamily(choice);
     }
+  }
+}
+
+function changeImageColor(hexColor) {
+  if (!hexColor) { return; }
+  const imageH = 120;
+  let { hue: h, saturation: s, brightness: b } = rgbColorToHSBColor(hexstringToRGBColor(hexColor));
+  let images = document.getElementsByTagName('img');
+  for (let image of images) {
+    let filterString = `hue-rotate(${h - imageH}deg) saturate(${s}) brightness(${b})`;
+    image.style.setProperty('filter', filterString);
   }
 }
 
@@ -521,13 +535,14 @@ function loadCustomColors() {
   cssSetVar('--my-green-color', main);
   cssSetVar('--my-accent-color', accent);
   cssSetVar('--progPage-color', text);
+  changeImageColor(main);
 }
 
 function loadBrightnessPreference() {
   const mediaMatchesDark = matchMedia('(prefers-color-scheme: dark)').matches;
   // lsd checks to see if anything is set in localStorage
   // if no preference is recorded don't change the color scheme, since
-  // the page is already responding to (prefers-color-scheme: ) 
+  // the page is already responding to (prefers-color-scheme: )
   // only if there is an explicit override AND it does not match the media query
   // should we change
   if (!lsd) return;
@@ -538,6 +553,65 @@ function loadBrightnessPreference() {
   }
 }
 
+function hexstringToRGBColor(string) {
+  if (string.startsWith('#')) {
+    string = string.substring(1);
+  }
+  if (string.length == 3) {
+    return {
+      red: parseInt(string.charAt(0) + string.charAt(0), 16),
+      green: parseInt(string.charAt(1) + string.charAt(1), 16),
+      blue: parseInt(string.charAt(2) + string.charAt(2), 16)
+    }
+  } else if (string.length == 6) {
+    return {
+      red: parseInt(string.substring(0, 2), 16),
+      green: parseInt(string.substring(2, 4), 16),
+      blue: parseInt(string.substring(4, 6), 16)
+    }
+  } else {
+    throw new Error(`Invalid hexstring: ${string}`);
+  }
+}
+
+function normalizeRGBColor({ red, green, blue }) {
+  return { red: red / 255, blue: blue / 255, green: green / 255 }
+}
+
+function rgbColorToHSBColor({ red, green, blue }) {
+  /*
+   * Formulas for this conversion were taken from the Wikipedia
+   * Page https://en.wikipedia.org/wiki/HSL_and_HSV
+   */
+
+  let normalized = normalizeRGBColor({ red, green, blue });
+  red = normalized.red;
+  green = normalized.green;
+  blue = normalized.blue;
+
+  let M = Math.max(red, green, blue);
+  let m = Math.min(red, green, blue);
+
+  let C = M - m;
+
+  let h;
+  if (C == 0) {
+    h = 0;
+  } else if (M == red) {
+    h = ((green - blue) / C) % 6;
+  } else if (M == green) {
+    h = ((blue - red) / C) + 2;
+  } else if (M == blue) {
+    h = ((red - green) / C) + 4;
+  }
+  h = 60 * h;
+
+  let l = (M + m) / 2;
+  let b = M;
+  let s = (l == 0 || l == 1) ? 0 : (C / (1 - Math.abs(2 * l - 1)))
+
+  return { hue: h, saturation: s, brightness: b };
+}
 
 function run_common_before_type() {
   reloadFontChoice();
@@ -549,6 +623,7 @@ function run_common_before_type() {
     alert("motion");
   };
 }
+
 function run_common_after_type() {
   fade();
   cursorFade();
