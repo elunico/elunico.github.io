@@ -199,7 +199,7 @@ function resetColorScheme() {
     localStorage.setItem(LS_TEXT_COLOR, 'white');
   } else {
     loadLightModeDefaults();
-    localStorage.setItem(LS_MAIN_COLOR, "2fa32f");
+    localStorage.setItem(LS_MAIN_COLOR, "#2fa32f");
     changeImageColor("2fa32f")
     localStorage.setItem(LS_ACCENT_COLOR, "darkgreen");
     localStorage.setItem(LS_TEXT_COLOR, 'black');
