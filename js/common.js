@@ -626,10 +626,36 @@ function rgbColorToHSBColor({ red, green, blue }) {
   return { hue: h, saturation: s, brightness: b };
 }
 
+let hr = 0;
+function doColorWheel(elt) {
+  if (!elt.wheel) {
+    return;
+  }
+  elt.style.filter = `hue-rotate(${hr}deg)`;
+  hr = ((hr += 3) % 360);
+  requestAnimationFrame(() => doColorWheel(elt));
+}
+
+function setDateBasedClass() {
+  let query = matchMedia('(prefers-reduced-motion: reduce)');
+  if (query.matches) {
+    return;
+  }
+
+  if ((new Date()).getMonth() == 5) {
+    let buttons = document.querySelectorAll('.button');
+    for (let button of buttons) {
+      button.onmouseenter = () => { button.wheel = true; doColorWheel(button); }
+      button.onmouseout = () => { button.wheel = false; button.style.filter = ''; }
+    }
+  }
+}
+
 function run_common_before_type() {
   reloadFontChoice();
   loadBrightnessPreference();
   loadCustomColors();
+  setDateBasedClass();
   status_timeout = Number(localStorage.getItem(LS_STATUS_TIMEOUT)) || 3500;
   window.onorientationchange = function (event) {
     console.log(event);
