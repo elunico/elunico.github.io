@@ -259,6 +259,15 @@ function cssSetVar(k, v) {
   root.style.setProperty(k, v);
 }
 
+function toggleLigatures() {
+  let body = document.body;
+  if (!ligatures)
+    body.style['font-variant'] = 'common-ligatures';
+  else
+    body.style['font-variant'] = '';
+  ligatures = !ligatures;
+}
+
 function executeAction() {
   let p = document.querySelector('#vim');
   let input = p.textContent.substring(0, p.textContent.length - 1);
@@ -268,6 +277,10 @@ function executeAction() {
   let args = parts.slice(1);
   commandHistory.pushCommand(input);
   switch (command) {
+    case 'lt': {
+      toggleLigatures();
+      return commandSucceed('Toggled Ligatures!');
+    }
     case 'gsto':
       return commandSucceed(`Status timeout is ${status_timeout / 1000} seconds`);
     case 'gtc':
