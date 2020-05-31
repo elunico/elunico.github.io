@@ -259,6 +259,8 @@ function cssSetVar(k, v) {
   root.style.setProperty(k, v);
 }
 
+let ligatures = false;
+
 function toggleLigatures() {
   let body = document.body;
   if (!ligatures)
