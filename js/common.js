@@ -156,7 +156,7 @@ function commandSucceed(msg) {
 function loadDarkModeDefaults() {
   let codes = document.getElementsByClassName('my-code');
 
-  cssSetVar("--my-green-color", "#32CD32");
+  cssSetVar("--my-green-color", "#24292E");
   cssSetVar("--my-dark-accent-color", "darkgreen");
   cssSetVar("--my-link-visited-color", "#2E8B57");
   cssSetVar("--my-link-hover-color", "#e2e2e2");
@@ -195,7 +195,7 @@ function resetColorScheme() {
     loadDarkModeDefaults();
     localStorage.setItem(LS_ACCENT_COLOR, "darkgreen");
     changeImageColor("32CD32")
-    localStorage.setItem(LS_MAIN_COLOR, "#32CD32");
+    localStorage.setItem(LS_MAIN_COLOR, "#24292E");
     localStorage.setItem(LS_TEXT_COLOR, 'white');
   } else {
     loadLightModeDefaults();
