@@ -27,14 +27,14 @@
   --my-button-fade-time: 650ms;
   --my-slide-in-time: 500ms;
   /* green */
-  --my-green-color: #24292E;
+  --my-green-color: #32CD32;
   --my-dark-accent-color: darkgreen;
   --my-link-visited-color: #2E8B57;
   --my-link-hover-color: #00ff00;
-  --button-background-color: rgb(24, 24, 24);
+  --button-background-color: #24292E;
   --progPage-color: white;
   --projectContainer-color: white;
-  --my-background-color: rgb(24, 24, 24);
+  --my-background-color: #24292E;
   --my-caption-background-color: rgb(48, 48, 48);
 }
 
@@ -45,14 +45,14 @@
     --my-slide-in-time: 500ms;
     /* grayscale only use this */
     /* --my-green-color: rgb(138, 138, 138); */
-    --my-green-color: #24292E;
+    --my-green-color: #32CD32;
     --my-dark-accent-color: darkgreen;
     --my-link-visited-color: #2E8B57;
     --my-link-hover-color: #e2e2e2;
-    --button-background-color: rgb(24, 24, 24);
+    --button-background-color: #24292E;
     --progPage-color: white;
     --projectContainer-color: white;
-    --my-background-color: rgb(24, 24, 24);
+    --my-background-color: #24292E;
     --my-caption-background-color: rgb(48, 48, 48);
   }
   .my-code {
