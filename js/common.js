@@ -685,10 +685,6 @@ function run_common_before_type() {
   loadCustomColors();
   setDateBasedClass();
   status_timeout = Number(localStorage.getItem(LS_STATUS_TIMEOUT)) || 3500;
-  window.onorientationchange = function (event) {
-    console.log(event);
-    alert("motion");
-  };
 }
 
 function run_common_after_type() {
