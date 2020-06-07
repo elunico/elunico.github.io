@@ -23,7 +23,7 @@ class Gallery {
    */
   constructor(parent_id, urls) {
     this._pid = parent_id;
-    if (typeof urls == "Array") {
+    if (urls instanceof Array) {
       this.urls = urls;
       this.alts = new Array(urls.length).fill("");
     } else {
