@@ -279,143 +279,143 @@ function executeAction() {
   let args = parts.slice(1);
   commandHistory.pushCommand(input);
   switch (command) {
-  case 'lt':
-    {
-      toggleLigatures();
-      return commandSucceed('Toggled Ligatures!');
-    }
-  case 'gsto':
-    return commandSucceed(`Status timeout is ${status_timeout / 1000} seconds`);
-  case 'gtc':
-    return commandSucceed(`Text color is ${cssGetVar('--progPage-color')}`);
-  case 'gmc':
-    return commandSucceed(`Main color is ${cssGetVar('--my-green-color')}`);
-  case 'gac':
-    return commandSucceed(`Accent color is ${cssGetVar('--my-dark-accent-color')}`);
-  case 'ssto':
-    {
-      let timeoutInput = args[0];
-      let timeout = Number(timeoutInput);
-      if (isNaN(timeout) || timeout < 1 || timeout > 120000) {
-        return commandError(`Timeout value ${timeoutInput} is invalid. Enter a number between 1 and 120000`);
+    case 'lt':
+      {
+        toggleLigatures();
+        return commandSucceed('Toggled Ligatures!');
       }
-      status_timeout = timeout * 1000;
-      localStorage.setItem(LS_STATUS_TIMEOUT, status_timeout);
-      return commandSucceed(`Timeout set to ${timeout} seconds`);
-    }
-  case 'stc':
-    {
-      let color = args[0];
-      if (!color.startsWith('#') || (color.length != 4 && color.length != 7)) {
-        return commandError('Provide a color that is `#RGB` or `#RRGGBB`')
+    case 'gsto':
+      return commandSucceed(`Status timeout is ${status_timeout / 1000} seconds`);
+    case 'gtc':
+      return commandSucceed(`Text color is ${cssGetVar('--progPage-color')}`);
+    case 'gmc':
+      return commandSucceed(`Main color is ${cssGetVar('--my-green-color')}`);
+    case 'gac':
+      return commandSucceed(`Accent color is ${cssGetVar('--my-dark-accent-color')}`);
+    case 'ssto':
+      {
+        let timeoutInput = args[0];
+        let timeout = Number(timeoutInput);
+        if (isNaN(timeout) || timeout < 1 || timeout > 120000) {
+          return commandError(`Timeout value ${timeoutInput} is invalid. Enter a number between 1 and 120000`);
+        }
+        status_timeout = timeout * 1000;
+        localStorage.setItem(LS_STATUS_TIMEOUT, status_timeout);
+        return commandSucceed(`Timeout set to ${timeout} seconds`);
       }
-      cssSetVar('--progPage-color', color);
-      localStorage.setItem(LS_TEXT_COLOR, color);
-      return commandSucceed(`Set text color to ${color}`);
-    }
-  case 'smc':
-    {
-      let color = args[0];
-      if (!color.startsWith('#') || (color.length != 4 && color.length != 7)) {
-        return commandError('Provide a color that is `#RGB` or `#RRGGBB`')
+    case 'stc':
+      {
+        let color = args[0];
+        if (!color.startsWith('#') || (color.length != 4 && color.length != 7)) {
+          return commandError('Provide a color that is `#RGB` or `#RRGGBB`')
+        }
+        cssSetVar('--progPage-color', color);
+        localStorage.setItem(LS_TEXT_COLOR, color);
+        return commandSucceed(`Set text color to ${color}`);
       }
-      cssSetVar('--my-green-color', color);
-      changeImageColor(color);
-      localStorage.setItem(LS_MAIN_COLOR, color);
-      return commandSucceed(`Set main color to ${color}`);
-    }
-  case 'sac':
-    {
-      let color = args[0];
-      if (!color.startsWith('#') || (color.length != 4 && color.length != 7)) {
-        return commandError('Provide a color that is `#RGB` or `#RRGGBB`')
+    case 'smc':
+      {
+        let color = args[0];
+        if (!color.startsWith('#') || (color.length != 4 && color.length != 7)) {
+          return commandError('Provide a color that is `#RGB` or `#RRGGBB`')
+        }
+        cssSetVar('--my-green-color', color);
+        changeImageColor(color);
+        localStorage.setItem(LS_MAIN_COLOR, color);
+        return commandSucceed(`Set main color to ${color}`);
       }
-      cssSetVar('--my-dark-accent-color', color);
-      localStorage.setItem(LS_ACCENT_COLOR, color);
-      return commandSucceed(`Set accent color to ${color}`);
-    }
-  case 'cf':
-    {
-      let choice = args.join(" ");
-      setCustomFontDev(choice);
-      commandSucceed(`Attempted to update font family to ${choice}.`);
+    case 'sac':
+      {
+        let color = args[0];
+        if (!color.startsWith('#') || (color.length != 4 && color.length != 7)) {
+          return commandError('Provide a color that is `#RGB` or `#RRGGBB`')
+        }
+        cssSetVar('--my-dark-accent-color', color);
+        localStorage.setItem(LS_ACCENT_COLOR, color);
+        return commandSucceed(`Set accent color to ${color}`);
+      }
+    case 'cf':
+      {
+        let choice = args.join(" ");
+        setCustomFontDev(choice);
+        commandSucceed(`Attempted to update font family to ${choice}.`);
+        return true;
+      }
+    case 'f':
+      {
+        let result = setFontFromChoice(args[0]);
+        if (!result) {
+          commandError(`Invalid choice for font: ${args[0]}`);
+        } else {
+          commandSucceed('Successfully updated font preference');
+        }
+        return result;
+      }
+    case 'tdm':
+      changeColorScheme();
+      commandSucceed('Changed color scheme');
       return true;
-    }
-  case 'f':
-    {
-      let result = setFontFromChoice(args[0]);
-      if (!result) {
-        commandError(`Invalid choice for font: ${args[0]}`);
-      } else {
-        commandSucceed('Successfully updated font preference');
-      }
-      return result;
-    }
-  case 'tdm':
-    changeColorScheme();
-    commandSucceed('Changed color scheme');
-    return true;
-  case 'rcs':
-    resetColorScheme();
-    commandSucceed(`Reset color scheme default colors and mode`);
-    return true;
-  case 'cls':
-    commandSucceed('Cleared localStorage');
-    localStorage.clear();
-    return true;
-  case '?':
-    commandSucceed('Going to help');
-    window.location = '/vimhelp.html';
-    return true;
-  case '->c':
-    commandSucceed('Going to color picker');
-    window.location = '/projects/color-picker/'
-    return true;
-  case '->p':
-    commandSucceed('Going to programming!');
-    window.location = "/progproj.html";
-    return true;
-  case '->i':
-    commandSucceed('Going to info');
-    window.location = '/info.html';
-    return true;
-  case '->h':
-    commandSucceed('Going to home');
-    window.location = '/';
-    return true;
-  case '->l':
-    commandSucceed('Going to linguistics');
-    window.location = '/langproj.html';
-    return true;
-  case '!!':
-    commandError(input, 'Turning off fade not yet supported');
-    return false;
-  case ']]':
-    window.scrollBy(0, sectionSize);
-    commandSucceed('Next section');
-    return true;
-  case '[[':
-    window.scrollBy(0, -sectionSize);
-    commandSucceed('Previous section');
-    return true;
-  case 'G':
-    window.scrollBy(0, pageSize);
-    commandSucceed('go to end of file');
-    return true;
-  case 'gg':
-    window.scrollBy(0, -pageSize);
-    commandSucceed('go to beginning of file');
-    return true;
-  case ':q':
-    commandError(input, 'file not saved!');
-    return false;
-  case ':q!':
-    window.location = 'http://google.com';
-    commandSucceed('exiting...');
-    return true;
-  default:
-    commandError(input, 'UNKNOWN COMMAND! try using `?`');
-    return false;
+    case 'rcs':
+      resetColorScheme();
+      commandSucceed(`Reset color scheme default colors and mode`);
+      return true;
+    case 'cls':
+      commandSucceed('Cleared localStorage');
+      localStorage.clear();
+      return true;
+    case '?':
+      commandSucceed('Going to help');
+      window.location = '/vimhelp.html';
+      return true;
+    case '->c':
+      commandSucceed('Going to color picker');
+      window.location = '/projects/color-picker/'
+      return true;
+    case '->p':
+      commandSucceed('Going to programming!');
+      window.location = "/progproj.html";
+      return true;
+    case '->i':
+      commandSucceed('Going to info');
+      window.location = '/info.html';
+      return true;
+    case '->h':
+      commandSucceed('Going to home');
+      window.location = '/';
+      return true;
+    case '->l':
+      commandSucceed('Going to linguistics');
+      window.location = '/langproj.html';
+      return true;
+    case '!!':
+      commandError(input, 'Turning off fade not yet supported');
+      return false;
+    case ']]':
+      window.scrollBy(0, sectionSize);
+      commandSucceed('Next section');
+      return true;
+    case '[[':
+      window.scrollBy(0, -sectionSize);
+      commandSucceed('Previous section');
+      return true;
+    case 'G':
+      window.scrollBy(0, pageSize);
+      commandSucceed('go to end of file');
+      return true;
+    case 'gg':
+      window.scrollBy(0, -pageSize);
+      commandSucceed('go to beginning of file');
+      return true;
+    case ':q':
+      commandError(input, 'file not saved!');
+      return false;
+    case ':q!':
+      window.location = 'http://google.com';
+      commandSucceed('exiting...');
+      return true;
+    default:
+      commandError(input, 'UNKNOWN COMMAND! try using `?`');
+      return false;
   }
 }
 
