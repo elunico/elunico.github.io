@@ -27,10 +27,16 @@ class Life {
   }
 
   biofy(c, r) {
+    if (c < 0 || c >= this.cols || r < 0 || r >= this.rows) {
+      return
+    }
     this.board[c][r] = 1;
   }
 
   kill(c, r) {
+    if (c < 0 || c >= this.cols || r < 0 || r >= this.rows) {
+      return
+    }
     this.board[c][r] = 0;
   }
 
