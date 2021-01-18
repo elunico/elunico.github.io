@@ -9,6 +9,14 @@ window.onload = () => {
     "/assets/projects/programming/jpedit_head2.png": "A screenshot a JPEdit Window with text and the Time and Date Prompt open."
   });
 
+  let lifeGallery = new Gallery('life-gallery', {
+    "/assets/projects/programming/life1.gif": "An animated gif showing an example game of life running and a person interacting with the start buttons, canvas cells, and save feature.",
+  });
+
+  // cheat to make the gif smaller
+  let lgal = document.querySelector('#life-gallery div div div img');
+  lgal.style.width = '95%';
+
   let socdrawGallery = new Gallery('socdraw-gallery', {
     "/assets/projects/programming/SocDraw_head1.png": "A screenshot of the main page of SocDraw showing create room and join room options.",
     "/assets/projects/programming/SocDraw_head2.png": "A screenshot of SocDraw showing an open room and a canvas with drawing.",
