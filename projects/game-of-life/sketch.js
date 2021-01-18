@@ -12,6 +12,9 @@ let saveInitialButton;
 let saveCurrentButton;
 let stateInput;
 let loadGliderButton;
+let darkMode = false;
+let live = darkMode ? 255 : 0;
+let dead = darkMode ? 0 : 255;
 
 let running = false;
 let initialState = [];
@@ -114,9 +117,9 @@ function draw() {
   for (let i = 0; i < cols; i++) {
     for (let j = 0; j < rows; j++) {
       if (life.get(i, j)) {
-        fill(0);
+        fill(live);
       } else {
-        fill(255);
+        fill(dead);
       }
       rect(i * wscl, j * hscl, wscl, hscl);
     }
