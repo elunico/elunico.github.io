@@ -9,7 +9,9 @@ let toggleOnButton;
 let stepButton;
 let clearButton;
 let saveInitialButton;
+let saveCurrentButton;
 let stateInput;
+let loadGliderButton;
 
 let running = false;
 let initialState = [];
@@ -38,6 +40,7 @@ function setup() {
     if (running) {
       toggleOnButton.html('Stop');
       stepButton.elt.setAttribute('disabled', 'true');
+      initialState = JSON.parse(JSON.stringify(life.board));
     } else {
       toggleOnButton.html('Start');
       stepButton.elt.removeAttribute('disabled');
@@ -55,20 +58,32 @@ function setup() {
     life.clear();
   });
 
-  saveInitialButton = createButton('Save Initial State');
+  saveInitialButton = createButton('Save Last Start State');
   saveInitialButton.mousePressed(() => {
     save(initialState, 'init-state.json');
   });
 
-  let p = createP("Load Initial State &nbsp;");
+  saveCurrentButton = createButton('Save Current State');
+  saveCurrentButton.mousePressed(() => {
+    save(life.board, 'life-state.json');
+  });
+
+  loadGliderButton = createButton('Load Glider State');
+  loadGliderButton.mousePressed(() => {
+    loadJSON('glider.json', function(data) {
+      life.setState(data);
+    });
+  });
+
+  let p = createP("Load State from JSON &nbsp;");
 
   stateInput = createFileInput(loadState);
   stateInput.parent(p);
 }
 
 function loadState(file) {
-  print(file.data)
   life.setState(file.data);
+  stateInput.elt.value = '';
 }
 
 function mousePressed() {

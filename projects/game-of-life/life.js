@@ -56,9 +56,6 @@ class Life {
     let next = []
     for (let i = 0; i < this.cols; i++) {
       next[i] = [];
-      for (let j = 0; j < this.rows; j++) {
-        next[i][j] = 0;
-      }
     }
     for (let c = 0; c < this.cols; c++) {
       for (let r = 0; r < this.rows; r++) {
