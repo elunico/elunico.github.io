@@ -21,7 +21,7 @@ class Gallery {
    * @param {string} parent_id the id of the node that will contain the gallery. NOT a selector! Do not use #
    * @param {string[] | Object.<string, string>} urls a list of urls to images that will be used in the gallery, or an object of image urls to their respective alt text which will be used in the gallery
    */
-  constructor(parent_id, urls) {
+  constructor(parent_id, urls, video) {
     this._pid = parent_id;
     if (urls instanceof Array) {
       this.urls = urls;
@@ -38,11 +38,27 @@ class Gallery {
       throw new TypeError(`Gallery passed parent_id="${parent_id}" but that id was not found in the document`);
     }
 
+    this.hasVideo = video || false;
+    this.tagName = this.hasVideo ? 'video' : 'img';
+
     this.init();
     this.clearCoordinates();
   }
 
   length() { return this.urls.length; }
+
+  static setSource(content, url, hasVideo) {
+    if (!hasVideo) {
+      content.src = url;
+    } else {
+      content.setAttribute('data-video-src', url);
+      for (let ext of ['.mp4', '.webm']) {
+        let sourceElt = document.createElement('source');
+        sourceElt.src = `${url}${ext}`;
+        content.appendChild(sourceElt);
+      }
+    }
+  }
 
   init() {
 
@@ -57,10 +73,10 @@ class Gallery {
     modal.onkeydown = (event) => {
       let slide = this.keyPressed(event);
       if (!slide) return;
-      let img = slide.getElementsByTagName('img')[0];
+      let content = slide.getElementsByTagName(this.tagName)[0];
       requestAnimationFrame(() => {
         this.clearModalContents();
-        this.addModalContent(img.src);
+        this.addModalContent(Gallery.getContentSource(content, this.hasVideo));
       });
     };
 
@@ -72,10 +88,10 @@ class Gallery {
         this.touchCancel();
         return;
       }
-      let img = slide.getElementsByTagName('img')[0];
+      let content = slide.getElementsByTagName(this.tagName)[0];
       requestAnimationFrame(() => {
         this.clearModalContents();
-        this.addModalContent(img.src);
+        this.addModalContent(Gallery.getContentSource(content, this.hasVideo));
       });
     };
 
@@ -116,19 +132,22 @@ class Gallery {
       numbertext.className = `numbertext`;
       numbertext.innerHTML = `${currentNumber} / ${lastNumber}`;
 
-      let img = document.createElement('img');
-      img.src = url;
-      img.style.width = '100%';
-      img.ontouchstart = (event) => this.touchStart(event);
-      img.ontouchmove = (event) => this.touchMove(event);
-      img.ontouchend = (event) => this.touchEnd(event);
-      img.ontouchcancel = (event) => this.touchCancel(event);
-      img.onmouseup = (event) => this.imageClicked(event);
+      let content = document.createElement(this.tagName);
+      Gallery.setSource(content, url, this.hasVideo);
+      content.style.width = '100%';
+      content.ontouchstart = (event) => this.touchStart(event);
+      content.ontouchmove = (event) => this.touchMove(event);
+      content.ontouchend = (event) => this.touchEnd(event);
+      content.ontouchcancel = (event) => this.touchCancel(event);
+      content.onmouseup = (event) => this.imageClicked(event, this.hasVideo);
+      if (this.hasVideo) {
+        Gallery.attributeVideo(content);
+      }
 
       // link.appendChild(img);
 
       mySlides.appendChild(numbertext);
-      mySlides.appendChild(img);
+      mySlides.appendChild(content);
       container.appendChild(mySlides);
 
     }
@@ -167,13 +186,16 @@ class Gallery {
     for (let url of this.urls) {
       let col = document.createElement('div');
       col.className = `column`;
-      let img = document.createElement('img');
-      img.src = url;
-      img.style.width = '100%';
-      img.alt = this.alts[index - 1];
-      img.className = `demo demo_gallery${this.id} img-cursor`;
-      img.onclick = createThumbnailOnclick(this, index);
-      col.appendChild(img);
+      let content = document.createElement(this.tagName);
+      Gallery.setSource(content, url, this.hasVideo)
+      content.style.width = '100%';
+      content.alt = this.alts[index - 1];
+      content.className = `demo demo_gallery${this.id} img-cursor`;
+      content.onclick = createThumbnailOnclick(this, index);
+      if (this.hasVideo) {
+        Gallery.attributeVideo(content);
+      }
+      col.appendChild(content);
       row.appendChild(col);
       index++;
     }
@@ -186,21 +208,32 @@ class Gallery {
     this.currentSlide(1);
   }
 
-  addModalContent(imageURL) {
+  static attributeVideo(videoElt) {
+    videoElt.setAttribute('controls', '');
+    videoElt.setAttribute('autoplay', '');
+    videoElt.setAttribute('loop', '');
+    videoElt.setAttribute('muted', '');
+    videoElt.setAttribute('playsinline', '');
+  }
+
+  addModalContent(contentURL) {
     let modalContent = document.querySelector(`#modal-content_${this._pid}`);
 
-    let src = imageURL;
-    let img = document.createElement('img');
-    img.src = src;
-    img.style.maxWidth = '100%';
-    img.style.maxHeight = '80vh';
+    let src = contentURL;
+    let content = document.createElement(this.tagName);
+    Gallery.setSource(content, contentURL, this.hasVideo);
+    content.style.maxWidth = '100%';
+    content.style.maxHeight = '80vh';
+    if (this.hasVideo) {
+      Gallery.attributeVideo(content);
+    }
     modalContent.style.display = 'grid';
     modalContent.style.alignContent = 'center';
     modalContent.style.justifyContent = 'center';
 
     let slide = document.createElement('div');
     slide.style.display = 'block';
-    slide.appendChild(img);
+    slide.appendChild(content);
 
     modalContent.appendChild(slide);
 
@@ -214,8 +247,18 @@ class Gallery {
     }
   }
 
-  imageClicked(event) {
-    this.addModalContent(event.currentTarget.src);
+  static getContentSource(contentElt, hasVideo) {
+    if (hasVideo) {
+      return contentElt.getAttribute('data-video-src');
+    } else {
+      return contentElt.src;
+    }
+  }
+
+  imageClicked(event, hasVideo) {
+    let url = Gallery.getContentSource(event.currentTarget, hasVideo);
+    console.log(url);
+    this.addModalContent(url);
     this.openModal();
   }
 
