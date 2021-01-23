@@ -128,25 +128,29 @@ class Gallery {
       let mySlides = document.createElement('div')
       mySlides.className = `mySlides slides_gallery${this.id}`;
 
-      let numbertext = document.createElement('div');
-      numbertext.className = `numbertext`;
-      numbertext.innerHTML = `${currentNumber} / ${lastNumber}`;
+      if (!this.hasVideo) {
+        let numbertext = document.createElement('div');
+        numbertext.className = `numbertext`;
+        numbertext.innerHTML = `${currentNumber} / ${lastNumber}`;
+        mySlides.appendChild(numbertext);
+      }
 
       let content = document.createElement(this.tagName);
       Gallery.setSource(content, url, this.hasVideo);
       content.style.width = '100%';
-      content.ontouchstart = (event) => this.touchStart(event);
-      content.ontouchmove = (event) => this.touchMove(event);
-      content.ontouchend = (event) => this.touchEnd(event);
-      content.ontouchcancel = (event) => this.touchCancel(event);
-      content.onmouseup = (event) => this.imageClicked(event, this.hasVideo);
+      if (!this.hasVideo) {
+        content.ontouchstart = (event) => this.touchStart(event);
+        content.ontouchmove = (event) => this.touchMove(event);
+        content.ontouchend = (event) => this.touchEnd(event);
+        content.ontouchcancel = (event) => this.touchCancel(event);
+        content.onmouseup = (event) => this.imageClicked(event, this.hasVideo);
+      }
       if (this.hasVideo) {
         Gallery.attributeVideo(content);
       }
 
       // link.appendChild(img);
 
-      mySlides.appendChild(numbertext);
       mySlides.appendChild(content);
       container.appendChild(mySlides);
 
