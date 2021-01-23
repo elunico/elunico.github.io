@@ -12,6 +12,8 @@ let saveInitialButton;
 let saveCurrentButton;
 let stateInput;
 let loadGliderButton;
+let chanceSlider;
+let chanceSpan;
 let darkMode = false;
 let live = darkMode ? 255 : 0;
 let dead = darkMode ? 0 : 255;
@@ -19,25 +21,34 @@ let dead = darkMode ? 0 : 255;
 let running = false;
 let initialState = [];
 
-function setup() {
-  createCanvas(Math.min(windowWidth - 100, windowHeight - 200), Math.min(windowWidth - 100, windowHeight - 200));
-  life = new Life(cols, rows, true);
-  wscl = width/cols;
-  hscl = height/rows;
-
+function newRandomState() {
   for (let i = 0; i < cols; i++) {
     initialState[i] = [];
     for (let j = 0; j < rows; j++) {
-      if (random() < 0.25) {
+      if (random() < Number(chanceSlider && chanceSlider.value() || 0.25)) {
         initialState[i][j] = 1;
         life.biofy(i, j);
       } else {
         initialState[i][j] = 0;
+        life.kill(i, j);
       }
     }
   }
+}
+
+function setup() {
+  let canvas = createCanvas(Math.min(windowWidth - 100, windowHeight - 200), Math.min(windowWidth - 100, windowHeight - 200));
+  canvas.parent(canvas_container);
+  life = new Life(cols, rows, true);
+  wscl = width/cols;
+  hscl = height/rows;
+
+  newRandomState();
+
+  let controls = select("#controls");
 
   toggleOnButton = createButton('Start');
+  toggleOnButton.parent(controls);
   toggleOnButton.mousePressed(() => {
     running = !running;
     if (running) {
@@ -51,27 +62,49 @@ function setup() {
   });
 
   stepButton = createButton("Step");
+  stepButton.parent(controls);
   stepButton.mousePressed(() => {
     life.step();
     redraw();
   });
 
   clearButton = createButton('Clear');
+  clearButton.parent(board_change);
   clearButton.mousePressed(() => {
     life.clear();
   });
 
+  randomizeButton = createButton('Randomize');
+  randomizeButton.parent(board_change);
+  randomizeButton.mousePressed(() => {
+    newRandomState();
+  });
+
+  chanceSpan = createSpan('Chance of living cell');
+  chanceSpan.parent(board_change);
+
+
+  chanceSlider = createSlider(0, 1, 0.25, 0.01);
+  chanceSlider.parent(chanceSpan);
+  chanceSlider.input(() => {
+    newRandomState();
+  })
+
+
   saveInitialButton = createButton('Save Last Start State');
+  saveInitialButton.parent(save_states);
   saveInitialButton.mousePressed(() => {
     save(initialState, 'init-state.json');
   });
 
   saveCurrentButton = createButton('Save Current State');
+  saveCurrentButton.parent(save_states);
   saveCurrentButton.mousePressed(() => {
     save(life.board, 'life-state.json');
   });
 
   loadGliderButton = createButton('Load Glider State');
+  loadGliderButton.parent(save_states);
   loadGliderButton.mousePressed(() => {
     loadJSON('glider.json', function(data) {
       life.setState(data);
@@ -79,6 +112,7 @@ function setup() {
   });
 
   let p = createP("Load State from JSON &nbsp;");
+  p.parent(save_states)
 
   stateInput = createFileInput(loadState);
   stateInput.parent(p);
@@ -98,6 +132,7 @@ function mousePressed() {
 
 
 function draw() {
+
   if (running) {
     life.step();
   }
