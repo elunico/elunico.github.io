@@ -7,7 +7,7 @@ function createThumbnailOnclick(obj, index) {
   }
 }
 
-
+// Sorry Sandi!
 class Gallery {
   static _next_gallery() {
     return _gallery_count++;
@@ -18,8 +18,15 @@ class Gallery {
    * Pass images (and optional alt text) and the gallery will be
    * stored in the desired node of the document
    *
+   * If you pass true for `video` the gallery will display an HTML5 video
+   * element. When passing the url OMIT the extension and ensure that the path
+   * given includes the name of the file without an extension. Ensure that
+   * there is one file with the name and an mp4 extension and 1 file with the
+   * name and a webm extension.
+   *
    * @param {string} parent_id the id of the node that will contain the gallery. NOT a selector! Do not use #
    * @param {string[] | Object.<string, string>} urls a list of urls to images that will be used in the gallery, or an object of image urls to their respective alt text which will be used in the gallery
+   * @param {boolean} video whether the gallery is going to hold videos or not
    */
   constructor(parent_id, urls, video) {
     this._pid = parent_id;

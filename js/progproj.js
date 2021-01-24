@@ -11,7 +11,7 @@ window.onload = () => {
 
   // video gallery!
   let lifeGallery = new Gallery('life-gallery', {
-    "assets/projects/programming/game-of-life": "An animated gif showing an example game of life running and a person interacting with the start buttons, canvas cells, and save feature.",
+    "assets/projects/programming/game-of-life": "A video showing an example game of life running and a person interacting with the start buttons, canvas cells, and save and load feature.",
   }, true);
 
   // cheat to make the gif smaller
