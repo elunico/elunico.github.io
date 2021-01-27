@@ -13,6 +13,7 @@ let saveCurrentButton;
 let stateInput;
 let loadGliderButton;
 let chanceSlider;
+let compressOpt;
 let chanceSpan;
 let darkMode = false;
 let live = darkMode ? 255 : 0;
@@ -20,6 +21,60 @@ let dead = darkMode ? 0 : 255;
 
 let running = false;
 let initialState = [];
+
+function tableToRawString(data) {
+  let s = ''
+  for (let i = 0; i < data.length; i++) {
+    for (let j = 0; j < data[i].length; j++) {
+      s += data[i][j];
+    }
+  }
+  return s;
+}
+
+function doSaveTransform(data) {
+  if (compressOpt && !compressOpt.checked()) {
+    console.info("User opted for no compression.");
+    let s = tableToRawString(data);
+    return 'r\n' + s;
+  } else {
+    let d = [];
+    for (let col of data) {
+      for (let val of col) {
+        d.push(val);
+      }
+    }
+    let transformed = compress_bin_arr(d);
+    let savings = 1 - (transformed.length / 2500);
+    if (savings < 0) {
+      console.info(`Using raw data: compression achieved poor result (${nf(savings * 100, 2, 0)}%).`);
+      let s = tableToRawString(data);
+      return 'r\n' + s;
+    } else {
+      console.info(`Using compression: Approximate savings = ${nf(savings * 100, 2, 1)}%`);
+      return 'c\n' + transformed;
+    }
+  }
+}
+
+function doLoadTransform(ind) {
+  let [format, data] = ind.split("\n");
+  if (format === 'r') {
+    // dont change data;
+  } else {
+    data = decompress_bin_arr(data);
+  }
+  let result = [];
+  for (let i = 0; i < 50; i++) {
+    let col = [];
+    for (let j = 0; j < 50; j++) {
+      col.push(Number(data[j + i * 50]));
+    }
+    result.push(col);
+  }
+  return result;
+
+}
 
 function newRandomState() {
   for (let i = 0; i < cols; i++) {
@@ -90,18 +145,26 @@ function setup() {
     newRandomState();
   })
 
+  compressOpt = createCheckbox("Compress?");
+  compressOpt.checked(true);
+  compressOpt.parent(save_states);
 
   saveInitialButton = createButton('Save Last Start State');
   saveInitialButton.parent(save_states);
   saveInitialButton.mousePressed(() => {
-    save(initialState, 'init-state.json');
+    // the way `save` works in p5 requires us to pass the string in an array
+    save([doSaveTransform(initialState)], 'init-state.txt');
   });
 
   saveCurrentButton = createButton('Save Current State');
   saveCurrentButton.parent(save_states);
   saveCurrentButton.mousePressed(() => {
-    save(life.board, 'life-state.json');
+    // the way `save` works in p5 requires us to pass the string in an array
+
+    save([doSaveTransform(life.board)], 'life-state.txt');
   });
+
+
 
   loadGliderButton = createButton('Load Glider State');
   loadGliderButton.parent(save_states);
@@ -119,7 +182,7 @@ function setup() {
 }
 
 function loadState(file) {
-  life.setState(file.data);
+  life.setState(doLoadTransform(file.data));
   stateInput.elt.value = '';
 }
 
