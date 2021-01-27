@@ -33,14 +33,18 @@ function decompress_bin_arr(str) {
   return result;
 }
 
-function decompress_board(str) {
-  let board = [];
-  for (let col of str.split('\n')) {
-    board.push(decompress_bin_arr(col));
-  }
-  return board;
-}
-
-function compress_board(board) {
-  return board.map(col => compress_bin_arr(col)).join("\n");
-}
+// These functions are no longer being used
+// The entire board is placed into a single bin_arr (binary array) before
+// being [de]compressed by [de]compress_bin_arr
+// 
+// function decompress_board(str) {
+//   let board = [];
+//   for (let col of str.split('\n')) {
+//     board.push(decompress_bin_arr(col));
+//   }
+//   return board;
+// }
+//
+// function compress_board(board) {
+//   return board.map(col => compress_bin_arr(col)).join("\n");
+// }
