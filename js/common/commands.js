@@ -32,13 +32,23 @@ function commandSucceed(msg) {
 
 
 function executeAction() {
-    let p = document.querySelector('#vim');
-    let input = p.textContent.substring(0, p.textContent.length - 1);
-    input = input.trim();
-    let parts = input.split(/\s+/g);
-    let command = parts[0];
-    let args = parts.slice(1);
-    commandHistory.pushCommand(input);
+    let _p = document.querySelector('#vim');
+    let _input = _p.textContent.substring(0, _p.textContent.length - 1);
+    _input = _input.trim();
+    let _parts = _input.split(/\s+/g);
+    let command = _parts[0];
+    let args = _parts.slice(1);
+    commandHistory.pushCommand(_input);
+    /**
+     * command contains the first "word" of the input
+     * args contains the REST of the words not including command 
+     * *********************************************************
+     * ALL CASES (COMMANDS) MUST CALL EITHER commandError or 
+     * commandSucess AND RETURN true IF THEY SUCCEED OR 
+     * false IF THEY FAIL 
+     * https://github.com/python/cpython/blob/master/Python/ceval.c#L1621
+     * *********************************************************
+     */
     switch (command) {
         case 'lt':
             {
@@ -149,7 +159,7 @@ function executeAction() {
             window.location = '/langproj.html';
             return true;
         case '!!':
-            commandError(input, 'Turning off fade not yet supported');
+            commandError(_input, 'Turning off fade not yet supported');
             return false;
         case ']]':
             window.scrollBy(0, sectionSize);
@@ -168,7 +178,7 @@ function executeAction() {
             commandSucceed('go to beginning of file');
             return true;
         case ':q':
-            commandError(input, 'file not saved!');
+            commandError(_input, 'file not saved!');
             return false;
         case ':q!':
             window.location = 'http://google.com';
@@ -184,7 +194,7 @@ function executeAction() {
             return false; 
         }
         default:
-            commandError(input, 'UNKNOWN COMMAND! try using `?`');
+            commandError(_input, 'UNKNOWN COMMAND! try using `?`');
             return false;
     }
 }
