@@ -22,6 +22,9 @@ const fontDataForChoice = {
     'c': { familyName: "Consolas", loaded: true, loaderObject: null },
     'mon': { familyName: "Monaco", loaded: true, loaderObject: null },
 
+    // mononoki is bundled as an asset as well
+    'mnki': { familyName: "mononoki", loaded: true, loaderObject: null },
+
     // djv sans mono is distributed with the site so no extra loading is required.
     'mdj': { familyName: `"Menlo", "DejaVu Sans Mono"`, loaded: true, loaderObject: null },
 
