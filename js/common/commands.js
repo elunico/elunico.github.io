@@ -204,9 +204,10 @@ function vimHandle() {
     let bodies = document.getElementsByTagName('body');
     for (let body of bodies) {
         body.onkeydown = function (event) {
+            if (window.location.host.includes('localhost')) console.log(event);
             let p = document.querySelector('#vim');
-            if (event.keyCode === 27 || (!listening && event.keyCode == 84) ||
-                (!listening && event.keyCode == 191)) {
+            if (event.code === 'Escape' || (!listening && event.code == 'KeyT') ||
+                (!listening && event.code == 'Slash')) {
                 listening = !listening;
                 commandHistory.resetPosition();
                 if (listening) {
@@ -215,22 +216,22 @@ function vimHandle() {
                     p.innerHTML = '';
                 }
             } else if (listening) {
-                if (event.keyCode === 86 && event.ctrlKey) {
+                if (event.code === 'KeyV' && (event.ctrlKey || event.metaKey)) {
                     navigator.clipboard.readText().then((text) => {
                         p.innerHTML = `${trimCursorText(p.textContent)}${text}${CURSOR_SPAN}`;
                     });
-                } else if (event.keyCode === 13) {
+                } else if (event.code === 'Enter') {
                     listening = false;
                     commandHistory.resetPosition();
                     executeAction();
-                } else if (event.keyCode == 8) {
+                } else if (event.code == 'Backspace') {
                     p.textContent = p.textContent.substring(0, p.textContent.length - 2);
                     p.innerHTML += CURSOR_SPAN;
-                } else if (event.keyCode == 38) {
+                } else if (event.code == 'ArrowUp') {
                     let cmd = commandHistory.previousCommand();
                     if (cmd != null)
                         p.innerHTML = `${cmd}${CURSOR_SPAN}`;
-                } else if (event.keyCode == 40) {
+                } else if (event.code == 'ArrowDown') {
                     let cmd = commandHistory.nextCommand();
                     if (cmd != null)
                         p.innerHTML = `${cmd}${CURSOR_SPAN}`;
