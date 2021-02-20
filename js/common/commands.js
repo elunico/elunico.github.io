@@ -174,6 +174,15 @@ function executeAction() {
             window.location = 'http://google.com';
             commandSucceed('exiting...');
             return true;
+        case 'rm': {
+            if (args[0] === 'zsh_history') {
+                commandHistory.clear();
+                commandSucceed('Cleared command history!');
+                return true; 
+            }
+            commandError('Command missing zsh_history argument! NO action taken');
+            return false; 
+        }
         default:
             commandError(input, 'UNKNOWN COMMAND! try using `?`');
             return false;

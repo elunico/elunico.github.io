@@ -5,6 +5,14 @@ class CommandHistory {
         this.backLog = [];
         this.foreLog = [];
         this.currentCommand = null;
+
+        this.storageKey = `${DOMAIN}command-history`;
+        this.load();
+        if (window) {
+            window.onbeforeunload = () => {
+                this.persist();
+            };
+        }
     }
 
     pushCommand(input) {
@@ -39,5 +47,23 @@ class CommandHistory {
         while (this.foreLog.length > 0) {
             this.backLog.push(this.foreLog.pop());
         }
+    }
+
+    persist() {
+        localStorage.setItem(this.storageKey, JSON.stringify(this));
+    }
+
+    load() {
+        let obj = JSON.parse(localStorage.getItem(this.storageKey) || '{}');
+        this.backLog = obj.backLog || [];
+        this.foreLog = obj.foreLog || [];
+        this.currentCommand = obj.currentCommand || null; 
+    }
+
+    clear() {
+        this.backLog =[];
+        this.foreLog = [];
+        this.currentCommand = null; 
+        localStorage.removeItem(this.storageKey);
     }
 }

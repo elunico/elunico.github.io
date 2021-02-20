@@ -11,7 +11,6 @@ function cssSetVar(k, v) {
     root.style.setProperty(k, v);
 }
 
-
 function trimCursorText(text) {
     return text.replace('\u258A', '');
 }
