@@ -170,7 +170,11 @@ function setup() {
 }
 
 function loadState(file) {
-  life.setState(doLoadTransform(file.data));
+  try {
+    life.setState(doLoadTransform(file.data));
+  } catch (e) {
+    alert(`Sorry, that save file could not be read: ${e}`);
+  }
   stateInput.elt.value = '';
 }
 
