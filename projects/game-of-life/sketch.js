@@ -46,6 +46,10 @@ function doSaveTransform(data) {
 
 function doLoadTransform(ind) {
   let [format, ...data] = ind.split("\n");
+  if (data.length === 1) {
+    alert("Sorry! Old-style save files are no longer supported :(");
+    return null;
+  }
   if (format === 'r') {
     data = data.join('');
     let result = [];
@@ -58,7 +62,7 @@ function doLoadTransform(ind) {
     }
     return result;
   } else {
-    let a =  decompress_board(data.join('\n'));
+    let a = decompress_board(data.join('\n'));
     console.log(a);
     return a;
   }
@@ -171,7 +175,9 @@ function setup() {
 
 function loadState(file) {
   try {
-    life.setState(doLoadTransform(file.data));
+    let loaded = doLoadTransform(file.data)
+    if (loaded !== null)
+      life.setState(loaded);
   } catch (e) {
     alert(`Sorry, that save file could not be read: ${e}`);
   }

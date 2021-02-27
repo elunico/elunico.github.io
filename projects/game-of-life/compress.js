@@ -15,18 +15,14 @@ function compress_bin_arr(arr, min_run = 6) {
         for (let i = 0; i < run; i++) {
           s += prev;
         }
-        prev = arr[i];
-        run = 1;
       } else {
         s += `@${run}${prev == 0 ? 'a': 'b'}`;
-        prev = arr[i];
-        run = 1;
       }
+      prev = arr[i];
+      run = 1;
     }
   }
   s += run === 1 ? prev : `@${run}${prev == 0 ? 'a': 'b'}`;
-  prev = arr[i];
-  run = 1;
   return s;
 }
 
