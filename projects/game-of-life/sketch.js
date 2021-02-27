@@ -38,42 +38,30 @@ function doSaveTransform(data) {
     let s = tableToRawString(data);
     return 'r\n' + s;
   } else {
-    let d = [];
-    for (let col of data) {
-      for (let val of col) {
-        d.push(val);
-      }
-    }
-    let transformed = compress_bin_arr(d);
-    let savings = 1 - (transformed.length / 2500);
-    if (savings < 0) {
-      console.info(`Using raw data: compression achieved poor result (${nf(savings * 100, 2, 0)}%).`);
-      let s = tableToRawString(data);
-      return 'r\n' + s;
-    } else {
-      console.info(`Using compression: Approximate savings = ${nf(savings * 100, 2, 1)}%`);
-      return 'c\n' + transformed;
-    }
+    let transformed = compress_board(data);
+    console.log(`new-compress.js: new length ${transformed.length}; ratio: ${Math.floor(100 - (transformed.length/25))}%`); /// transformed.length / 2500 * 100
+    return 'n\n' + transformed;
   }
 }
 
 function doLoadTransform(ind) {
-  let [format, data] = ind.split("\n");
+  let [format, ...data] = ind.split("\n");
   if (format === 'r') {
-    // dont change data;
-  } else {
-    data = decompress_bin_arr(data);
-  }
-  let result = [];
-  for (let i = 0; i < 50; i++) {
-    let col = [];
-    for (let j = 0; j < 50; j++) {
-      col.push(Number(data[j + i * 50]));
+    data = data.join('');
+    let result = [];
+    for (let i = 0; i < 50; i++) {
+      let col = [];
+      for (let j = 0; j < 50; j++) {
+        col.push(Number(data[j + i * 50]));
+      }
+      result.push(col);
     }
-    result.push(col);
+    return result;
+  } else {
+    let a =  decompress_board(data.join('\n'));
+    console.log(a);
+    return a;
   }
-  return result;
-
 }
 
 function newRandomState() {
@@ -95,8 +83,8 @@ function setup() {
   let canvas = createCanvas(Math.min(windowWidth - 100, windowHeight - 200), Math.min(windowWidth - 100, windowHeight - 200));
   canvas.parent(canvas_container);
   life = new Life(cols, rows, true);
-  wscl = width/cols;
-  hscl = height/rows;
+  wscl = width / cols;
+  hscl = height / rows;
 
   newRandomState();
 
@@ -169,7 +157,7 @@ function setup() {
   loadGliderButton = createButton('Load Glider State');
   loadGliderButton.parent(save_states);
   loadGliderButton.mousePressed(() => {
-    loadJSON('glider.json', function(data) {
+    loadJSON('glider.json', function (data) {
       life.setState(data);
     });
   });

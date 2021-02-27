@@ -1,5 +1,8 @@
+const MIN_RUN = 6;
 
-function compress_bin_arr(arr) {
+function compress_bin_arr(arr, min_run = 6) {
+  if (arr.length === 0) return '';
+  if (arr.length === 1) return String(arr[0]);
   let prev = arr[0];
   let run = 1;
   let s = '';
@@ -8,43 +11,57 @@ function compress_bin_arr(arr) {
     if (arr[i] == prev) {
       run++;
     } else {
-      s += `${prev}:${run};`
-      prev = arr[i];
-      run = 1;
+      if (run < min_run) {
+        for (let i = 0; i < run; i++) {
+          s += prev;
+        }
+        prev = arr[i];
+        run = 1;
+      } else {
+        s += `@${run}${prev == 0 ? 'a': 'b'}`;
+        prev = arr[i];
+        run = 1;
+      }
     }
   }
-  s += `${prev}:${run};`
+  s += run === 1 ? prev : `@${run}${prev == 0 ? 'a': 'b'}`;
   prev = arr[i];
   run = 1;
   return s;
 }
 
 function decompress_bin_arr(str) {
-  let comps = str.split(';');
   let result = [];
-  for (let comp of comps) {
-    let [value, count] = comp.split(':');
-    value = Number(value);
-    count = Number(count);
-    for (let i = 0; i < count; i++) {
-      result.push(value);
+  for (let i = 0; i < str.length; i++) {
+    let c = str[i];
+    if (c == '@') {
+      let num = '';
+      let w = i + 1;
+      while (w < str.length && str[w] != 'a' && str[w] != 'b') {
+        num += str[w++];
+      }
+      let count = Number(num);
+      value = str[w] == 'a' ? 0 : 1;
+      for (let j = 0; j < count; j++)
+        result.push(value);
+      i = w; // do NOT pass the a/b part because the for loop is going to i++
+    } else {
+      result.push(Number(str[i]));
     }
   }
   return result;
 }
 
-// These functions are no longer being used
-// The entire board is placed into a single bin_arr (binary array) before
-// being [de]compressed by [de]compress_bin_arr
-// 
-// function decompress_board(str) {
-//   let board = [];
-//   for (let col of str.split('\n')) {
-//     board.push(decompress_bin_arr(col));
-//   }
-//   return board;
-// }
-//
-// function compress_board(board) {
-//   return board.map(col => compress_bin_arr(col)).join("\n");
-// }
+function compress_board(board) {
+  return board.map((v, i) => compress_bin_arr(v, MIN_RUN)).join('\n');
+}
+
+function decompress_board(str) {
+  let cols = str.split('\n');
+  let board = []
+  for (let col of cols) {
+    if (col)
+      board.push(decompress_bin_arr(col));
+  }
+  return board;
+}
