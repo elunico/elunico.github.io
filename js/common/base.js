@@ -1,4 +1,3 @@
-const CURSOR_SPAN = '<span class="cursor">&#x258A;</span>';
 
 
 

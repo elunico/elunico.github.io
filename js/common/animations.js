@@ -1,5 +1,7 @@
 
 function typeText(text, selector, then, period) {
+    const CURSOR_SPAN = '<span class="cursor">&#x258A;</span>';
+  
     period = period || 2;
     let index = 0;
     let elt = document.querySelector(selector);
@@ -18,7 +20,11 @@ function typeText(text, selector, then, period) {
         if (active % period == 0)
             elt.innerHTML = text.substring(0, index++) + CURSOR_SPAN
         if (index > text.length) {
-            then();
+          // running the callback in the same animation frame as the last character
+          // causes it to not appear before the callback ends
+          // delaying the callback to the next frame ensures the entire text is typed out before 
+          // the callback runs
+          requestAnimationFrame(() => then());
         } else {
             requestAnimationFrame(() => animateText(++active, elt, text, index));
         }

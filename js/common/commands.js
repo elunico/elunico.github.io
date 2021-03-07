@@ -201,6 +201,7 @@ function executeAction() {
 
 
 function vimHandle() {
+    const CURSOR_SPAN = '<span class="cursor">&#x258A;</span>';
     let bodies = document.getElementsByTagName('body');
     for (let body of bodies) {
         body.onkeydown = function (event) {
