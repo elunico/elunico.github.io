@@ -18,7 +18,7 @@ function typeText(text, selector, then, period) {
 
     function animateText(active, elt, text, index) {
         if (active % period == 0)
-            elt.innerHTML = text.substring(0, index++) + CURSOR_SPAN
+          elt.innerHTML = text.substring(0, index++) + CURSOR_SPAN
         if (index > text.length) {
           // running the callback in the same animation frame as the last character
           // causes it to not appear before the callback ends
@@ -26,7 +26,7 @@ function typeText(text, selector, then, period) {
           // the callback runs
           requestAnimationFrame(() => then());
         } else {
-            requestAnimationFrame(() => animateText(++active, elt, text, index));
+          requestAnimationFrame(() => animateText(++active, elt, text, index));
         }
 
     }

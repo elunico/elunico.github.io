@@ -78,16 +78,27 @@ function getMoreKeyCode(event) {
 
 // eslint-disable-next-line no-unused-vars
 function removeTransform() {
-  let d = document.querySelector('#code');
+  let d = document.querySelector('#key');
   d.style.transform = '';
 }
 
+let oldSize;
 // eslint-disable-next-line no-unused-vars
 function getKeyCode(event) {
   event.preventDefault();
 
-  let d = document.querySelector('#code');
-  d.textContent = event.keyCode;
+  let d = document.querySelector('#key');
+  d.textContent = event.key;
+  console.log(event.key)
+  if (event.key == ' ') {
+    if (!oldSize) oldSize = getComputedStyle(d)['font-size'];
+    d.style['opacity'] = 0.6;
+    d.textContent = '<space character>';
+    d.style['font-size'] = '8vw';
+  } else {
+    d.style['opacity'] = 1;
+    d.style['font-size'] = oldSize;
+  }
   d.style.transform = 'scale(1.1)';
 }
 
