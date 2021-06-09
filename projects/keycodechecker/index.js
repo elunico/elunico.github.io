@@ -89,12 +89,12 @@ function getKeyCode(event) {
 
   let d = document.querySelector('#key');
   d.textContent = event.key;
-  console.log(event.key)
+  console.log(event.key);
   if (event.key == ' ') {
     if (!oldSize) oldSize = getComputedStyle(d)['font-size'];
     d.style['opacity'] = 0.6;
-    d.textContent = '<space character>';
     d.style['font-size'] = '8vw';
+    d.textContent = '<space character>';
   } else {
     d.style['opacity'] = 1;
     d.style['font-size'] = oldSize;

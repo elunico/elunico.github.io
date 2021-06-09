@@ -1,19 +1,18 @@
+:root {
+  --my-font-family: "Helvetica", "FreeSans", "Helvetica Neue", "Neue Haas Grotesk Display Pro", "Helvetica Now", "Roboto", "Arial", sans-serif;
+}
+
 @media (prefers-color-scheme: dark) {
-  :root {
-    --my-font-fg: black;
-    --my-font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  }
   html {
+    --my-font-fg: black;
     content: "dark";
   }
 }
 
 @media (prefers-color-scheme: light) {
-  :root {
-    --my-font-fg: white;
-    --my-font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  }
+
   html {
+    --my-font-fg: white;
     content: "light";
   }
 }
@@ -47,7 +46,7 @@ a:link {
 }
 
 .main {
-  font-size: 11vw;
+  font-size: calc(11vw - 10px);
   font-family: var(--my-font-family);
   font-weight: 700;
   text-align: left;
@@ -56,7 +55,7 @@ a:link {
 .linkbtn {
   text-align: center;
   font-size: 6vw;
-  transition: all 0.15s ease-in-out;
+  transition: transform 0.15s ease-in-out;
   border-radius: 10px;
 }
 
@@ -65,7 +64,7 @@ a:link {
 }
 
 .bounced {
-  transition: all 0.07s ease-in-out;
+  transition: transform 0.07s ease-in-out;
 }
 
 .forkme {
