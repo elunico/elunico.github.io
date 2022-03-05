@@ -10,7 +10,7 @@
   --image-stroke-color: rgb(51, 51, 51);
   --image-fill-color: rgb(51, 51, 51);
   --anim-transition: transform 0.2s ease-in-out;
-  --anim-transform: scale(1.1);
+  --anim-transform: scale(1.05);
 }
 
 @media (prefers-reduced-motion: reduce) {
