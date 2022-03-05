@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+:root {
+  --page-background-color: #f4f4f4;
+  --project-background-color: white;
+  --body-text-color: black;
+  --project-border: 2px solid black;
+  --project-border-radius: 10px;
+  --project-box-shadow: 6px 6px gray;
+  --image-stroke-color: rgb(51, 51, 51);
+  --image-fill-color: rgb(51, 51, 51);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page-background-color: rgb(30, 30, 30);
+    --project-background-color: rgb(60, 60, 60);
+    --body-text-color: white;
+    --project-border: 2px solid white;
+    --project-border-radius: 15px;
+    --project-box-shadow: 6px 6px lightgray;
+    --image-stroke-color: rgb(240, 240, 240);
+    --image-fill-color: rgb(240, 240, 240);
+  }
+}
+
+body {
+  background-color: var(--page-background-color);
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-align: center;
+  color: var(--body-text-color);
+  padding-bottom: 6vh;
+  margin: 5vmin;
+  font-size: 2vmin;
+}
+
+.logo {
+  margin-left: 1vw;
+  margin-right: 1vw;
+  transition: transform 0.2s ease-in-out;
+}
+
+.logo:hover {
+  transform: scale(1.1);
+}
+
+svg.logo {
+  width: 10vw;
+  height: 10vh;
+}
+
+.logog {
+  fill: var(--image-fill-color);
+  /* stroke: var(--image-stroke-color); */
+}
+
+.content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+
+}
+
+
+@media(max-width: 1000px) {
+  body {
+    font-size: 2vmax;
+  }
+
+  .logo {
+    margin-left: 5vw;
+    margin-right: 5vw;
+  }
+
+  .content {
+    display: grid;
+    grid-template-columns: minmax(300px, 1fr);
+  }
+}
+
+.subtitle {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 1em;
+  color: gray;
+}
+
+.blerb {
+  font-size: 1.2em;
+  margin-bottom: 2vh;
+}
+
+h1 {
+  text-align: center;
+  font-weight: bolder;
+  font-size: 3.5em;
+  margin-bottom: 0;
+}
+
+
+
+.project {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: space-between;
+  justify-content: space-between;
+  margin: 0.75vmax;
+  border: var(--project-border);
+  box-shadow: var(--project-box-shadow);
+  border-radius: var(--project-border-radius);
+  background-color: var(--project-background-color);
+  transition: transform 0.2s ease-in-out;
+  padding: 0.5em;
+}
+
+.project:hover {
+  transform: scale(1.1);
+}
+
+img {
+  width: 100%;
+  max-width: 10vw;
+  height: auto;
+}
+
+.section-heading {
+  margin-top: 5vh;
+}
+
+a:link {
+  color: var(--body-text-color);
+  text-decoration: none;
+}
+
+a:visited {
+  color: var(--body-text-color);
+  text-decoration: none;
+}
