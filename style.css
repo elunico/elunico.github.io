@@ -6,11 +6,12 @@
   --body-text-color: black;
   --project-border: 2px solid black;
   --project-border-radius: 10px;
-  --project-box-shadow: 6px 6px gray;
+  --project-box-shadow: 8px 8px lightgray;
   --image-stroke-color: rgb(51, 51, 51);
   --image-fill-color: rgb(51, 51, 51);
-  --anim-transition: transform 0.2s ease-in-out;
-  --anim-transform: scale(1.05);
+  --anim-transition: transform 0.15s ease-in-out;
+  --anim-transform: scale(1.07);
+  --bg-text-color: #dedede;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -22,14 +23,15 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --page-background-color: rgb(30, 30, 30);
-    --project-background-color: rgb(60, 60, 60);
+    --project-background-color: rgb(45, 45, 45);
+    --page-background-color: rgb(55, 55, 55);
     --body-text-color: white;
     --project-border: 2px solid white;
     --project-border-radius: 15px;
-    --project-box-shadow: 6px 6px lightgray;
+    --project-box-shadow: 8px 8px rgb(30, 30, 30);
     --image-stroke-color: rgb(240, 240, 240);
     --image-fill-color: rgb(240, 240, 240);
+    --bg-text-color: rgb(75, 75, 75);
   }
 }
 
@@ -66,9 +68,7 @@ svg.logo {
 .content {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-
 }
-
 
 @media(max-width: 1000px) {
   body {
@@ -84,6 +84,21 @@ svg.logo {
     display: grid;
     grid-template-columns: minmax(300px, 1fr);
   }
+}
+
+.bg {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.5em;
+  background-color: rgb(240, 240, 240, 0);
+  color: var(--bg-text-color);
+  z-index: -100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  word-wrap: break-word;
+  user-select: none;
+  overflow: hidden;
 }
 
 .subtitle {
@@ -104,8 +119,6 @@ h1 {
   font-size: 3.5em;
   margin-bottom: 0;
 }
-
-
 
 .project {
   display: flex;
