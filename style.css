@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap');
 
 :root {
   --page-background-color: #f4f4f4;
   --project-background-color: white;
   --body-text-color: black;
   --project-border: 2px solid black;
-  --project-border-radius: 10px;
+  --project-border-radius: 15px;
   --project-box-shadow: 8px 8px lightgray;
   --image-stroke-color: rgb(51, 51, 51);
   --image-fill-color: rgb(51, 51, 51);
@@ -27,7 +27,6 @@
     --page-background-color: rgb(55, 55, 55);
     --body-text-color: white;
     --project-border: 2px solid white;
-    --project-border-radius: 15px;
     --project-box-shadow: 8px 8px rgb(30, 30, 30);
     --image-stroke-color: rgb(240, 240, 240);
     --image-fill-color: rgb(240, 240, 240);
@@ -37,7 +36,7 @@
 
 body {
   background-color: var(--page-background-color);
-  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-align: center;
   color: var(--body-text-color);
   padding-bottom: 6vh;
@@ -124,15 +123,16 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  align-content: space-between;
-  justify-content: space-between;
-  margin: 0.75vmax;
+  align-content: space-evenly;
+  justify-content: space-evenly;
+  /* margin: 0.75vmax; */
+  margin: 14px;
   border: var(--project-border);
   box-shadow: var(--project-box-shadow);
   border-radius: var(--project-border-radius);
   background-color: var(--project-background-color);
   transition: var(--anim-transition);
-  padding: 0.5em;
+  padding: 0.7em;
 }
 
 .project:hover {
