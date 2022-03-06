@@ -1,0 +1,56 @@
+-
+    link: https://elunico.github.io/machine-gen
+    title: State Machine Generator
+    img:
+        src: images/state-machine.svg
+        alt: State machine image
+    description: Generate python classes with State Machine rules visually.
+-
+    link: https://elunico.github.io/CC-069-Redone/
+    title: Genetic Algorithm Flocking Simulation
+    img:
+        src: images/flocking.svg
+        alt: Flocking simulation with genetic algorithm image
+    description: An elaboration on a Coding Train challenge implementing altruism and sharing in a flocking simulation using genetic algorithms.
+-
+    link: http://socdraw.herokuapp.com/
+    title: SocDraw
+    img:
+        src: images/socdraw.svg
+        alt: SocDraw image
+    description: Real-time collaborative drawing on HTML5 Canvas in the browser.
+-
+    link: http://wikitext.herokuapp.com/
+    title: WikiText
+    img:
+        src: images/wikitext.svg
+        alt: Image for wiki text
+    description: Parse and save the main content text from Wikipedia articles as plain text, markdown, or PDFs. Great for gathering lots of data!
+-
+    link: https://chrome.google.com/webstore/detail/custom-youtube-speed/hjemikpikabiolgbpbdlgeccljdfdicf/
+    title: Custom YouTube Speed
+    img:
+        src: images/cys.svg
+        alt: Image for wiki text
+    description: A Chrome (and Firefox) extension to control YouTube video playback speed. Allows buttons, default speed, and hotkeys!
+-
+    link: https://github.com/elunico/iMacColorUnlocker
+    title: iMac Color Unlocker
+    img:
+        src: images/imacunlock.svg
+        alt: Image for iMac color unlocker
+    description: A Tiny SwiftUI Program that enables any Mac to use the 2021 24-inch iMac accent colors in macOS Monterey.
+-
+    link: http://url.eluni.co
+    title: URL Shortener
+    img:
+        src: images/shortener.svg
+        alt: Image for Elunico URL Shortener
+    description: A node.js app that creates easy to remember shortened URLs.
+-
+    link: https://gitlab.com/tpovinelli/jpedit
+    title: JPEdit
+    img:
+        src: images/jpedit.svg
+        alt: Image for JPEdit
+    description: A text editor inspired by Notepad, but with the ability to create and add plugins. Written in Java with JavaFX.
