@@ -69,20 +69,17 @@ svg.logo {
   justify-content: center;
   align-content: center;
   justify-items: center;
-  padding: 1em;
+  /* padding: 1em; */
 }
 
 .top-content {
-  background-color: var(--project-background-color);
-  border: var(--project-border);
-  box-shadow: var(--project-box-shadow);
-  border-radius: var(--project-border-radius);
+  text-shadow: #aaa 5px 5px 10px;
   padding: 1em;
 }
 
 .logo {
-  margin-left: 1vw;
-  margin-right: 1vw;
+  /* margin-left: 1vw; */
+  /* margin-right: 1vw; */
   transition: var(--anim-transition);
 }
 
@@ -140,8 +137,8 @@ svg.logo {
   }
 
   svg.logo {
-    width: 100%;
-    height: 100%;
+    width: 50%;
+    height: 50%;
   }
 }
 
@@ -208,6 +205,7 @@ img {
 
 .section-heading {
   margin-top: 5vh;
+
 }
 
 a:link {

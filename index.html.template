@@ -9,6 +9,9 @@
 </head>
 
 <body>
+  <div aria-hidden="true" class="bg">
+
+  </div>
   <div class="topper">
     <a id="top-left" href="http://github.com/elunico">
       <svg class="logo" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24">
@@ -22,9 +25,7 @@
     </a>
     <div class="top-content">
       <h1>Thomas Povinelli</h1>
-      <div aria-hidden="true" class="bg">
 
-      </div>
 
       <p class="blerb">
         I am a software developer and teacher with an interest in web development, linguistics,
