@@ -11,65 +11,35 @@
 
   <style>
     :root {
-      --my-main-font: Menlo, "DejaVu Sans Mono", monospace;
-      --my-button-fade-time: 650ms;
-      --my-slide-in-time: 500ms;
-      /* green */
-      --my-green-color: #32CD32;
-      --my-dark-accent-color: darkgreen;
-      --my-link-visited-color: #2E8B57;
-      --my-link-hover-color: #00ff00;
-      --button-background-color: #24292E;
-      --progPage-color: white;
-      --projectContainer-color: white;
-      --my-background-color: #24292E;
-      --my-caption-background-color: rgb(48, 48, 48);
+      --background-color: #fefefe;
+      --text-color: #111;
+      --link-color: blue;
+      --visited-color: darkmagenta;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --background-color: #111;
+        --text-color: #fefefe;
+        --link-color: hsl(180, 40%, 60%);
+        --visited-color: hsl(280, 40%, 60%);
+
+      }
     }
 
     body {
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      color: white;
-      background-color: var(--my-background-color);
+      color: var(--text-color);
+      background-color: var(--background-color);
       padding: 1em;
     }
 
-    li {
-      font-size: 1.1rem;
+    a:link {
+      color: var(--link-color);
     }
 
-    @media (prefers-color-scheme: light) {
-      :root {
-        --my-main-font: Menlo, "DejaVu Sans Mono", monospace;
-        --my-button-fade-time: 650ms;
-        --my-slide-in-time: 500ms;
-        --my-green-color: #2fa32f;
-        --my-dark-accent-color: darkgreen;
-        --my-link-visited-color: #2E8B57;
-        --my-link-hover-color: #00ff00;
-        --button-background-color: rgb(240, 238, 238);
-        --progPage-color: black;
-        --projectContainer-color: black;
-        --my-background-color: #fefefe;
-        --my-caption-background-color: #f3f3f3;
-      }
-
-      code {
-        font-size: 95%;
-        background-color: rgb(230, 230, 230);
-        border-radius: 5px;
-        padding: 3px;
-      }
-
-      body {
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-        color: black;
-        background-color: var(--my-background-color);
-
-      }
-
-      li {
-        font-size: 1.1rem;
-      }
+    a:visited {
+      color: var(--visited-color);
     }
   </style>
 
@@ -82,66 +52,65 @@
   </h1>
 
   <p>
-    <h2>Hosted on eluni.co</h2>
-    <ul>
-      <li><a href="/projects/game-of-life">Game of Life</a></li>
-      <li><a href="/projects/keycodechecker">JavaScript KeyCode Checker</a></li>
-      <li><a href="/projects/color-picker">HTML Color Picker</a></li>
-    </ul>
+  <h2>Hosted on eluni.co</h2>
+  <ul>
+    <li><a href="/projects/game-of-life">Game of Life</a></li>
+    <li><a href="/projects/keycodechecker">JavaScript KeyCode Checker</a></li>
+    <li><a href="/projects/color-picker">HTML Color Picker</a></li>
+  </ul>
   </p>
   <p>
-    <h2>Hosted Elsewhere</h2>
-    <ul>
-      <li><a href="http://url.eluni.co">URL Shortener</a></li>
-      <li><a href="http://skyblock-minion-calculator.herokuapp.com">Skyblock Minion Calculator</a></li>
-      <li><a href="http://url.eluni.co:3000/status">Chromeduino Compile Server</a></li>
-      <li><a href="http://wikitext.herokuapp.com/">Wikipedia Article Text Extractor</a></li>
-    </ul>
+  <h2>Hosted Elsewhere</h2>
+  <ul>
+    <li><a href="http://url.eluni.co">URL Shortener</a></li>
+    <li><a href="http://skyblock-minion-calculator.herokuapp.com">Skyblock Minion Calculator</a></li>
+    <li><a href="http://url.eluni.co:3000/status">Chromeduino Compile Server</a></li>
+    <li><a href="http://wikitext.herokuapp.com/">Wikipedia Article Text Extractor</a></li>
+  </ul>
   </p>
   <p>
-    <h2>Mac Apps</h2>
-    <ul>
-      <li><a href="https://github.com/elunico/iMacColorUnlocker">iMac Color Unlocker</a></li>
-      <li><a href="https://github.com/elunico/DashboardCalculator">Dashboard Calculator</a></li>
-    </ul>
+  <h2>Mac Apps</h2>
+  <ul>
+    <li><a href="https://github.com/elunico/iMacColorUnlocker">iMac Color Unlocker</a></li>
+    <li><a href="https://github.com/elunico/DashboardCalculator">Dashboard Calculator</a></li>
+  </ul>
   </p>
   <p>
-    <h2>CLI Tools and Programs</h2>
-    <ul>
-      <li><a href="https://github.com/elunico/Terminal-Typing-Test">Typing Speed Test in Terminal</a></li>
-      <li><a href="https://github.com/elunico/WordnikCLI2">The
-          <code>define</code> command </a> using <a href="https://www.wordnik.com">Wordnik</a>. Like <code>man</code>
-        pages for English words.</li>
-    </ul>
+  <h2>CLI Tools and Programs</h2>
+  <ul>
+    <li><a href="https://github.com/elunico/Terminal-Typing-Test">Typing Speed Test in Terminal</a></li>
+    <li><a href="https://github.com/elunico/WordnikCLI2">The
+        <code>define</code> command </a> using <a href="https://www.wordnik.com">Wordnik</a>. Like <code>man</code>
+      pages for English words.</li>
+  </ul>
   </p>
   <p>
-    <h2>Chrome Extensions</h2>
-    <ul>
-      <li><a
-          href="https://chrome.google.com/webstore/detail/custom-youtube-speed/hjemikpikabiolgbpbdlgeccljdfdicf">Custom
-          YouTube Speed</a></li>
-      <li><a href="https://chrome.google.com/webstore/detail/injectcss/bfemdninmdkikebgmhobjhoblkgbnbmc">CSS Injector
-          (alpha)</a></li>
-    </ul>
+  <h2>Chrome Extensions</h2>
+  <ul>
+    <li><a href="https://chrome.google.com/webstore/detail/custom-youtube-speed/hjemikpikabiolgbpbdlgeccljdfdicf">Custom
+        YouTube Speed</a></li>
+    <li><a href="https://chrome.google.com/webstore/detail/injectcss/bfemdninmdkikebgmhobjhoblkgbnbmc">CSS Injector
+        (alpha)</a></li>
+  </ul>
   </p>
   <p>
-    <h2>p5.js Web Editor Sketches</h2>
-    <ul>
-      <li><a href="https://editor.p5js.org/tompov227/sketches/VkwvhfpQ3">Generator functions and L-Systems</a> (adapted
-        from <a href="https://www.youtube.com/watch?v=E1B4UoSQMFw">this</a>)</li>
-      <li><a href="https://editor.p5js.org/tompov227/sketches/867M_KhgO">Fourier Series</a></li>
-      <li><a href="https://editor.p5js.org/tompov227/sketches/jV-mgAUy3">Swiss Railway Clock</a></li>
-      <li><a href="https://editor.p5js.org/tompov227/sketches/NytCY_iQM">Evolving Steering Behavior</a> (Adapted from <a
-          href="https://www.youtube.com/watch?v=ykOcaInciBI">this</a>)</li>
+  <h2>p5.js Web Editor Sketches</h2>
+  <ul>
+    <li><a href="https://editor.p5js.org/tompov227/sketches/VkwvhfpQ3">Generator functions and L-Systems</a> (adapted
+      from <a href="https://www.youtube.com/watch?v=E1B4UoSQMFw">this</a>)</li>
+    <li><a href="https://editor.p5js.org/tompov227/sketches/867M_KhgO">Fourier Series</a></li>
+    <li><a href="https://editor.p5js.org/tompov227/sketches/jV-mgAUy3">Swiss Railway Clock</a></li>
+    <li><a href="https://editor.p5js.org/tompov227/sketches/NytCY_iQM">Evolving Steering Behavior</a> (Adapted from <a
+        href="https://www.youtube.com/watch?v=ykOcaInciBI">this</a>)</li>
 
-    </ul>
+  </ul>
   </p>
   <p>
-    <h2>Open Source Locations</h2>
-    <ul>
-      <li><a href="https://github.com/elunico">Github</a></li>
-      <li><a href="https://gitlab.com/tpovinelli">GitLab</a></li>
-    </ul>
+  <h2>Open Source Locations</h2>
+  <ul>
+    <li><a href="https://github.com/elunico">Github</a></li>
+    <li><a href="https://gitlab.com/tpovinelli">GitLab</a></li>
+  </ul>
   </p>
 
 </body>

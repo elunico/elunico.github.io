@@ -221,20 +221,16 @@ img {
 }
 
 
-
 @media (prefers-reduced-motion: reduce) {
   :root {
     --anim-transition: none;
     --anim-transform: none;
   }
 
-
-
   .logo:hover {
     transform: none;
   }
 }
-
 
 .content-other {
   text-align: left;
