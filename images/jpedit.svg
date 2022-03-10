@@ -8,7 +8,10 @@
         <use xlink:href="#_Image2" x="27.3" y="26.242" width="10.396px" height="10.396px" transform="matrix(0.945112,0,0,0.945112,0,0)"/>
         <use xlink:href="#_Image3" x="42.113" y="26.242" width="10.396px" height="10.396px" transform="matrix(0.945112,0,0,0.945112,0,0)"/>
         <use xlink:href="#_Image4" x="56.926" y="26.242" width="10.396px" height="10.396px" transform="matrix(0.945112,0,0,0.945112,0,0)"/>
-        <text x="248.46px" y="35px" style="font-family:'InterDisplay-Bold', 'Inter Display';font-weight:700;font-size:13px;">Untitled 1  JPEdit</text>
+        <g transform="matrix(13,0,0,13,306.779,35)">
+            <rect x="0.069" y="-0.424" width="0.332" height="0.12" style="fill-rule:nonzero;"/>
+        </g>
+        <text x="243.474px" y="35px" style="font-family:'Inter-Bold', 'Inter';font-weight:700;font-size:13px;">Untit<tspan x="274.824px " y="35px ">l</tspan>ed 1 <tspan x="312.873px " y="35px "> </tspan>JPEdit</text>
         <rect x="20" y="40" width="560" height="40" style="fill:rgb(239,238,238);stroke:black;stroke-width:0.5px;"/>
         <use xlink:href="#_Image5" x="49.601" y="49.819" width="70.499px" height="20.878px" transform="matrix(0.992941,0,0,0.994188,0,0)"/>
         <use xlink:href="#_Image5" x="130.17" y="49.882" width="70.499px" height="20.878px" transform="matrix(0.992941,0,0,0.994188,0,0)"/>

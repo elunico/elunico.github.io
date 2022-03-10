@@ -43,12 +43,13 @@
     </a>
   </div>
 
-  <h2 class="section-heading">Projects</h2>
-  <div class="content">
+  <main>
 
     %{{content}}
 
-  </div>
+  </main>
+
+  <div class="footer">You can view all my projects and source locations <a href="/projects">here</a>.</div>
   <script>
     fetch('/bg.txt').then(r => r.text()).then(text => {
       document.querySelector('.bg').textContent = text;
