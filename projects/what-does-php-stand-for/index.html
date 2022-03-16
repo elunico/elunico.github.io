@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>What Does PHP Stand For?</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      grid-template-rows: auto 1fr;
+      justify-content: center;
+      height: 50vh;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin: 0;
+      padding: 0;
+    }
+
+    #stands {
+      font-size: 1.25em;
+      margin: 2em 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    button {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      color: #333;
+      font-size: 1.15em;
+      padding: 0.5em;
+      margin: 0.5em;
+      box-shadow: #333 2px 2px 3px;
+      width: max-content;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>PHP Stands for...</h1>
+  <p id="stands">
+    <span id="replaced"><span id="replacement-p">P</span><span id="replacement-h">H</span><span
+        id="replacement-p2">P</span>
+    </span>
+  </p>
+  <button id="revealer">What does PHP stand for?</button>
+  <script>
+    let running = false;
+    const stands = document.getElementById('stands');
+    const revealer = document.getElementById('revealer');
+    const answerp = 'HP: ';
+    const answerh = 'ypertext ';
+    const answerp2 = 'reprocessor ';
+
+    revealer.addEventListener('click', () => {
+      if (running) {
+        running = false;
+        revealer.textContent = 'What does PHP stand for?';
+
+        return; // exit early
+      }
+      running = true;
+
+
+      function interior() {
+        if (!running) {
+          return;
+        }; // exit early
+        revealer.textContent = 'Ok that\'s enough PHP for now';
+
+        let index = 0;
+        const replacementp1 = document.getElementById('replacement-p');
+        const replacementh = document.getElementById('replacement-h');
+        const replacementp2 = document.getElementById('replacement-p2');
+        const replaced = document.getElementById('replaced');
+
+        replacementp1.textContent = 'P';
+        replacementh.textContent = 'H';
+        replacementp2.textContent = 'P';
+        const interval = setInterval(() => {
+          replacementp1.textContent += answerp[index] || '';
+          replacementh.textContent += answerh[index] || '';
+          replacementp2.textContent += answerp2[index] || '';
+          index++;
+          if (index === Math.max(answerp.length, answerh.length, answerp2.length)) {
+            clearInterval(interval);
+            replacementp1.removeAttribute('id');
+            replacementh.removeAttribute('id');
+            replacementp2.removeAttribute('id');
+            replaced.removeAttribute('id');
+            replaced.innerHTML = replaced.innerHTML.replace(/PHP/, '<span id="replaced"><span id="replacement-p">P</span><span id="replacement-h">H</span><span id="replacement-p2">P</span></span></span>');
+            setTimeout(() => interior(), 0);
+          }
+        }, 75);
+      }
+      interior();
+    });
+  </script>
+</body>
+
+</html>
