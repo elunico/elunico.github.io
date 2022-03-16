@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Period Table</title>
+
+  <style>
+    body {
+      display: grid;
+      grid-template-columns: repeat(17, 1fr);
+    }
+
+    .element-box {
+      margin: 0.1em;
+      padding: 0.25em;
+      background-color: aqua;
+      border: 1px solid black;
+      border-radius: 5px;
+    }
+
+    .row1 {
+      grid-row: 1;
+    }
+
+    .row2 {
+      grid-row: 2;
+    }
+
+    .row3 {
+      grid-row: 3;
+    }
+
+    .row4 {
+      grid-row: 4;
+    }
+
+    .row5 {
+      grid-row: 5;
+    }
+
+    .row6 {
+      grid-row: 6;
+    }
+
+    .row7 {
+      grid-row: 7;
+    }
+
+    .row-lan {
+      grid-row: 9;
+    }
+
+    .row-act {
+      grid-row: 10;
+    }
+
+    .col1 {
+      grid-column: 1;
+    }
+
+    .col2 {
+      grid-column: 2;
+    }
+
+    .col3 {
+      grid-column: 3;
+    }
+
+    .col4 {
+      grid-column: 4;
+    }
+
+    .col5 {
+      grid-column: 5;
+    }
+
+    .col6 {
+      grid-column: 6;
+    }
+
+    .col7 {
+      grid-column: 7;
+    }
+
+    .col8 {
+      grid-column: 8;
+    }
+
+    .col9 {
+      grid-column: 9;
+    }
+
+    .col10 {
+      grid-column: 10;
+    }
+
+    .col11 {
+      grid-column: 11;
+    }
+
+    .col12 {
+      grid-column: 12;
+    }
+
+    .col13 {
+      grid-column: 13;
+    }
+
+    .col14 {
+      grid-column: 14;
+    }
+
+    .col15 {
+      grid-column: 15;
+    }
+
+    .col16 {
+      grid-column: 16;
+    }
+
+    .col17 {
+      grid-column: 17;
+    }
+
+    .col18 {
+      grid-column: 18;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="element-box ">
+    <div class="element-number">1</div>
+    <div class="element-abbr">H</div>
+    <div class="element-name">Hydrogen</div>
+  </div>
+  <div class="element-box ">
+    <div class="element-number">2</div>
+    <div class="element-abbr">He</div>
+    <div class="element-name">Helium</div>
+  </div>
+  <div class="element-box ">
+    <div class="element-number">3</div>
+    <div class="element-abbr">Li</div>
+    <div class="element-name">Lithium</div>
+  </div>
+  <div class="element-box ">
+    <div class="element-number">4</div>
+    <div class="element-abbr">Be</div>
+    <div class="element-name">Beryllium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">5</div>
+    <div class="element-abbr">B</div>
+    <div class="element-name">Boron</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">6</div>
+    <div class="element-abbr">C</div>
+    <div class="element-name">Carbon</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">7</div>
+    <div class="element-abbr">N</div>
+    <div class="element-name">Nitrogen</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">8</div>
+    <div class="element-abbr">O</div>
+    <div class="element-name">Oxygen</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">9</div>
+    <div class="element-abbr">F</div>
+    <div class="element-name">Fluorine</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">10</div>
+    <div class="element-abbr">Ne</div>
+    <div class="element-name">Neon</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">11</div>
+    <div class="element-abbr">Na</div>
+    <div class="element-name">Sodium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">12</div>
+    <div class="element-abbr">Mg</div>
+    <div class="element-name">Magnesium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">13</div>
+    <div class="element-abbr">Al</div>
+    <div class="element-name">Aluminum</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">14</div>
+    <div class="element-abbr">Si</div>
+    <div class="element-name">Silicon</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">15</div>
+    <div class="element-abbr">P</div>
+    <div class="element-name">Phosphorus</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">16</div>
+    <div class="element-abbr">S</div>
+    <div class="element-name">Sulfur</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">17</div>
+    <div class="element-abbr">Cl</div>
+    <div class="element-name">Chlorine</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">18</div>
+    <div class="element-abbr">Ar</div>
+    <div class="element-name">Argon</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">19</div>
+    <div class="element-abbr">K</div>
+    <div class="element-name">Potassium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">20</div>
+    <div class="element-abbr">Ca</div>
+    <div class="element-name">Calcium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">21</div>
+    <div class="element-abbr">Sc</div>
+    <div class="element-name">Scandium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">22</div>
+    <div class="element-abbr">Ti</div>
+    <div class="element-name">Titanium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">23</div>
+    <div class="element-abbr">V</div>
+    <div class="element-name">Vanadium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">24</div>
+    <div class="element-abbr">Cr</div>
+    <div class="element-name">Chromium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">25</div>
+    <div class="element-abbr">Mn</div>
+    <div class="element-name">Manganese</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">26</div>
+    <div class="element-abbr">Fe</div>
+    <div class="element-name">Iron</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">27</div>
+    <div class="element-abbr">Co</div>
+    <div class="element-name">Cobalt</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">28</div>
+    <div class="element-abbr">Ni</div>
+    <div class="element-name">Nickel</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">29</div>
+    <div class="element-abbr">Cu</div>
+    <div class="element-name">Copper</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">30</div>
+    <div class="element-abbr">Zn</div>
+    <div class="element-name">Zinc</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">31</div>
+    <div class="element-abbr">Ga</div>
+    <div class="element-name">Gallium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">32</div>
+    <div class="element-abbr">Ge</div>
+    <div class="element-name">Germanium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">33</div>
+    <div class="element-abbr">As</div>
+    <div class="element-name">Arsenic</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">34</div>
+    <div class="element-abbr">Se</div>
+    <div class="element-name">Selenium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">35</div>
+    <div class="element-abbr">Br</div>
+    <div class="element-name">Bromine</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">36</div>
+    <div class="element-abbr">Kr</div>
+    <div class="element-name">Krypton</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">37</div>
+    <div class="element-abbr">Rb</div>
+    <div class="element-name">Rubidium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">38</div>
+    <div class="element-abbr">Sr</div>
+    <div class="element-name">Strontium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">39</div>
+    <div class="element-abbr">Y</div>
+    <div class="element-name">Yttrium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">40</div>
+    <div class="element-abbr">Zr</div>
+    <div class="element-name">Zirconium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">41</div>
+    <div class="element-abbr">Nb</div>
+    <div class="element-name">Niobium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">42</div>
+    <div class="element-abbr">Mo</div>
+    <div class="element-name">Molybdenum</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">43</div>
+    <div class="element-abbr">Tc</div>
+    <div class="element-name">Technetium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">44</div>
+    <div class="element-abbr">Ru</div>
+    <div class="element-name">Ruthenium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">45</div>
+    <div class="element-abbr">Rh</div>
+    <div class="element-name">Rhodium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">46</div>
+    <div class="element-abbr">Pd</div>
+    <div class="element-name">Palladium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">47</div>
+    <div class="element-abbr">Ag</div>
+    <div class="element-name">Silver</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">48</div>
+    <div class="element-abbr">Cd</div>
+    <div class="element-name">Cadmium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">49</div>
+    <div class="element-abbr">In</div>
+    <div class="element-name">Indium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">50</div>
+    <div class="element-abbr">Sn</div>
+    <div class="element-name">Tin</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">51</div>
+    <div class="element-abbr">Sb</div>
+    <div class="element-name">Antimony</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">52</div>
+    <div class="element-abbr">Te</div>
+    <div class="element-name">Tellurium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">53</div>
+    <div class="element-abbr">I</div>
+    <div class="element-name">Iodine</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">54</div>
+    <div class="element-abbr">Xe</div>
+    <div class="element-name">Xenon</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">55</div>
+    <div class="element-abbr">Cs</div>
+    <div class="element-name">Cesium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">56</div>
+    <div class="element-abbr">Ba</div>
+    <div class="element-name">Barium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">57</div>
+    <div class="element-abbr">La</div>
+    <div class="element-name">Lanthanum</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">58</div>
+    <div class="element-abbr">Ce</div>
+    <div class="element-name">Cerium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">59</div>
+    <div class="element-abbr">Pr</div>
+    <div class="element-name">Praseodymium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">60</div>
+    <div class="element-abbr">Nd</div>
+    <div class="element-name">Neodymium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">61</div>
+    <div class="element-abbr">Pm</div>
+    <div class="element-name">Promethium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">62</div>
+    <div class="element-abbr">Sm</div>
+    <div class="element-name">Samarium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">63</div>
+    <div class="element-abbr">Eu</div>
+    <div class="element-name">Europium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">64</div>
+    <div class="element-abbr">Gd</div>
+    <div class="element-name">Gadolinium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">65</div>
+    <div class="element-abbr">Tb</div>
+    <div class="element-name">Terbium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">66</div>
+    <div class="element-abbr">Dy</div>
+    <div class="element-name">Dysprosium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">67</div>
+    <div class="element-abbr">Ho</div>
+    <div class="element-name">Holmium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">68</div>
+    <div class="element-abbr">Er</div>
+    <div class="element-name">Erbium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">69</div>
+    <div class="element-abbr">Tm</div>
+    <div class="element-name">Thulium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">70</div>
+    <div class="element-abbr">Yb</div>
+    <div class="element-name">Ytterbium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">71</div>
+    <div class="element-abbr">Lu</div>
+    <div class="element-name">Lutetium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">72</div>
+    <div class="element-abbr">Hf</div>
+    <div class="element-name">Hafnium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">73</div>
+    <div class="element-abbr">Ta</div>
+    <div class="element-name">Tantalum</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">74</div>
+    <div class="element-abbr">W</div>
+    <div class="element-name">Tungsten</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">75</div>
+    <div class="element-abbr">Re</div>
+    <div class="element-name">Rhenium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">76</div>
+    <div class="element-abbr">Os</div>
+    <div class="element-name">Osmium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">77</div>
+    <div class="element-abbr">Ir</div>
+    <div class="element-name">Iridium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">78</div>
+    <div class="element-abbr">Pt</div>
+    <div class="element-name">Platinum</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">79</div>
+    <div class="element-abbr">Au</div>
+    <div class="element-name">Gold</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">80</div>
+    <div class="element-abbr">Hg</div>
+    <div class="element-name">Mercury</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">81</div>
+    <div class="element-abbr">Tl</div>
+    <div class="element-name">Thallium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">82</div>
+    <div class="element-abbr">Pb</div>
+    <div class="element-name">Lead</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">83</div>
+    <div class="element-abbr">Bi</div>
+    <div class="element-name">Bismuth</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">84</div>
+    <div class="element-abbr">Po</div>
+    <div class="element-name">Polonium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">85</div>
+    <div class="element-abbr">At</div>
+    <div class="element-name">Astatine</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">86</div>
+    <div class="element-abbr">Rn</div>
+    <div class="element-name">Radon</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">87</div>
+    <div class="element-abbr">Fr</div>
+    <div class="element-name">Francium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">88</div>
+    <div class="element-abbr">Ra</div>
+    <div class="element-name">Radium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">89</div>
+    <div class="element-abbr">Ac</div>
+    <div class="element-name">Actinium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">90</div>
+    <div class="element-abbr">Th</div>
+    <div class="element-name">Thorium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">91</div>
+    <div class="element-abbr">Pa</div>
+    <div class="element-name">Protactinium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">92</div>
+    <div class="element-abbr">U</div>
+    <div class="element-name">Uranium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">93</div>
+    <div class="element-abbr">Np</div>
+    <div class="element-name">Neptunium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">94</div>
+    <div class="element-abbr">Pu</div>
+    <div class="element-name">Plutonium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">95</div>
+    <div class="element-abbr">Am</div>
+    <div class="element-name">Americium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">96</div>
+    <div class="element-abbr">Cm</div>
+    <div class="element-name">Curium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">97</div>
+    <div class="element-abbr">Bk</div>
+    <div class="element-name">Berkelium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">98</div>
+    <div class="element-abbr">Cf</div>
+    <div class="element-name">Californium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">99</div>
+    <div class="element-abbr">Es</div>
+    <div class="element-name">Einsteinium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">100</div>
+    <div class="element-abbr">Fm</div>
+    <div class="element-name">Fermium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">101</div>
+    <div class="element-abbr">Md</div>
+    <div class="element-name">Mendelevium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">102</div>
+    <div class="element-abbr">No</div>
+    <div class="element-name">Nobelium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">103</div>
+    <div class="element-abbr">Lr</div>
+    <div class="element-name">Lawrencium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">104</div>
+    <div class="element-abbr">Rf</div>
+    <div class="element-name">Rutherfordium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">105</div>
+    <div class="element-abbr">Db</div>
+    <div class="element-name">Dubnium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">106</div>
+    <div class="element-abbr">Sg</div>
+    <div class="element-name">Seaborgium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">107</div>
+    <div class="element-abbr">Bh</div>
+    <div class="element-name">Bohrium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">108</div>
+    <div class="element-abbr">Hs</div>
+    <div class="element-name">Hassium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">109</div>
+    <div class="element-abbr">Mt</div>
+    <div class="element-name">Meitnerium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">110</div>
+    <div class="element-abbr">Ds</div>
+    <div class="element-name">Darmstadtium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">111</div>
+    <div class="element-abbr">Rg</div>
+    <div class="element-name">Roentgenium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">112</div>
+    <div class="element-abbr">Cn</div>
+    <div class="element-name">Copernicium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">113</div>
+    <div class="element-abbr">Nh</div>
+    <div class="element-name">Nihonium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">114</div>
+    <div class="element-abbr">Fl</div>
+    <div class="element-name">Flerovium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">115</div>
+    <div class="element-abbr">Mc</div>
+    <div class="element-name">Moscovium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">116</div>
+    <div class="element-abbr">Lv</div>
+    <div class="element-name">Livermorium</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">117</div>
+    <div class="element-abbr">Ts</div>
+    <div class="element-name">Tennessine</div>
+  </div>
+  <div class="element-box">
+    <div class="element-number">118</div>
+    <div class="element-abbr">Og</div>
+    <div class="element-name">Oganesson</div>
+  </div>
+
+</body>
+
+</html>
