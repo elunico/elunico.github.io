@@ -13,6 +13,7 @@
       grid-template-rows: auto 1fr;
       justify-content: center;
       height: 50vh;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     }
 
     h1 {
@@ -99,7 +100,7 @@
             replaced.innerHTML = replaced.innerHTML.replace(/PHP/, '<span id="replaced"><span id="replacement-p">P</span><span id="replacement-h">H</span><span id="replacement-p2">P</span></span></span>');
             setTimeout(() => interior(), 0);
           }
-        }, 75);
+        }, 200);
       }
       interior();
     });
