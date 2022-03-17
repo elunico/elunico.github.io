@@ -29,6 +29,18 @@
       text-align: center;
     }
 
+    .controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1em;
+    }
+
+    .controls>* {
+      margin: 0 1em;
+    }
+
+
     button {
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       background-color: #f0f0f0;
@@ -53,10 +65,15 @@
     </span>
   </p>
   <button id="revealer">What does PHP stand for?</button>
+  <div class="controls">
+    <label for="speed">Speed:</label>
+    <input type="range" id="speed" min="1" max="10" value="5" step="1">
+  </div>
   <script>
     let running = false;
     const stands = document.getElementById('stands');
     const revealer = document.getElementById('revealer');
+    const speedSlider = document.getElementById('speed');
     const answerp = 'HP: ';
     const answerh = 'ypertext ';
     const answerp2 = 'reprocessor ';
@@ -70,8 +87,8 @@
       }
       running = true;
 
-
-      function interior() {
+      function performAnimation() {
+        let frameCount = 0;
         if (!running) {
           return;
         }; // exit early
@@ -86,23 +103,29 @@
         replacementp1.textContent = 'P';
         replacementh.textContent = 'H';
         replacementp2.textContent = 'P';
-        const interval = setInterval(() => {
+        function expandAcronym() {
+          if (frameCount++ % (11 - speedSlider.value) !== 0) {
+            requestAnimationFrame(expandAcronym);
+            return;
+          }; // exit early
           replacementp1.textContent += answerp[index] || '';
           replacementh.textContent += answerh[index] || '';
           replacementp2.textContent += answerp2[index] || '';
           index++;
           if (index === Math.max(answerp.length, answerh.length, answerp2.length)) {
-            clearInterval(interval);
             replacementp1.removeAttribute('id');
             replacementh.removeAttribute('id');
             replacementp2.removeAttribute('id');
             replaced.removeAttribute('id');
             replaced.innerHTML = replaced.innerHTML.replace(/PHP/, '<span id="replaced"><span id="replacement-p">P</span><span id="replacement-h">H</span><span id="replacement-p2">P</span></span></span>');
-            setTimeout(() => interior(), 0);
+            requestAnimationFrame(performAnimation);
+          } else {
+            requestAnimationFrame(expandAcronym);
           }
-        }, 200);
+        }
+        expandAcronym();
       }
-      interior();
+      performAnimation();
     });
   </script>
 </body>
