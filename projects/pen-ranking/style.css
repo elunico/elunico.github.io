@@ -1,0 +1,20 @@
+body {
+  font-family: "Verdana", "Helvetica", Arial, sans-serif;
+  margin: 1em;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  column-gap: 1.25em;
+  grid-gap: 1.375em;
+}
+
+.body-container {
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.65);
+  border-radius: 15px;
+  border: 2px solid #ccc;
+  padding: 1em;
+}
+
+h1 {
+  font-size: 1.25em;
+  margin: 0;
+}
