@@ -1,5 +1,5 @@
 :root {
-  --my-font-family: "Helvetica", "FreeSans", "Helvetica Neue", "Neue Haas Grotesk Display Pro", "Helvetica Now", "Roboto", "Arial", sans-serif;
+  --my-font-family: "Verdana", "FreeSans", "Helvetica Neue", "Neue Haas Grotesk Display Pro", "Helvetica Now", "Roboto", "Arial", sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,6 +19,13 @@
 
 body {
   padding: 1%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 2%);
+  /* grid-template-columns: 1fr; */
+  /* grid-template-rows: 1fr 5fr 1fr; */
 }
 
 a:link {
@@ -46,15 +53,22 @@ a:link {
 }
 
 .main {
-  font-size: calc(11vw - 10px);
+  font-size: calc(20vh - 10px);
   font-family: var(--my-font-family);
   font-weight: 700;
-  text-align: left;
+  text-align: center;
+}
+
+a.main {
+  justify-self: flex-end;
+  align-self: stretch;
+  height: 20%;
 }
 
 .linkbtn {
+
   text-align: center;
-  font-size: 6vw;
+  font-size: 6vh;
   transition: transform 0.15s ease-in-out;
   border-radius: 10px;
 }
@@ -81,9 +95,18 @@ a:link {
   column-width: 22%;
   width: 100%;
   font-family: var(--my-font-family);
-  font-size: 4vw;
+  font-size: 8vh;
 }
 
 .forkme:hover {
   opacity: 1.0;
+}
+
+#key {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 60%;
+  align-self: center;
 }

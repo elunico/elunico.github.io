@@ -9,14 +9,17 @@
   <title>Key Code Tool</title>
   <style>
     .main {
-      font-size: 19vw;
+      font-size: 25vh;
       text-align: center;
     }
 
     .tiny {
-      font-size: 4.5vw;
+      font-size: 8vh;
       text-align: center !important;
       opacity: 0.76;
+      align-self: stretch;
+      justify-self: flex-end;
+      height: 20vh;
     }
 
     .copyright {
@@ -43,15 +46,15 @@
 
 <body id="container" onkeyup="removeTransform()" onkeydown="getKeyCode(event)">
 
-  <div class="main">
-    <div class="main tiny"><code>key</code></div>
-    <div id="key" class="bounced main"><br /></div>
-  </div>
-  <div class="main">
-    <a href="./more.html">
-      <div class="linkbtn" id="morebtn">More...</div>
-    </a>
-  </div>
+  <!-- <div class="main"> -->
+  <div class="main tiny"><code>key</code></div>
+  <div id="key" class="bounced main"><br /></div>
+  <!-- </div> -->
+  <!-- <div class="main"> -->
+  <a class="main" href="./more.html">
+    <div class="linkbtn" id="morebtn">More...</div>
+  </a>
+  <!-- </div> -->
 
   <script>
     function stylePage() {

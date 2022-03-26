@@ -92,9 +92,13 @@ function getKeyCode(event) {
   console.log(event.key);
   if (event.key == ' ') {
     if (!oldSize) oldSize = getComputedStyle(d)['font-size'];
-    d.style['opacity'] = 0.6;
+    d.style['opacity'] = 0.5;
     d.style['font-size'] = '8vw';
     d.textContent = '<space character>';
+  } else if (event.key.length > 1) {
+    if (!oldSize) oldSize = getComputedStyle(d)['font-size'];
+    d.style['opacity'] = 1;
+    d.style['font-size'] = '9vw';
   } else {
     d.style['opacity'] = 1;
     d.style['font-size'] = oldSize;
