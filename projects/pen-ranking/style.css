@@ -1,6 +1,8 @@
 body {
   font-family: "Verdana", "Helvetica", Arial, sans-serif;
-  margin: 1em;
+  margin: 2em;
+  width: 75%;
+  margin: 2em auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   column-gap: 1.25em;
