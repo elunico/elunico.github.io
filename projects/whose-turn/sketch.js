@@ -62,7 +62,7 @@ function setup() {
   const players = ['Potato', 'Tomato'];
   const icons = ['🥔', '🍅'];
 
-  const elapsed = new Date().getTime() - beginningOfTime;
+  const elapsed = Date.now() - beginningOfTime;
   const daysPassed = Math.floor(elapsed / (1000 * 60 * 60 * 24));
   console.log(daysPassed);
 
