@@ -51,8 +51,30 @@
 
   <div class="footer">You can view all my projects and source locations <a href="/projects">here</a>.</div>
   <script>
+    let body = document.body;
+    let html = document.documentElement;
+
+    // let pageHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
+    let pageHeight = window.innerHeight;
+
     fetch('/bg.txt').then(r => r.text()).then(text => {
-      document.querySelector('.bg').textContent = text;
+      const background = document.querySelector('.bg');
+      background.textContent = text;
+
+      while (true) {
+        let rects = background.getClientRects();
+        if (rects.length > 0) {
+          let rect = rects[0];
+          let height = rect.height;
+          if (height < pageHeight) {
+            console.log("Adding more!");
+            background.textContent += text;
+          } else {
+            break;
+          }
+        }
+      }
+
     });
   </script>
 </body>

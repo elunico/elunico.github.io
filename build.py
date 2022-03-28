@@ -32,16 +32,27 @@ def render_other_div(project):
     '''
 
 
+def on_each_with_indent(lst, message, block):
+    last = lst.pop()
+    for item in lst:
+        print("\t\u2523 {}".format(message(item)))
+        block(item)
+    print("\t\u2517 {}".format(message(last)))
+    block(last)
+
+
 def render_section(projects, kind, renderer):
     if len(projects) == 0:
         return ''
-    content = '\n<h2 class="section-heading">{} Projects</h2>\n'.format(kind.title())
-    content += '<div class="content-{}">'.format(kind)
-    for project in projects:
-        print("Building {} project {}".format(kind, project['title']))
-        content += renderer(project)
-    content += '</div>'
-    return content
+    content = ['\n<h2 class="section-heading">{} Projects</h2>\n'.format(kind.title())]
+    content += ['<div class="content-{}">'.format(kind)]
+    on_each_with_indent(
+        projects,
+        lambda item: "{} project \"{}\"".format(kind, item['title']),
+        lambda item: content.append(renderer(item))
+    )
+    content += ['</div>']
+    return ''.join(content)
 
 
 def main():
@@ -61,17 +72,19 @@ def main():
 
     print('Loaded {} projects'.format(len(projects['featured']) + len(projects['other'])))
 
+    print("Building content...")
     content = render_section(projects['featured'], 'featured', render_featured_div)
 
     content += render_section(projects['other'], 'other', render_other_div)
 
-    print("Writing to index.html")
-
+    print("Building page...")
     page = format_template(template, content)
+
+    print("Writing to index.html...")
     with open('index.html', 'w') as f:
         f.write(page)
 
-    print("Done")
+    print("Done!")
 
 
 if __name__ == '__main__':
