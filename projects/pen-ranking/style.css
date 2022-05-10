@@ -1,12 +1,14 @@
 body {
   font-family: "Verdana", "Helvetica", Arial, sans-serif;
   margin: 2em;
-  width: 75%;
+  width: 85%;
+  font-size: 1.1em;
   margin: 2em auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   column-gap: 1.25em;
   grid-gap: 1.375em;
+  line-height: 1.4em;
 }
 
 .body-container {
@@ -17,6 +19,6 @@ body {
 }
 
 h1 {
-  font-size: 1.25em;
+  font-size: 1.35em;
   margin: 0;
 }
