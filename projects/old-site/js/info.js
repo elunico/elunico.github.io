@@ -12,8 +12,6 @@ window.onload = () => {
 };
 
 
-window.onload = () => {;
-
 
 
 
