@@ -1,0 +1,326 @@
+@font-face {
+  font-family: 'DejaVu Sans Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../assets/fonts/DejaVuSansMono.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'DejaVu Sans Mono';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../assets/fonts/DejaVuSansMono-Oblique.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'DejaVu Sans Mono';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(../assets/fonts/DejaVuSansMono-Bold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'mononoki';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../assets/fonts/mononoki-Regular.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'mononoki';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../assets/fonts/mononoki-Italic.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'mononoki';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(../assets/fonts/mononoki-Bold.woff2) format('woff2');
+}
+
+:root {
+  --my-main-font: Menlo, "DejaVu Sans Mono", monospace;
+  --my-button-fade-time: 650ms;
+  --my-slide-in-time: 500ms;
+  /* green */
+  --my-green-color: #32CD32;
+  --my-dark-accent-color: darkgreen;
+  --my-link-visited-color: #2E8B57;
+  --my-link-hover-color: #00ff00;
+  --button-background-color: #24292E;
+  --progPage-color: white;
+  --projectContainer-color: white;
+  --my-background-color: #24292E;
+  --my-caption-background-color: rgb(48, 48, 48);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --my-main-font: Menlo, "DejaVu Sans Mono", monospace;
+    --my-button-fade-time: 650ms;
+    --my-slide-in-time: 500ms;
+    /* grayscale only use this */
+    /* --my-green-color: rgb(138, 138, 138); */
+    --my-green-color: #32CD32;
+    --my-dark-accent-color: darkgreen;
+    --my-link-visited-color: #2E8B57;
+    --my-link-hover-color: #e2e2e2;
+    --button-background-color: #24292E;
+    --progPage-color: white;
+    --projectContainer-color: white;
+    --my-background-color: #24292E;
+    --my-caption-background-color: rgb(48, 48, 48);
+  }
+  .my-code {
+    font-size: 95%;
+    background-color: rgb(51, 51, 51);
+    border-radius: 5px;
+    padding: 3px;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --my-main-font: Menlo, "DejaVu Sans Mono", monospace;
+    --my-button-fade-time: 650ms;
+    --my-slide-in-time: 500ms;
+    --my-green-color:#2fa32f;
+    --my-dark-accent-color: darkgreen;
+    --my-link-visited-color: #2E8B57;
+    --my-link-hover-color: #00ff00;
+    --button-background-color: rgb(240, 238, 238);
+    --progPage-color: black;
+    --projectContainer-color: black;
+    --my-background-color: #fefefe;
+    --my-caption-background-color: #f3f3f3;
+  }
+  code {
+    font-size: 95%;
+    background-color: rgb(230, 230, 230);
+    border-radius: 5px;
+    padding: 3px;
+  }
+}
+
+body.home {
+  background-color: var(--my-background-color);
+}
+
+body {
+  font-variant-ligatures: none;
+  line-height: 175%;
+}
+
+a:link {
+  color: var(--my-green-color);
+}
+
+a:visited {
+  color: var(--my-link-visited-color);
+}
+
+a:hover {
+  color: var(--my-link-hover-color);
+}
+
+a.buttonLink {
+  text-decoration: none;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: minmax(min-content, 16vmin);
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-left: 0.8vw;
+  margin-right: 0.8vw;
+  padding-left: 15px;
+  padding-right: 15px;
+
+  height: 100%;
+  line-height: 110%;
+
+  font-family: var(--my-main-font), monospace;
+  font-size: 2.4vw;
+  text-decoration: none;
+  text-align: center;
+
+  background-color: var(--button-background-color);
+  color: var(--my-green-color);
+
+  border-width: 5px;
+  border-color: var(--my-green-color);
+  border-style: solid;
+  border-radius: 20px;
+
+  transition: opacity var(--my-button-fade-time) ease-in-out, color 80ms ease-in-out, transform 80ms ease-in-out !important;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-left: 0.8vw;
+    margin-right: 0.8vw;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    height: 100%;
+    line-height: 110%;
+
+    font-family: var(--my-main-font), monospace;
+    font-size: 2.4vw;
+    text-decoration: none;
+    text-align: center;
+
+    background-color: var(--button-background-color);
+    color: var(--my-green-color);
+
+    border-width: 5px;
+    border-color: var(--my-green-color);
+    border-style: solid;
+    border-radius: 20px;
+
+  }
+}
+
+.buttonActive {
+  /* background-color: var(--my-dark-accent-color); */
+  /* Dark active so hover is still green? */
+  background-color: var(--my-green-color);
+  color: white;
+}
+
+.button:hover {
+  /* transform: scale(0.95); */
+  transform: translate(0px, 8%);
+  color: white;
+  background-color: var(--my-green-color);
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .button:hover {
+    /* transform: scale(0.95); */
+    /* transform: translate(0px, 8%); */
+    color: white;
+    background-color: var(--my-green-color);
+  }
+}
+
+.cursor {
+  transition: opacity 0.35s ease-in-out;
+  opacity: 1;
+}
+
+.mainHeader {
+  font-size: max(3.15vw, 0.7em);
+  font-family: var(--my-main-font), monospace;
+  color: var(--my-green-color);
+}
+
+.projectPage {
+  margin-left: 14.5%;
+  margin-right: 14.5%;
+}
+
+.progPageDescription {
+  font-size: min(1.15em, max(1.75vw, 0.8em));
+  color: var(--progPage-color);
+  font-family: var(--my-main-font), monospace;
+  text-align: left;
+}
+
+.projectName {
+  font-size: 1.65em;
+  font-family: var(--my-main-font), monospace;
+  text-align: left;
+  color: var(--my-green-color);
+}
+
+.projectDescription {
+  font-size: 1.15em;
+  font-family: var(--my-main-font), monospace;
+  text-align: left;
+  color: var(--progPage-color);
+}
+
+#vim {
+  font-family: var(--my-main-font), monospace;
+  font-size: 0.95em;
+  color: var(--my-green-color);
+  position: fixed;
+  left: 1px;
+  bottom: 1px;
+  top: auto;
+}
+
+#ten-print {
+  font-family: monospace;
+  font-size: 1.2rem;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  background-color: white;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  z-index: 5;
+  word-wrap: break-word;
+}
+
+.fadesIn {
+  transition: opacity var(--my-button-fade-time) ease-in-out, transform var(--my-slide-in-time) ease-in-out;
+  opacity: 0;
+}
+
+.fadesStatic {
+  transition: opacity var(--my-button-fade-time) ease-in-out, transform var(--my-slide-in-time) ease-in-out;
+}
+
+.fadesOffscreen {
+  transition: opacity var(--my-button-fade-time) ease-in-out, transform var(--my-slide-in-time) ease-in-out;
+  opacity: 0;
+  transform: translate(-400px, 0px);
+}
+
+.fadesOnScreen {
+  transition: opacity var(--my-button-fade-time) ease-in-out, transform var(--my-slide-in-time) ease-in-out;
+  opacity: 1;
+  transform: translate(0px, 0px);
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .fadesIn {
+    opacity: 1;
+    transition: none;
+  }
+  .fadesStatic {
+    transition: none;
+  }
+  .fadesOffscreen {
+    opacity: 1;
+    transform: translate(0px, 0px);
+    transition: none;
+  }
+  .fadesOnScreen {
+    opacity: 1;
+    transform: translate(0px, 0px);
+    transition: none;
+  }
+}
