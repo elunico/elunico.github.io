@@ -1,6 +1,6 @@
 const totPointsInput = document.querySelector('#total-points');
 const sepInput = document.querySelector('#sep');
-const missing = document.querySelector('#missing-tally');
+const missingInput = document.querySelector('#missing-tally');
 const result = document.querySelector('#result');
 
 let params = new URLSearchParams(window.location.search);
@@ -12,16 +12,18 @@ sepInput.value = sep;
 
 document.addEventListener('keydown', event => {
     if (event.key == 'Enter') {
-        missing.value = '';
+        missingInput.value = '';
         event.stopImmediatePropagation();
     }
 });
 
-missing.addEventListener('input', event => {
-    let total_points = parseInt(totPointsInput.value);
-    let sep = sepInput.value;
+[totPointsInput, sepInput, missingInput].forEach(
+    value => value.addEventListener('input', event => {
+        let total_points = parseInt(totPointsInput.value);
+        let sep = sepInput.value;
 
-    let points = missing.value.trim().split(sep).map((val, index) => Number(val.trim())).reduce((acc, c) => acc + c, 0);
-    result.textContent = `score: ${total_points - points}`;
-});
+        let points = missingInput.value.trim().split(sep).map((val, index) => Number(val.trim())).reduce((acc, c) => acc + c, 0);
+        result.textContent = `score: ${total_points - points}`;
+    })
+);
 
