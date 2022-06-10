@@ -92,7 +92,7 @@
               !file.path.endsWith(".html")) {
               let li = document.createElement("li");
               let a = document.createElement("a");
-              a.href = file.path;
+              a.href = '/' + file.path;
               a.textContent = file.path.substring(file.path.indexOf("/") + 1).split("-").map(word => word[0].toUpperCase() + word.substring(1)).join(" ");
               li.appendChild(a);
               statics.appendChild(li);
