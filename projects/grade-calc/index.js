@@ -2,6 +2,7 @@ const totPointsInput = document.querySelector('#total-points');
 const sepInput = document.querySelector('#sep');
 const missingInput = document.querySelector('#missing-tally');
 const result = document.querySelector('#result');
+const percentage = document.querySelector('#percentage');
 
 let params = new URLSearchParams(window.location.search);
 let totalPoints = Number(params.get('tot')) || 0;
@@ -24,6 +25,7 @@ document.addEventListener('keydown', event => {
 
         let points = missingInput.value.trim().split(sep).map((val, index) => Number(val.trim())).reduce((acc, c) => acc + c, 0);
         result.textContent = `score: ${total_points - points}`;
+        percentage.textContent = `percentage: ${(((total_points - points) / total_points) * 100).toFixed(0)}%`;
     })
 );
 
