@@ -156,18 +156,25 @@
       const background = document.querySelector('.bg');
       background.textContent = text;
 
+      let count = 0;
       while (true) {
         let rects = background.getClientRects();
-        if (rects.length > 0) {
-          let rect = rects[0];
-          let height = rect.height;
-          if (height < pageHeight) {
-            console.log("Adding more!");
-            background.textContent += text;
-          } else {
-            break;
-          }
+        if (rects.length <= 0) {
+          break;
         }
+        let rect = rects[0];
+        let height = rect.height;
+        if (height >= pageHeight) {
+          break;
+        }
+        if (count === 10) {
+          // too much text, but don't leave it incomplete
+          background.textContent = '';
+          break;
+        }
+        console.log("Adding more!");
+        background.textContent += text;
+        count++;
       }
 
     });
