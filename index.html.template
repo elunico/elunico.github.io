@@ -5,6 +5,15 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Thomas Povinelli's Website</title>
+  <meta property="og:title" content="Thomas Povinelli's Website" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://eluni.co/" />
+  <meta property="og:image" content="https://eluni.co/images/og-img.png" />
+
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:description"
+    content="My home on the web. Full of the projects I have worked on, contact information, and a terminal like design (with some interesting vi commands)" />
+
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -28,7 +37,7 @@
 
 
       <p class="blerb">
-        I am a software developer and teacher with an interest in web development, linguistics,
+        I am a software developer and teacher with an interest in web development, linguistics, UNIX Programming,
         and typography.
       </p>
 
@@ -61,18 +70,25 @@
       const background = document.querySelector('.bg');
       background.textContent = text;
 
+      let count = 0;
       while (true) {
         let rects = background.getClientRects();
-        if (rects.length > 0) {
-          let rect = rects[0];
-          let height = rect.height;
-          if (height < pageHeight) {
-            console.log("Adding more!");
-            background.textContent += text;
-          } else {
-            break;
-          }
+        if (rects.length <= 0) {
+          break;
         }
+        let rect = rects[0];
+        let height = rect.height;
+        if (height >= pageHeight) {
+          break;
+        }
+        if (count === 10) {
+          // too much text, but don't leave it incomplete
+          background.textContent = '';
+          break;
+        }
+        console.log("Adding more!");
+        background.textContent += text;
+        count++;
       }
 
     });
