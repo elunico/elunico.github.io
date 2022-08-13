@@ -14,14 +14,14 @@ featured:
             alt: Flocking simulation with genetic algorithm image
         description: An elaboration on a Coding Train challenge implementing altruism and sharing in a flocking simulation using genetic algorithms.
     -
-        link: http://socdraw.herokuapp.com/
+        link: http://socdraw.eluni.co/
         title: SocDraw
         img:
             src: images/socdraw.svg
             alt: SocDraw image
         description: Real-time collaborative drawing on HTML5 Canvas in the browser.
     -
-        link: http://wikitext.herokuapp.com/
+        link: http://wikitext.eluni.co/
         title: WikiText
         img:
             src: images/wikitext.svg
