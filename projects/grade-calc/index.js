@@ -12,7 +12,7 @@ totPointsInput.value = totalPoints;
 sepInput.value = sep;
 
 document.addEventListener('keydown', event => {
-    if (event.key == 'Enter') {
+    if (event.key === 'Enter') {
         missingInput.value = '';
         event.stopImmediatePropagation();
     }
