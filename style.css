@@ -18,6 +18,14 @@
   --visited-color: magenta;
 }
 
+.light-img {
+  display: unset;
+}
+
+.dark-img {
+  display: none;
+}
+
 
 
 @media (prefers-color-scheme: dark) {
@@ -33,6 +41,15 @@
     --text-shadow: #000 5px 5px 10px;
     --link-color: hsl(180, 70%, 70%);
     --visited-color: hsl(300, 70%, 70%);
+  }
+
+  .light-img {
+    display: none;
+
+  }
+
+  .dark-img {
+    display: unset;
   }
 }
 

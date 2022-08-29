@@ -45,7 +45,9 @@ featured:
         link: http://url.eluni.co
         title: URL Shortener
         img:
-            src: images/shortener.svg
+            src:
+                light: images/shortener.svg
+                dark: images/shortener-dark.svg
             alt: Image for Elunico URL Shortener
         description: A node.js app that creates easy to remember shortened URLs.
     -
@@ -59,7 +61,9 @@ featured:
         link: https://github.com/elunico/WordnikCLI2
         title: define
         img:
-            src: images/define.svg
+            src:
+                light: images/define-big.svg
+                dark: images/define-big-dark.svg
             alt: Image for define
         description: A terminal command that uses Wordnik to define words. Like man pages but for English words instead of system commands
     -

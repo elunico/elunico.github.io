@@ -6,11 +6,25 @@ def format_template(template, content):
 
 
 def render_featured_div(project):
+    if hasattr(project['img']['src'], 'keys'):
+        light_url = project['img']['src']['light']
+        dark_url = project['img']['src']['dark']
+        img = f'''
+        <img src={light_url} alt="{project['img']['alt']}" class="light-img" />
+        <img src={dark_url} alt="{project['img']['alt']}" class="dark-img" />
+        '''
+    else:
+        url = project['img']['src']
+        img = f'''
+        <img src={url} alt="{project['img']['alt']}" />
+        '''
+
     return f'''
     <div class="project">
       <a href="{project['link']}">
         <h2>{project['title']}</h2>
-        <img src="{project['img']['src']}" alt="{project['img']['alt']}">
+
+        {img}
         <p class="description">
           {project['description']}
         </p>
