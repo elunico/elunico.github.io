@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 :root {
   --page-background-color: #f4f4f4;
@@ -38,12 +38,13 @@
 
 body {
   background-color: var(--page-background-color);
-  font-family: "Rubik", "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Nunito", "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-align: center;
   color: var(--body-text-color);
   padding-bottom: 6vh;
   margin: 5vmin;
   font-size: 2vmin;
+  font-variant-ligatures: none;
 }
 
 a:link {
