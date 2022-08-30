@@ -72,7 +72,7 @@ featured:
         img:
             src: images/ccs.svg
             alt: Image for Chromeduino Compile Server
-        description: A web based server that can be used by Chromebooks in order to compile and upload code to Arduinos
+        description: A running server instance of the amazing Chromeduino project allowing Chromebooks to program Arduinos
     -
         link: https://eluni.co/100-Line-Snake/
         title: Snake Game
