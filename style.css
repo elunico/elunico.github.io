@@ -229,7 +229,7 @@ h1 {
 
 img {
   width: 100%;
-  max-width: 10vw;
+  max-width: 12.5vmax;
   height: auto;
 }
 
