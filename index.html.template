@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body tabindex="0">
   <div aria-hidden="true" class="bg">
 
   </div>
@@ -59,6 +59,28 @@
   </main>
 
   <div class="footer">You can view all my projects and source locations <a href="/projects">here</a>.</div>
+
+  <!--  Font Customizations -->
+  <script>
+    let sysFont = false;
+    const handler = event => {
+      if (event.shiftKey && event.key === 'F') {
+        if (!sysFont) {
+          document.body.style.fontFamily = '"Lucida Grande", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif';
+          document.body.style.fontSize = '1.8vmin';
+          document.body.style.lineHeight = '1.5';
+        } else {
+          document.body.style.fontFamily = '"Nunito", "Source Sans Pro", "Helvetica", sans-serif';
+          document.body.style.fontSize = '2vmin';
+          document.body.style.lineHeight = '';
+        }
+        sysFont = !sysFont;
+      }
+    };
+    document.onkeydown =  handler;
+  </script>
+
+  <!--  Background text -->
   <script>
     let body = document.body;
     let html = document.documentElement;
