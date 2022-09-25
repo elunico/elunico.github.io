@@ -42,28 +42,28 @@ function fade() {
   let elts = document.querySelectorAll('.fadesIn');
   let bottomY = window.innerHeight;
   for (let elt of elts) {
-    let top = elt.getBoundingClientRect()
-      .top;
-    let bottom = elt.getBoundingClientRect()
-      .bottom;
-    if (top + 25 < bottomY) {
+    // let top = elt.getBoundingClientRect()
+    //   .top;
+    // let bottom = elt.getBoundingClientRect()
+    //   .bottom;
+    // if (top + 25 < bottomY) {
       // scroll into view from bottom
       elt.classList.add('fadesOnScreen');
       elt.classList.remove('fadesOffscreen');
-    } else {
-      // below visible area
-      elt.classList.add('fadesOffscreen');
-      elt.classList.remove('fadesOnScreen');
-    }
-    if (bottom < 0) {
-      // past the top
-      elt.classList.add('fadesOffscreen');
-      elt.classList.remove('fadesOnScreen');
-    }
+    // } else {
+    //   below visible area
+      // elt.classList.add('fadesOffscreen');
+      // elt.classList.remove('fadesOnScreen');
+    // }
+    // if (bottom < 0) {
+    //   past the top
+      // elt.classList.add('fadesOffscreen');
+      // elt.classList.remove('fadesOnScreen');
+    // }
   }
 }
 
-window.onscroll = fade;
+// window.onscroll = fade;
 
 
 function cursorFade() {
