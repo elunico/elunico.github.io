@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>eluni.co Privacy Policy</title>
+    <style>
+        body {
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        main {
+            width: 50%;
+        }
+
+        @media (max-width: 1000px) {
+            main {
+                width: 60%;
+                font-size: 1.33em;
+            }
+        }
+
+        @media (min-width: 2600px) {
+            main {
+                width: 25%;
+                font-size: 1.5em;
+            }
+        }
+
+    </style>
+    <script src="analytics.js"></script>
+</head>
+<body>
+<h1>eluni.co Privacy Policy</h1>
+<main>
+    <p>
+        I store 2 things from visitors on this website for analytics purposes.
+    </p>
+    <p>
+        First is a sha256 hex-digested version of the IP address of whoever visits the site. Since the internet works
+        with IP Addresses, every server you get receives an IP (either from your ISP or VPN) when you go to a website.
+        I am not really interested in that but I do need a way to track unique visitors, hence the hashing. Hashing
+        ensures (most) IPs do not map to the same value, so I can keep track of unique visitors, while also ensuring
+        there is no (mathematically feasible) way for me turn the hashes I store back into the IPs that created them.
+        In so doing, I am affectively storing unique identifiers without storing any IP Addresses.
+    </p>
+    <p>
+        The second thing I store is a list of times in milliseconds from page load to page unload for each unique
+        visitor of the website. This is to see if anyone visits, visits multiple times, and see if they are just a bot
+        or are actually reading the website (or at least spending enough time on it to reasonably do so)
+    </p>
+    <div>
+        Some places on eluni.co use <code>localStorage</code> for maintaining client-side customizations.
+        In addition, some sites store information necessary, but obvious to function such as <a href="https://url.eluni.co">url.eluni.co</a> which stores URLs provided by the user.
+    </div>
+</main>
+
+</body>
+</html>
