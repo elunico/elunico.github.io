@@ -64,60 +64,12 @@
   <!--  Analytics-->
   <script src="analytics.js"></script>
 
-  <!--  Font Customizations -->
-  <script>
-    let sysFont = false;
-    const handler = event => {
-      if (event.shiftKey && event.key === 'F') {
-        if (!sysFont) {
-          document.body.style.fontFamily = '"Lucida Grande", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif';
-          document.body.style.fontSize = '1.8vmin';
-          document.body.style.lineHeight = '1.5';
-        } else {
-          document.body.style.fontFamily = '"Nunito", "Source Sans Pro", "Helvetica", sans-serif';
-          document.body.style.fontSize = '2vmin';
-          document.body.style.lineHeight = '';
-        }
-        sysFont = !sysFont;
-      }
-    };
-    document.onkeydown =  handler;
-  </script>
-
   <!--  Background text -->
-  <script>
-    let body = document.body;
-    let html = document.documentElement;
+  <script src="background-render.js"></script>
 
-    // let pageHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
-    let pageHeight = window.innerHeight;
+  <!-- Image loader -->
+  <script src="image-loader.js"></script>
 
-    fetch('/bg.txt').then(r => r.text()).then(text => {
-      const background = document.querySelector('.bg');
-      background.textContent = text;
-
-      let count = 0;
-      while (true) {
-        let rects = background.getClientRects();
-        if (rects.length <= 0) {
-          break;
-        }
-        let rect = rects[0];
-        let height = rect.height;
-        if (height >= pageHeight) {
-          break;
-        }
-        if (count === 10) {
-          // too much text, but don't leave it incomplete
-          background.textContent = '';
-          break;
-        }
-        console.log("Adding more!");
-        background.textContent += text;
-        count++;
-      }
-
-    });
   </script>
 </body>
 

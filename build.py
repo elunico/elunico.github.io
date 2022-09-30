@@ -10,13 +10,13 @@ def render_featured_div(project):
         light_url = project['img']['src']['light']
         dark_url = project['img']['src']['dark']
         img = f'''
-        <img src={light_url} alt="{project['img']['alt']}" class="light-img" />
-        <img src={dark_url} alt="{project['img']['alt']}" class="dark-img" />
+        <img data-mode="light" data-src={light_url} alt="{project['img']['alt']}" class="light-img" />
+        <img data-mode="dark" data-src={dark_url} alt="{project['img']['alt']}" class="dark-img" />
         '''
     else:
         url = project['img']['src']
         img = f'''
-        <img src={url} alt="{project['img']['alt']}" />
+        <img data-mode="all" data-src={url} alt="{project['img']['alt']}" />
         '''
 
     return f'''
