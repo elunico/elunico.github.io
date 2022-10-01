@@ -4,7 +4,8 @@ function sendAnalytics() {
         if (document.visibilityState === 'hidden') {
             navigator.sendBeacon('https://analytics.eluni.co/visit', JSON.stringify({
                 elapsed: Date.now() - arrivalTime,
-                source: window.location.pathname
+                source: window.location.pathname,
+                hostname: window.location.hostname
             }));
         }
     });
