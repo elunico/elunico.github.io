@@ -47,9 +47,9 @@ let eventRunning = false;
 
 window.addEventListener('resize', event => {
   if (eventRunning) return;
-  eventRunning = true;
 
   if ((window.innerHeight * window.innerWidth) > (currentHeight * currentWidth)) {
+    eventRunning = true;
     currentHeight = window.innerHeight;
     currentWidth = window.innerWidth;
     fillBackground().then(() => {
