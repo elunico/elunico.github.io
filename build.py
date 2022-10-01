@@ -20,8 +20,8 @@ def render_featured_div(project):
         '''
 
     return f'''
-    <a href="{project['link']}">
-      <div class="project">
+    <a class="project" href="{project['link']}">
+      <div >
         <h2>{project['title']}</h2>
 
         {img}
