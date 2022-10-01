@@ -41,6 +41,20 @@ async function fillBackground() {
 
 fillBackground().then(() => console.log("Backgrounded"));
 
+let currentHeight = window.innerHeight;
+let currentWidth = window.innerWidth;
+let eventRunning = false;
+
 window.addEventListener('resize', event => {
-  fillBackground().then(() => console.log("Backgrounded"));
+  if (eventRunning) return;
+  eventRunning = true;
+
+  if ((window.innerHeight * window.innerWidth) > (currentHeight * currentWidth)) {
+    currentHeight = window.innerHeight;
+    currentWidth = window.innerWidth;
+    fillBackground().then(() => {
+      console.log("Backgrounded");
+      eventRunning = false;
+    });
+  }
 });
