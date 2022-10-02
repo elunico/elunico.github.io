@@ -1,6 +1,6 @@
 .bg {
   font-family: 'Courier New', Courier, monospace;
-  font-size: 0.5em;
+  font-size: 0.63em;
   background-color: rgb(240, 240, 240, 0);
   color: var(--bg-text-color);
   z-index: -100;
