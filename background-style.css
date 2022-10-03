@@ -19,6 +19,9 @@
   top: -200px;
 }
 
+body {
+  background-image: url("/background.png");
+}
 
 .skip-nav:focus, .skip-nav:active {
   font-variant-caps: all-petite-caps;
