@@ -21,7 +21,6 @@
 
 
 .skip-nav:focus, .skip-nav:active {
-  display: block;
   font-variant-caps: all-petite-caps;
   font-weight: bold;
   text-align: center;

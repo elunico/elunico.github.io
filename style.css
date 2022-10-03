@@ -58,7 +58,9 @@
 }
 
 body {
-  background-color: var(--page-background-color);
+  /*background-color: var(--page-background-color);*/
+  background-image: url("/background.png");
+  /*background-repeat: repeat;*/
   font-family: "Nunito", "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-align: center;
   color: var(--body-text-color);
