@@ -23,6 +23,12 @@ body {
   background-image: url("/background.png");
 }
 
+@media (prefers-color-scheme: dark) {
+  body {
+    background-image: url("/background-dark.png");
+  }
+}
+
 .skip-nav:focus, .skip-nav:active {
   font-variant-caps: all-petite-caps;
   font-weight: bold;
