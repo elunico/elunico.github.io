@@ -19,6 +19,14 @@
 </head>
 
 <body tabindex="0">
+  <noscript>
+      <div class="noscript">
+          <center><strong>
+              Images cannot load without JavaScript and will the website may appear broken. For the best experience,
+              enable JavaScript
+          </strong></center>
+      </div>
+  </noscript>
   <div class="topper">
     <a id="top-left" href="http://github.com/elunico">
       <svg class="logo" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24">

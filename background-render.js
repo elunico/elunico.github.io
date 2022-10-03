@@ -55,7 +55,7 @@ async function fillBackground() {
     }
 
     const remover = document.createElement('button');
-    remover.textContent = 'Remove Background'
+    remover.innerHTML = '<span>Remove Background</span>'
     remover.id = 'remove-button';
     remover.onclick = event => document.body.removeChild(background) && document.body.removeChild(remover);
     document.body.appendChild(remover)
