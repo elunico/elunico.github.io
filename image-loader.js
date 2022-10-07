@@ -15,7 +15,7 @@ function loadImages() {
         let elt = entry.target;
 
         if (
-          (elt.getAttribute('data-mode') == 'all' ||
+          (elt.getAttribute('data-mode') === 'all' ||
             modeMatches(elt.getAttribute('data-mode'), darkMode)) &&
           elt.getAttribute('data-loaded') !== 'true'
         ) {

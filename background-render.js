@@ -2,7 +2,10 @@ let body = document.body;
 let html = document.documentElement;
 
 function skipper() {
-  window.location = './#main';
+    window.location = './#main';
+    const main = document.querySelector('main');
+    main.setAttribute('tabindex', '0');
+    main.focus();
 }
 
 async function fillBackground() {
