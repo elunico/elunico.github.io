@@ -8,6 +8,14 @@ function skipper() {
     main.focus();
 }
 
+function firstElement(from) {
+    var child = document.body.firstElementChild;
+    while (['script', 'style'].includes(child.tagName)) {
+        child = child.nextElementSibling
+    }
+    return child;
+}
+
 function fillBackground(then) {
     try {
         var skipper = document.createElement('a');
@@ -15,7 +23,7 @@ function fillBackground(then) {
         skipper.classList.add('skip-nav');
         skipper.setAttribute('tabindex', '1');
         skipper.href = 'javascript:skipper()'
-        document.body.insertBefore(document.body.firstElementChild, skipper)
+        document.body.insertBefore(firstElement(document.body), skipper)
 
         var remover = document.createElement('button');
         remover.innerHTML = '<span>Remove Background</span>'
