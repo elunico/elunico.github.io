@@ -10,7 +10,7 @@ function skipper() {
 
 function firstElement(from) {
     var child = document.body.firstElementChild;
-    while (['script', 'style'].includes(child.tagName)) {
+    while (['script', 'style'].includes(child.tagName.toLowerCase())) {
         child = child.nextElementSibling
     }
     return child;
