@@ -5,18 +5,19 @@ def format_template(template, content):
     return template.replace(r'%{{content}}', content)
 
 
-def render_featured_div(project):
+def render_featured_div(index, project):
+    src_attr = 'data-src' if index >= 4 else 'src'
     if hasattr(project['img']['src'], 'keys'):
         light_url = project['img']['src']['light']
         dark_url = project['img']['src']['dark']
         img = f'''
-        <img width="240px" data-mode="light" data-src={light_url} alt="{project['img']['alt']}" class="light-img" />
-        <img width="240px" data-mode="dark" data-src={dark_url} alt="{project['img']['alt']}" class="dark-img" />
+        <img width="240px" data-mode="light" {src_attr}={light_url} alt="{project['img']['alt']}" class="light-img" />
+        <img width="240px" data-mode="dark" {src_attr}={dark_url} alt="{project['img']['alt']}" class="dark-img" />
         '''
     else:
         url = project['img']['src']
         img = f'''
-        <img width="240px"  data-mode="all" data-src={url} alt="{project['img']['alt']}" />
+        <img width="240px"  data-mode="all" {src_attr}={url} alt="{project['img']['alt']}" />
         '''
 
     return f'''
@@ -33,7 +34,7 @@ def render_featured_div(project):
     '''
 
 
-def render_other_div(project):
+def render_other_div(index, project):
     return f'''
     <div class="simple-project">
       <a href="{project['link']}">
@@ -48,11 +49,11 @@ def render_other_div(project):
 
 def on_each_with_indent(lst, message, block):
     last = lst.pop()
-    for item in lst:
-        print("\t\u2523 {}".format(message(item)))
-        block(item)
-    print("\t\u2517 {}".format(message(last)))
-    block(last)
+    for index, item in enumerate(lst):
+        print("\t\u2523 {}".format(message(index, item)))
+        block(index, item)
+    print("\t\u2517 {}".format(message(index, last)))
+    block(index, last)
 
 
 def render_section(projects, kind, renderer):
@@ -62,8 +63,8 @@ def render_section(projects, kind, renderer):
     content += ['<div class="content-{}">'.format(kind)]
     on_each_with_indent(
         projects,
-        lambda item: "{} project \"{}\"".format(kind, item['title']),
-        lambda item: content.append(renderer(item))
+        lambda index, item: "{} project \"{}\"".format(kind, item['title']),
+        lambda index, item: content.append(renderer(index, item))
     )
     content += ['</div>']
     return ''.join(content)

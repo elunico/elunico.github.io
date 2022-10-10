@@ -66,6 +66,7 @@ body {
   margin: 5vmin;
   font-size: 2vmin;
   font-variant-ligatures: none;
+  background-color: var(--page-background-color);
 }
 
 a:link {

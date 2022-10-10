@@ -18,7 +18,8 @@ function loadImages() {
                     if (
                         (elt.getAttribute('data-mode') === 'all' ||
                             modeMatches(elt.getAttribute('data-mode'), darkMode)) &&
-                        elt.getAttribute('data-loaded') !== 'true'
+                        elt.getAttribute('data-loaded') !== 'true' &&
+                        elt.getAttribute('data-src')
                     ) {
                         elt.src = elt.getAttribute('data-src');
                         elt.setAttribute('data-loaded', true);
