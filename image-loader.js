@@ -8,7 +8,7 @@ function loadImages() {
 
     if (window.IntersectionObserver) {
         const observer = new IntersectionObserver((entries, observer) => {
-            let darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            let darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches || document.body.getAttribute('data-mode') == 'dark';
 
             console.log("Calling back");
             entries.forEach(entry => {
@@ -37,7 +37,7 @@ function loadImages() {
                 if (!images[i].hasAttribute('data-src')) continue;
 
                 var rect = images[i].getBoundingClientRect();
-                console.log(rect.x, window.scrollX, rect.y, window.scrollY, innerWidth, innerHeight)
+                console.log(rect.x, window.scrollX, rect.y, window.scrollY, innerWidth, innerHeight);
                 if (rect.x < (window.scrollX + innerWidth) && rect.y < (window.scrollY + innerHeight)) {
                     images[i].src = images[i].getAttribute('data-src');
                 }

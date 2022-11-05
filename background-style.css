@@ -29,7 +29,18 @@ body {
   }
 }
 
-.skip-nav:focus, .skip-nav:active {
+body[data-mode="light"] {
+  background-image: url("/background.png");
+
+}
+
+body[data-mode="dark"] {
+  background-image: url("/background-dark.png");
+
+}
+
+.skip-nav:focus,
+.skip-nav:active {
   font-variant-caps: all-petite-caps;
   font-weight: bold;
   text-align: center;

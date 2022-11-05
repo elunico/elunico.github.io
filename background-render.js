@@ -21,7 +21,7 @@ function fillBackground(then) {
         // remover.innerHTML = '<span>Remove Background</span>'
         // remover.id = 'remove-button';
         // remover.onclick = event => (document.body.style.background = "var(--page-background-color)") && document.body.removeChild(remover);
-        document.body.appendChild(remover);
+        // document.body.appendChild(remover);
     } catch (err) {
         console.error("Failed to load background:");
         console.error(err);
