@@ -1,7 +1,11 @@
+:root {
+  --sk-background-color: rgb(240, 240, 240, 0);
+}
+
 .bg {
   font-family: 'Courier New', Courier, monospace;
   font-size: 0.63em;
-  background-color: rgb(240, 240, 240, 0);
+  background-color: var(--sk-background-color);
   color: var(--bg-text-color);
   z-index: -100;
   position: fixed;
