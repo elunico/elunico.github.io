@@ -116,8 +116,8 @@ body {
   --transition-var: color var(--transition-time) var(--transition-func),
     background-color calc(var(--transition-time) + 90ms) var(--transition-func),
     box-shadow var(--transition-time) var(--transition-func);
-  transition: none
-    /*var(--transition-var);*/
+  /* transition: none */
+  /*var(--transition-var);*/
 }
 
 a:link {
