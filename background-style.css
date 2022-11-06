@@ -1,5 +1,5 @@
 :root {
-  --sk-background-color: rgb(240, 240, 240, 0);
+  --sk-background-color: rgb(240, 240, 240, 1);
 }
 
 .bg {
@@ -28,19 +28,25 @@ body {
 }
 
 @media (prefers-color-scheme: dark) {
+
+  :root {
+    --sk-background-color: rgb(55, 55, 55);
+  }
+
   body {
     background-image: url("/background-dark.png");
   }
 }
 
 body[data-mode="light"] {
+  --sk-background-color: rgb(240, 240, 240, 1);
   background-image: url("/background.png");
 
 }
 
 body[data-mode="dark"] {
   background-image: url("/background-dark.png");
-
+  --sk-background-color: rgb(55, 55, 55);
 }
 
 .skip-nav:focus,
