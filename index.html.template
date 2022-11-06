@@ -16,6 +16,7 @@
   <meta name="theme-color" content="#f4f4f4" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#373737" media="(prefers-color-scheme: dark)">
   <link rel="stylesheet" href="background-style.css">
+  <link rel="stylesheet" href="color-toggle.css">
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -83,7 +84,6 @@
   <script src="image-loader.js"></script>
   <script src="color-toggle.js"></script>
 
-  </script>
 </body>
 
 </html>
