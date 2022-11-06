@@ -7,7 +7,7 @@
     width: auto;
     height: clamp(25px, 3vh, 5vh);
     /* background-color: var(--page-background-color); */
-
+    z-index: 100;
 }
 
 [data-mode="light"] {
