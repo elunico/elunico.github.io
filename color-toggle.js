@@ -2,10 +2,11 @@ let lightToggle = document.querySelector('img[data-mode="light"]');
 let darkToggle = document.querySelector('img[data-mode="dark"]');
 let container = document.querySelector('#theme-toggle');
 
+const isSafari = navigator.userAgent.includes('Safari') && !navigator.userAgent.includes('Chrome');
+
 lightToggle.addEventListener('click', event => {
   document.body.setAttribute('data-mode', 'dark');
   localStorage.setItem('data-mode', 'dark');
-
 });
 
 darkToggle.addEventListener('click', event => {
@@ -16,9 +17,9 @@ darkToggle.addEventListener('click', event => {
 
 window.addEventListener('load', event => {
   console.log(navigator.userAgent);
-  if (navigator.userAgent.includes('Safari') && !navigator.userAgent.includes('Chrome')) {
-    document.body.removeChild(container);
-    return;
+  if (isSafari) {
+    // document.body.removeChild(container);
+    // return;
   }
 
 
