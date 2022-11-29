@@ -120,6 +120,11 @@ body {
   /*var(--transition-var);*/
 }
 
+#main {
+  width: 90vw;
+  transform: translateX(5%);
+}
+
 a:link {
   color: var(--link-color);
 }
@@ -329,4 +334,3 @@ img {
   font-size: 14pt;
   color: var(--body-text-color);
 }
-
