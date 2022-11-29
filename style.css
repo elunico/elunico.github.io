@@ -278,9 +278,9 @@ h1 {
 }
 
 img {
-  width: 100%;
-  max-width: 12.5vmax;
-  height: auto;
+  width: auto;
+  max-width: 90%;
+  height: 200px;
 }
 
 .section-heading {
