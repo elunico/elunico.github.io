@@ -121,10 +121,10 @@ body {
   /*var(--transition-var);*/
 }
 
-#main {
+/* #main {
   width: 90vw;
   transform: translateX(calc(5vw - var(--body-margin)));
-}
+} */
 
 a:link {
   color: var(--link-color);
