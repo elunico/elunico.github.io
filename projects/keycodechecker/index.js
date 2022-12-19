@@ -92,15 +92,18 @@ function getKeyCode(event) {
   console.log(event.key);
   if (event.key == ' ') {
     if (!oldSize) oldSize = getComputedStyle(d)['font-size'];
-    d.style['opacity'] = 0.5;
+    d.style['opacity'] = 0.75;
     d.style['font-size'] = '8vw';
+    d.style['font-style'] = 'italic';
     d.textContent = '<space character>';
   } else if (event.key.length > 1) {
     if (!oldSize) oldSize = getComputedStyle(d)['font-size'];
     d.style['opacity'] = 1;
     d.style['font-size'] = '9vw';
+    d.style['font-style'] = 'normal';
   } else {
     d.style['opacity'] = 1;
+    d.style['font-style'] = 'normal';
     d.style['font-size'] = oldSize;
   }
   d.style.transform = 'scale(1.1)';
@@ -108,21 +111,22 @@ function getKeyCode(event) {
 
 // eslint-disable-next-line no-unused-vars
 function randomStyle() {
-  let h = randomInt(0, 255);
-  let s = 75;
-  let l = 85;
+  const h = randomInt(0, 255);
+  const s = 100;
+  const l = 95;
+  const offset = 75;
 
-  let media = matchMedia('(prefers-color-scheme: dark)');
+  const media = matchMedia('(prefers-color-scheme: dark)');
 
   if (media.matches) {
     return {
       'color': `hsl(${h}, ${s}%, ${l}%)`,
-      'bg': `hsl(${h}, ${s}%, ${l - 60}%)`
+      'bg': `hsl(${h}, ${s}%, ${l - offset}%)`
     };
   } else {
     return {
       'bg': `hsl(${h}, ${s}%, ${l}%)`,
-      'color': `hsl(${h}, ${s}%, ${l - 60}%)`
+      'color': `hsl(${h}, ${s}%, ${l - offset}%)`
     };
   }
 }
