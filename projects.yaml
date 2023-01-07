@@ -28,7 +28,7 @@ featured:
     img:
       src: images/cys.svg
       alt: Image for wiki text
-    description: A Chrome (and Firefox) extension to control YouTube video playback speed. Allows buttons, default speed, and hotkeys!
+    description: A Chrome, Firefox, and Safari extension to control YouTube video playback speed. Allows buttons, default speed, and hotkeys!
   - link: https://github.com/elunico/iMacColorUnlocker
     title: iMac Color Unlocker
     img:
