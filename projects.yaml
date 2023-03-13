@@ -57,35 +57,11 @@ featured:
         dark: images/define-big-dark.svg
       alt: Image for define
     description: A terminal command that uses Wordnik to define words. Like man pages but for English words instead of system commands
-  #   - link: https://chromeduino.eluni.co/
-  #     title: Chromeduino Compile Server
-  #     img:
-  #       src: images/ccs.svg
-  #       alt: Image for Chromeduino Compile Server
-  #     description: A running server instance of the amazing Chromeduino project allowing Chromebooks to program Arduinos
   - link: https://eluni.co/100-Line-Snake/
     title: Snake Game
     img:
       src: images/snake.svg
       alt: Image for Snake Game
     description: The snake game written in JavaScript using p5.
-
 other:
   []
-
-  # -
-  #     link: https://eluni.co/projects
-  #     title: Projects Index
-  #     description: An index of all my projects around the web
-  # -
-  #     link: https://eluni.co/projects/keycodechecker
-  #     title: Keycode Checker
-  #     description: Webpage that details JavaScript KeyEvent information in the browser.
-  # -
-  #     link: https://eluni.co/projects/game-of-life
-  #     title: The Game of Life
-  #     description: The game of life written in JavaScript using p5js.
-  # -
-  #     link: https://eluni.co/projects/color-picker
-  #     title: Color Picker
-  #     description: An HTML5 canvas based way to choose a color. Made with p5js.

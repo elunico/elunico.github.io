@@ -3,7 +3,7 @@
 .mode-toggle {
     position: absolute;
     top: 10px;
-    right: 0px;
+    right: 0;
     width: auto;
     height: clamp(25px, 3vh, 5vh);
     /* background-color: var(--page-background-color); */

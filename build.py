@@ -48,6 +48,9 @@ def render_other_div(index, project):
 
 
 def on_each_with_indent(lst, message, block):
+    if not lst: 
+        return 
+    index = len(lst) - 1
     last = lst.pop()
     for index, item in enumerate(lst):
         print("\t\u2523 {}".format(message(index, item)))

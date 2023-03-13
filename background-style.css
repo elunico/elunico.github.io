@@ -58,7 +58,7 @@ body[data-mode="dark"] {
   border-radius: 20px;
   font-size: 1.8em;
   top: 0.5em;
-  left: 0px;
+  left: 0;
   transform: translateX(calc(50vw - 50%));
   box-shadow: #666 3px 3px 3px;
   /*padding: 0.2em;*/

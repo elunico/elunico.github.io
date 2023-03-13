@@ -1,4 +1,4 @@
-function sendAnalytics() {
+(function () {
     let arrivalTime = Date.now();
     document.addEventListener('visibilitychange', function logData() {
         if (document.visibilityState === 'hidden') {
@@ -9,6 +9,4 @@ function sendAnalytics() {
             }));
         }
     });
-}
-
-sendAnalytics();
+}).call(window)
