@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Ab Urbe Condita</title>
+
+  <style>
+    h2 {
+      font-family: "Helvetica Neue", "Helvetica", "Free Sans", "Alte Haas Grotesk", "Times New Roman", sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>
+    Today is
+  </h1>
+  <h2 id="nowdate">
+
+  </h2>
+  <script>
+
+    let now = new Date(Date.now());
+    let date = now.getDate();
+
+    let name = '';
+    if (date == 1)
+      name = 'kalendae';
+    else if (date > 1 && date <= 7)
+      name = `${(date - 1)} diēs post kalendās`;
+    else if (date > 7 && date <= 14)
+      name = `${(date - 1)} diēs ante īdūs`;
+    else if (date == 15)
+      name = `īdū`;
+    else if (date > 15)
+      name = `${(date - 1)} diēs post īdūs`;
+
+    let day = 'diēs ';
+    day += [
+      'Sōlis', 'Lūnae', 'Mārtis', 'Mercuriī', 'Iovis', 'Veneris', 'Saturnī'
+    ][now.getDay()];
+
+    let daytime = `${day}, ${name}`;
+
+    let month = 'mēnsis ';
+
+    month += [
+      'Iānuārius', 'Februārius', 'Martius', 'Aprīlis', 'Māius', 'Iūnius', 'Iūlius', 'Augustus', 'September', 'Octōber', 'November', 'December'
+    ][now.getMonth()];
+
+    let year = now.getFullYear() - -753;
+
+    let yeartime = `${year} a.U.C`;
+
+    let result = `${daytime}, ${month} ${yeartime}`;
+
+    nowdate.textContent = result;
+
+
+  </script>
+</body>
+
+</html>
