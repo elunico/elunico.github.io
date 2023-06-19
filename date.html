@@ -61,7 +61,7 @@
     (async function () {
       let resp = await fetch('https://app.eluni.co/now');
       let text = await resp.text();
-      nowdate.textContent = result;
+      nowdate.textContent = text;
     })()
 
 
