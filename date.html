@@ -24,41 +24,45 @@
   </h2>
   <script>
 
-    let now = new Date(Date.now());
-    let date = now.getDate();
+    // let now = new Date(Date.now());
+    // let date = now.getDate();
 
-    let name = '';
-    if (date == 1)
-      name = 'kalendae';
-    else if (date > 1 && date <= 7)
-      name = `${(date - 1)} diēs post kalendās`;
-    else if (date > 7 && date <= 14)
-      name = `${(date - 1)} diēs ante īdūs`;
-    else if (date == 15)
-      name = `īdū`;
-    else if (date > 15)
-      name = `${(date - 1)} diēs post īdūs`;
+    // let name = '';
+    // if (date == 1)
+    //   name = 'kalendae';
+    // else if (date > 1 && date <= 7)
+    //   name = `${(date - 1)} diēs post kalendās`;
+    // else if (date > 7 && date <= 14)
+    //   name = `${(date - 1)} diēs ante īdūs`;
+    // else if (date == 15)
+    //   name = `īdū`;
+    // else if (date > 15)
+    //   name = `${(date - 1)} diēs post īdūs`;
 
-    let day = 'diēs ';
-    day += [
-      'Sōlis', 'Lūnae', 'Mārtis', 'Mercuriī', 'Iovis', 'Veneris', 'Saturnī'
-    ][now.getDay()];
+    // let day = 'diēs ';
+    // day += [
+    //   'Sōlis', 'Lūnae', 'Mārtis', 'Mercuriī', 'Iovis', 'Veneris', 'Saturnī'
+    // ][now.getDay()];
 
-    let daytime = `${day}, ${name}`;
+    // let daytime = `${day}, ${name}`;
 
-    let month = 'mēnsis ';
+    // let month = 'mēnsis ';
 
-    month += [
-      'Iānuārius', 'Februārius', 'Martius', 'Aprīlis', 'Māius', 'Iūnius', 'Iūlius', 'Augustus', 'September', 'Octōber', 'November', 'December'
-    ][now.getMonth()];
+    // month += [
+    //   'Iānuārius', 'Februārius', 'Martius', 'Aprīlis', 'Māius', 'Iūnius', 'Iūlius', 'Augustus', 'September', 'Octōber', 'November', 'December'
+    // ][now.getMonth()];
 
-    let year = now.getFullYear() - -753;
+    // let year = now.getFullYear() - -753;
 
-    let yeartime = `${year} a.U.C`;
+    // let yeartime = `${year} a.U.C`;
 
-    let result = `${daytime}, ${month} ${yeartime}`;
+    // let result = `${daytime}, ${month} ${yeartime}`;
 
-    nowdate.textContent = result;
+    (async function () {
+      let resp = await fetch('https://app.eluni.co/now');
+      let text = await resp.text();
+      nowdate.textContent = result;
+    })()
 
 
   </script>
