@@ -8,20 +8,44 @@
   <title>Ab Urbe Condita</title>
 
   <style>
+    body {
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .outer {
+      display: grid;
+      grid-template-rows: 1fr 5fr;
+      place-items: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    h1 {
+      font-size: 3vw;
+      text-align: center;
+      grid-row: 1;
+    }
+
     h2 {
       font-family: "Helvetica Neue", "Helvetica", "Free Sans", "Alte Haas Grotesk", "Times New Roman", sans-serif;
+      font-size: 6vw;
+      text-align: center;
+      grid-row: 2;
+
     }
   </style>
 </head>
 
 <body>
 
-  <h1>
-    Salve(te) Hodie est
-  </h1>
-  <h2 id="nowdate">
-
-  </h2>
+  <div class="outer">
+    <h1>
+      Salve(te) Hodie est
+    </h1>
+    <h2 id="nowdate">
+    </h2>
+  </div>
   <script>
     (async function () {
       let resp = await fetch('https://app.eluni.co/now');
