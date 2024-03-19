@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+User-agent: *
+Disallow: /room/
+Disallow: /rooms/
+Disallow: /api/
+Disallow: /v/
+Disallow: /no/
+Disallow: /download/
+Disallow: /tex/
+Disallow: /now/
+Disallow: /inflation/
+Disallow: /login/
