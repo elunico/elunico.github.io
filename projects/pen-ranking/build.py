@@ -27,6 +27,10 @@ template_list_block = '''<div class="body-container">
 template_item = '''<li>{}</li>'''
 
 
+def block_no_items(html):
+    return html.replace('<h1>', '<h1 class="no-items">')
+
+
 def format_item(item):
     return template_item.format(item.replace('\n', '<br/>').replace('  ', '&nbsp;&nbsp;'))
 
@@ -34,6 +38,9 @@ def format_item(item):
 def format_block(key, items):
     list_block = template_list_block % (
         tuple([('u' if 'unordered' in key else 'o')])*2)
+
+    if len(items) == 0:
+        list_block = block_no_items(list_block)
 
     return list_block.format(key, "\n".join([format_item(item) for item in items]))
 
