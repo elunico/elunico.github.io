@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Grade Calculator</title>
+    <style>
+        #result,
+        #percentage {
+            font-size: larger;
+            font-weight: bold;
+            grid-column: 2;
+        }
+
+        #container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 3fr;
+            row-gap: 1em;
+        }
+
+        #container>label {
+            grid-column: 1;
+        }
+
+        #container>input {
+            grid-column: 2;
+        }
+
+    </style>
+    <script src="../../analytics.js"></script>
+
+</head>
+
+<body>
+    <div id="container">
+        <label for="total-points">Total Points</label>
+        <input type="number" name="total-points" id="total-points">
+        <label for="sep">Separator</label>
+        <input type="text" name="sep" id="sep">
+        <label for="missing-tally">Missing tally</label>
+        <input type="text" name="missing-tally" id="missing-tally">
+        <div id="result">
+
+        </div>
+        <br>
+        <div id="percentage">
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Game of Life</title>
+  <script src="compress.js" charset="utf-8"></script>
+  <script src="life.js" charset="utf-8"></script>
+  <script src="sketch.js" charset="utf-8"></script>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.2.0/lib/p5.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/p5@1.2.0/lib/p5.dom.js"></script> -->
+  <script src="../../analytics.js"></script>
+
+  <style media="screen">
+    :root {
+      --background-color: white;
+      --color: black;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --background-color: rgb(40, 44, 51);
+        --color: white;
+      }
+    }
+
+    body {
+      margin-left: 10px;
+      font-size: 1.1em;
+      font-family: Helvetica Neue, Arial, sans-serif;
+      background-color: var(--background-color);
+      color: var(--color);
+    }
+
+    button {
+      margin-left: 5px;
+    }
+
+    .control-container {
+      margin: 5px;
+    }
+
+  </style>
+
+</head>
+
+<body>
+  <h1>Game of Life</h1>
+  <div id="canvas_container"></div>
+  <div class="control-container" id="controls"><span>Game Controls</span></div>
+  <div class="control-container" id="board_change"><span>Reset Board</span></div>
+  <div class="control-container" id="save_states"><span>Save/Load options</span></div>
+</body>
+
+</html>

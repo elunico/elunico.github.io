@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" type="text/css" href="/projects/old-site/css/common.css">
+  <link rel="stylesheet" type="text/css" href="/projects/old-site/css/vimhelp.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+  <meta charset="UTF-8">
+  <title>Commands: Help | eluni.co</title>
+  <script src="../../analytics.js"></script>
+
+</head>
+
+<body class="home">
+
+  <!-- header -->
+  <span class="buttons">
+    <a class="buttonLink" href="/projects/old-site/">
+      <div class="fadesIn fadesStatic button" id="home">Home</div>
+    </a>
+    <a class="buttonLink" href="progproj.html">
+      <div class="fadesIn fadesStatic button" id="progproj">Programming</div>
+    </a>
+    <a class="buttonLink" href="langproj.html">
+      <div class="fadesIn fadesStatic button" id="langproj">Linguistics</div>
+    </a>
+    <a class="buttonLink" href="info.html">
+      <div class="fadesIn fadesStatic button" id="info">Info &amp; Contact</div>
+    </a>
+
+  </span>
+  <p>&nbsp;</p>
+  <!-- End header -->
+  <div class="projectPage">
+    <div id="ten-print">
+    </div>
+    <h1 class="mainHeader" id="mainHeader"></h1>
+
+    <p class="fadesIn progPageDescription">
+      Pressing <code class="my-code">&lt;escape&gt;</code> will open command mode. You can
+      then type certain commands and use <code class="my-code">&lt;enter&gt;</code> to execute
+      them. A list of possible commands is found below.
+    </p>
+
+    <div class="fadesIn projectContainer">
+
+      <h2 class="projectName">
+        Commands
+      </h2>
+      <div class="projectDescription">
+        <ul>
+          <h3>Color Scheme Changes</h3>
+          <li><strong>tdm</strong> - Toggle Dark Mode (<em>this will reset all custom colors to defaults!</em>)
+          </li>
+          <li><strong>rcs</strong> - Reset color scheme (resets all colors and uses whatever mode is specified by
+            (prefers-color-scheme: dark))</li>
+          <li><strong>gmc</strong> - Get main color scheme color. Shown in command status area.</li>
+          <li><strong>gac</strong> - Get accent color scheme color. Shown in command status area.</li>
+          <li><strong>gtc</strong> - Get text color scheme color. Show in command status area</li>
+          <li><strong>smc</strong> - Set main color scheme color. Color should be '#RGB' or '#RRGGBB' color.</li>
+          <li><strong>sac</strong> - Set accent color scheme color. Color should be '#RGB' or '#RRGGBB' color.</li>
+          <li><strong>stc</strong> - Set text color scheme color. Color should be '#RGB' or '#RRGGBB' color.</li>
+          <br>
+          <li><strong>gsto</strong> - Show the number of seconds the status area stays visible on command input</li>
+          <li><strong>ssto</strong> - Set the number of seconds the status area stays visible on command input</li>
+          <br>
+          <li><strong>rm zsh_history</strong> - clear inter-page command history</li>
+          <li><strong>cls</strong> - calls localStorage.clear(). <emphasis><i>This will affect other websites!!</i>
+            </emphasis>
+          </li>
+          <br>
+          <h3>Page Navigation</h3>
+          <li><strong>-&gt;c</strong> - Go to color picker (wow how convenience; see above)</li>
+          <li><strong>-&gt;h</strong> - Go to page Home</li>
+          <li><strong>-&gt;p</strong> - Go to page Programming</li>
+          <li><strong>-&gt;l</strong> - Go to page Linguistics</li>
+          <li><strong>-&gt;i</strong> - Go to page Info</li>
+          <li><strong>?</strong> - Navigate to this help page</li>
+          <br>
+          <h3>Scrolling Commands</h3>
+          <li><strong>]]</strong> - Scroll to next section</li>
+          <li><strong>[[</strong> - Scroll to previous section</li>
+          <li><strong>gg</strong> - Scroll to page beginning</li>
+          <li><strong>G</strong> - Scroll to page end</li>
+          <br>
+          <h3>Navigation commands</h3>
+          <li><strong>:q</strong> - Quit website</li>
+          <li><strong>:q!</strong> - Forcibly quit website</li>
+          <h3>History</h3>
+          <li><strong><i>up arrow</i></strong> - fill in the previously issued command</li>
+          <li><strong><i>down arrow</i></strong> - fill in the subsequently issued command</li>
+
+        </ul>
+        <div><em>Note: when you have the vim cursor blinking you can paste. You can also copy by selecting the text as
+            normal.</em></div>
+      </div>
+    </div>
+
+    <div class="fadesIn projectContainer">
+
+      <h2 class="projectName">
+        Font Alterations
+      </h2>
+      <div class="progPageDescription">
+        This website allows you to customize the font that you view it in. Once you activate command mode
+        by pressing <code class="my-code">&lt;escape&gt;</code> as stated above, you can enter the following commands
+        to change the fonts of the webpage.
+      </div>
+      <div class="projectDescription">
+        <ul>
+          <h3>Browser &amp; Site Defaults</h3>
+          <li><strong>f reset</strong> - Set font to website default</i></li>
+          <li><strong>f dflt-s</strong> - Set font to browser's default serif font</i></li>
+          <li><strong>f dflt-ss</strong> - Set font to browser's default sans-serif font</i></li>
+          <li><strong>f dflt-m</strong> - Set font to browser's default monospace font</i></li>
+          <br>
+          <h3>Propriety Fonts</h3>
+          <li><strong>f c</strong> - Set font to Consolas&dagger;</l>
+          <li><strong>f mon</strong> - Set font to Monaco&dagger;</li>
+          <br>
+          <h3>Web fonts</h3>
+          <li><strong>f mdj</strong> - Set font to Menlo/DejaVu Sans*</li>
+          <li><strong>f mdj</strong> - Set font to Mononoki</li>
+          <li><strong>f um</strong> - Set font to Ubuntu Mono </li>
+          <li><strong>f scp</strong> - Set font to Source Code Pro</li>
+          <li><strong>f sm</strong> - Set Font to Space Mono</li>
+          <li><strong>f i</strong> - Set font to Inconsolata</li>
+          <li><strong>f crpr</strong> - Set font to Courier Prime</li>
+          <li><strong>f fs</strong> - Set Font to Fontdiner Swanky</li>
+          <li><strong>f ua</strong> - Set Font to Uncial Antiqua</li>
+          <li><strong>f samt</strong> - Set Font to Sacramento </li>
+          <li><strong>f se</strong> - Set Font to Special Elite</li>
+          <br>
+          <h3>Custom Font Family</h3>
+          <li><strong>cf &lt;family-name&gt;</strong> - Set the <code>font-family</code> property to whatever is given
+            after the <code>cf</code>.</li>
+
+        </ul>
+        <div>&dagger; <i>These fonts are propriety. Font file must be present on the local machine for this to work.</i>
+        </div>
+        <div>* <i>Menlo is propriety. If Menlo is not present, DejaVu Sans Mono is used.</i></div>
+      </div>
+    </div>
+
+  </div>
+
+  <p id="vim"> </p>
+
+  <script src="/projects/old-site/js/common/utils.js"></script>
+  <script src="/projects/old-site/js/common/command-history.js"></script>
+  <script src="/projects/old-site/js/common/fonts.js"></script>
+  <script src="/projects/old-site/js/common/animations.js"></script>
+  <script src="/projects/old-site/js/common/commands.js"></script>
+  <script src="/projects/old-site/js/common/color-scheme.js"></script>
+  <script src="/projects/old-site/js/common/base.js"></script>
+  <script src="/projects/old-site/js/vimhelp.js"></script>
+
+</body>
+
+</html>
