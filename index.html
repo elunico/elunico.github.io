@@ -22,5 +22,60 @@
         }, 800);
       }
     };
+
+    let keyHistory = [];
+    document.addEventListener("keydown", function (event) {
+      keyHistory.push(event.key);
+      console.log(keyHistory.join(""));
+
+      if (
+        keyHistory
+          .join("")
+          .toLocaleLowerCase()
+          .endsWith(
+            "arrowuparrowuparrowdownarrowdownarrowleftarrowrightarrowleftarrowrightba"
+          )
+      ) {
+        document.location.href = "https://en.wikipedia.org/wiki/Konami_Code";
+      }
+
+      if (keyHistory.length >= 10) {
+        keyHistory.shift();
+      }
+    });
+
+    let startY = null;
+    let startX = null;
+    document.addEventListener("touchstart", function (event) {
+      startY = event.touches[0].clientY;
+      startX = event.touches[0].clientX;
+    });
+
+    document.addEventListener("touchmove", function (event) {
+      if (startY === null && startX === null) {
+        return;
+      }
+
+      let currentY = event.touches[0].clientY;
+      let diffY = startY - currentY;
+
+      let currentX = event.touches[0].clientX;
+      let diffX = startX - currentX;
+
+      if (diffY > 0 && diffX < 30) {
+        keyHistory.push("arrowup");
+      } else if (diffY < 0 && diffX < 30) {
+        keyHistory.push("arrowdown");
+      }
+
+      if (diffX > 0 && diffY < 30) {
+        keyHistory.push("arrowleft");
+      } else if (diffX < 0 && diffY < 30) {
+        keyHistory.push("arrowright");
+      }
+
+      startX = null;
+      startY = null;
+    });
   </script>
 </html>
