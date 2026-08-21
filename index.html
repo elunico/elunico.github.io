@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>eluni.co</title>
   </head>
   <body>
@@ -11,17 +12,19 @@
   </body>
 
   <script>
+    function isArrayKonami(arr) {
+      return arr
+        .join("")
+        .toLocaleLowerCase()
+        .endsWith(
+          "arrowuparrowuparrowdownarrowdownarrowleftarrowrightarrowleftarrowrightba"
+        );
+    }
+
     function checkKonamiCode(history) {
       console.log(history.join(""));
 
-      if (
-        history
-          .join("")
-          .toLocaleLowerCase()
-          .endsWith(
-            "arrowuparrowuparrowdownarrowdownarrowleftarrowrightarrowleftarrowrightba"
-          )
-      ) {
+      if (isArrayKonami(history)) {
         document.location.href = "https://en.wikipedia.org/wiki/Konami_Code";
       }
 
@@ -45,7 +48,6 @@
     let keyHistory = [];
     document.addEventListener("keydown", function (event) {
       keyHistory.push(event.key);
-
       checkKonamiCode(keyHistory);
     });
 
